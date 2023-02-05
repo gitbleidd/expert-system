@@ -9,8 +9,8 @@ namespace ExpertSystem
 
         private void addRuleButton_Click(object sender, EventArgs e)
         {
-            var ruleEditorForm = new RuleEditorForm();
-            ruleEditorForm.ShowDialog();
+            var ruleEditForm = new RuleEditForm();
+            ruleEditForm.ShowDialog();
         }
     }
 }
