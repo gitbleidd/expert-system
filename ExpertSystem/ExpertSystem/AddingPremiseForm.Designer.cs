@@ -39,9 +39,9 @@
             this.okAddingPremiseButton = new System.Windows.Forms.Button();
             this.cancelAddingPremiseButton = new System.Windows.Forms.Button();
             this.mainAddindPremisePanel = new System.Windows.Forms.Panel();
-            this.secondFactComboBox = new System.Windows.Forms.ComboBox();
+            this.factEqualsValueComboBox = new System.Windows.Forms.ComboBox();
             this.createFactButton = new System.Windows.Forms.Button();
-            this.firstFactComboBox = new System.Windows.Forms.ComboBox();
+            this.factVariableComboBox = new System.Windows.Forms.ComboBox();
             this.equalLabel = new System.Windows.Forms.Label();
             this.conclusionTablePanel.SuspendLayout();
             this.okCancelTablePanel.SuspendLayout();
@@ -168,9 +168,9 @@
             // 
             // mainAddindPremisePanel
             // 
-            this.mainAddindPremisePanel.Controls.Add(this.secondFactComboBox);
+            this.mainAddindPremisePanel.Controls.Add(this.factEqualsValueComboBox);
             this.mainAddindPremisePanel.Controls.Add(this.createFactButton);
-            this.mainAddindPremisePanel.Controls.Add(this.firstFactComboBox);
+            this.mainAddindPremisePanel.Controls.Add(this.factVariableComboBox);
             this.mainAddindPremisePanel.Controls.Add(this.equalLabel);
             this.mainAddindPremisePanel.Controls.Add(this.okCancelAddingPremisePanel);
             this.mainAddindPremisePanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -180,13 +180,13 @@
             this.mainAddindPremisePanel.Size = new System.Drawing.Size(444, 157);
             this.mainAddindPremisePanel.TabIndex = 0;
             // 
-            // secondFactComboBox
+            // factEqualsValueComboBox
             // 
-            this.secondFactComboBox.FormattingEnabled = true;
-            this.secondFactComboBox.Location = new System.Drawing.Point(13, 86);
-            this.secondFactComboBox.Name = "secondFactComboBox";
-            this.secondFactComboBox.Size = new System.Drawing.Size(421, 23);
-            this.secondFactComboBox.TabIndex = 6;
+            this.factEqualsValueComboBox.FormattingEnabled = true;
+            this.factEqualsValueComboBox.Location = new System.Drawing.Point(13, 86);
+            this.factEqualsValueComboBox.Name = "factEqualsValueComboBox";
+            this.factEqualsValueComboBox.Size = new System.Drawing.Size(421, 23);
+            this.factEqualsValueComboBox.TabIndex = 6;
             // 
             // createFactButton
             // 
@@ -197,14 +197,15 @@
             this.createFactButton.TabIndex = 5;
             this.createFactButton.Text = "+";
             this.createFactButton.UseVisualStyleBackColor = true;
+            this.createFactButton.Click += new System.EventHandler(this.createFactButton_Click);
             // 
-            // firstFactComboBox
+            // factVariableComboBox
             // 
-            this.firstFactComboBox.FormattingEnabled = true;
-            this.firstFactComboBox.Location = new System.Drawing.Point(13, 28);
-            this.firstFactComboBox.Name = "firstFactComboBox";
-            this.firstFactComboBox.Size = new System.Drawing.Size(391, 23);
-            this.firstFactComboBox.TabIndex = 4;
+            this.factVariableComboBox.FormattingEnabled = true;
+            this.factVariableComboBox.Location = new System.Drawing.Point(13, 28);
+            this.factVariableComboBox.Name = "factVariableComboBox";
+            this.factVariableComboBox.Size = new System.Drawing.Size(391, 23);
+            this.factVariableComboBox.TabIndex = 4;
             // 
             // equalLabel
             // 
@@ -251,8 +252,8 @@
         private Button button1;
         private ComboBox comboBox1;
         private Label equalLabel;
-        private ComboBox secondFactComboBox;
+        private ComboBox factEqualsValueComboBox;
         private Button createFactButton;
-        private ComboBox firstFactComboBox;
+        private ComboBox factVariableComboBox;
     }
 }

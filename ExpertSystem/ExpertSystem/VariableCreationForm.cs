@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace ExpertSystem
 {
-    public partial class AddingPremiseForm : Form
+    public partial class VariableCreationForm : Form
     {
-        public AddingPremiseForm()
+        public VariableCreationForm()
         {
             InitializeComponent();
-        }
-
-        private void createFactButton_Click(object sender, EventArgs e)
-        {
-            var variableCreationForm = new VariableCreationForm();
-            variableCreationForm.ShowDialog();
         }
     }
 }
