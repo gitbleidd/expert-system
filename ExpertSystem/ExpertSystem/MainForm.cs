@@ -7,9 +7,10 @@ namespace ExpertSystem
             InitializeComponent();
         }
 
-        private void fileStripCombobox_Click(object sender, EventArgs e)
+        private void addRuleButton_Click(object sender, EventArgs e)
         {
-
+            var ruleEditorForm = new RuleEditorForm();
+            ruleEditorForm.ShowDialog();
         }
     }
 }
