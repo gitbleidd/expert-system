@@ -191,7 +191,7 @@
             // createFactButton
             // 
             this.createFactButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.createFactButton.Location = new System.Drawing.Point(410, 27);
+            this.createFactButton.Location = new System.Drawing.Point(410, 28);
             this.createFactButton.Name = "createFactButton";
             this.createFactButton.Size = new System.Drawing.Size(24, 23);
             this.createFactButton.TabIndex = 5;
@@ -201,6 +201,7 @@
             // 
             // factVariableComboBox
             // 
+            this.factVariableComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.factVariableComboBox.FormattingEnabled = true;
             this.factVariableComboBox.Location = new System.Drawing.Point(13, 28);
             this.factVariableComboBox.Name = "factVariableComboBox";

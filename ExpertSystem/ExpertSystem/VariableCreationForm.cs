@@ -16,5 +16,10 @@ namespace ExpertSystem
         {
             InitializeComponent();
         }
+
+        private void createDomenButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

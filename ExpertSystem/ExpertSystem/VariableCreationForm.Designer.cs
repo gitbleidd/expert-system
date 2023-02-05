@@ -46,6 +46,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.createDomenButton = new System.Windows.Forms.Button();
             this.variableTypePanel.SuspendLayout();
             this.okCancelPremisePanelTablePanel.SuspendLayout();
             this.okCancelAddingPremisePanel.SuspendLayout();
@@ -67,7 +68,7 @@
             this.domenComboBox.FormattingEnabled = true;
             this.domenComboBox.Location = new System.Drawing.Point(12, 84);
             this.domenComboBox.Name = "domenComboBox";
-            this.domenComboBox.Size = new System.Drawing.Size(423, 23);
+            this.domenComboBox.Size = new System.Drawing.Size(393, 23);
             this.domenComboBox.TabIndex = 1;
             // 
             // domenLabel
@@ -235,11 +236,23 @@
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // createDomenButton
+            // 
+            this.createDomenButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.createDomenButton.Location = new System.Drawing.Point(411, 84);
+            this.createDomenButton.Name = "createDomenButton";
+            this.createDomenButton.Size = new System.Drawing.Size(24, 23);
+            this.createDomenButton.TabIndex = 10;
+            this.createDomenButton.Text = "+";
+            this.createDomenButton.UseVisualStyleBackColor = true;
+            this.createDomenButton.Click += new System.EventHandler(this.createDomenButton_Click);
+            // 
             // VariableCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 351);
+            this.Controls.Add(this.createDomenButton);
             this.Controls.Add(this.okCancelAddingPremisePanel);
             this.Controls.Add(this.variableNameTextBox);
             this.Controls.Add(this.questionTextBox);
@@ -282,5 +295,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Button button1;
         private Button button2;
+        private Button createDomenButton;
     }
 }
