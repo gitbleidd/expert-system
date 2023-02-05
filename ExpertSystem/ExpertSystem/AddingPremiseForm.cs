@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace ExpertSystem
 {
-    public partial class RuleEditForm : Form
+    public partial class AddingPremiseForm : Form
     {
-        public RuleEditForm()
+        public AddingPremiseForm()
         {
             InitializeComponent();
-        }
-
-        private void addPremiseButton_Click(object sender, EventArgs e)
-        {
-            var addingPremiseForm = new AddingPremiseForm();
-            addingPremiseForm.ShowDialog();
         }
     }
 }

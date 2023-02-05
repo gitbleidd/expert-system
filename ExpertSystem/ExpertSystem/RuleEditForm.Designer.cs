@@ -243,6 +243,7 @@
             // deleteConclusionButton
             // 
             this.deleteConclusionButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deleteConclusionButton.Enabled = false;
             this.deleteConclusionButton.Location = new System.Drawing.Point(253, 3);
             this.deleteConclusionButton.Name = "deleteConclusionButton";
             this.deleteConclusionButton.Size = new System.Drawing.Size(119, 26);
@@ -253,6 +254,7 @@
             // editConclusionButton
             // 
             this.editConclusionButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editConclusionButton.Enabled = false;
             this.editConclusionButton.Location = new System.Drawing.Point(128, 3);
             this.editConclusionButton.Name = "editConclusionButton";
             this.editConclusionButton.Size = new System.Drawing.Size(119, 26);
@@ -321,6 +323,7 @@
             // deletePremiseButton
             // 
             this.deletePremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deletePremiseButton.Enabled = false;
             this.deletePremiseButton.Location = new System.Drawing.Point(253, 3);
             this.deletePremiseButton.Name = "deletePremiseButton";
             this.deletePremiseButton.Size = new System.Drawing.Size(119, 26);
@@ -331,6 +334,7 @@
             // editPremiseButton
             // 
             this.editPremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editPremiseButton.Enabled = false;
             this.editPremiseButton.Location = new System.Drawing.Point(128, 3);
             this.editPremiseButton.Name = "editPremiseButton";
             this.editPremiseButton.Size = new System.Drawing.Size(119, 26);
@@ -347,6 +351,7 @@
             this.addPremiseButton.TabIndex = 0;
             this.addPremiseButton.Text = "Добавить";
             this.addPremiseButton.UseVisualStyleBackColor = true;
+            this.addPremiseButton.Click += new System.EventHandler(this.addPremiseButton_Click);
             // 
             // RuleEditForm
             // 
