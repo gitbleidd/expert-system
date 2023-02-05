@@ -144,7 +144,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 24);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1003, 513);
+            this.tabControl.Size = new System.Drawing.Size(1003, 537);
             this.tabControl.TabIndex = 1;
             // 
             // rulesPage
@@ -154,7 +154,7 @@
             this.rulesPage.Location = new System.Drawing.Point(4, 24);
             this.rulesPage.Name = "rulesPage";
             this.rulesPage.Padding = new System.Windows.Forms.Padding(3);
-            this.rulesPage.Size = new System.Drawing.Size(995, 485);
+            this.rulesPage.Size = new System.Drawing.Size(995, 509);
             this.rulesPage.TabIndex = 0;
             this.rulesPage.Text = "Правила";
             this.rulesPage.UseVisualStyleBackColor = true;
@@ -165,7 +165,7 @@
             this.dgvPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPanel.Location = new System.Drawing.Point(3, 3);
             this.dgvPanel.Name = "dgvPanel";
-            this.dgvPanel.Size = new System.Drawing.Size(654, 479);
+            this.dgvPanel.Size = new System.Drawing.Size(654, 503);
             this.dgvPanel.TabIndex = 4;
             // 
             // dataGridViewRules
@@ -183,7 +183,7 @@
             this.dataGridViewRules.ReadOnly = true;
             this.dataGridViewRules.RowHeadersVisible = false;
             this.dataGridViewRules.RowTemplate.Height = 25;
-            this.dataGridViewRules.Size = new System.Drawing.Size(654, 479);
+            this.dataGridViewRules.Size = new System.Drawing.Size(654, 503);
             this.dataGridViewRules.TabIndex = 3;
             // 
             // RuleNameColumn
@@ -209,7 +209,7 @@
             this.RulesPanel.Location = new System.Drawing.Point(657, 3);
             this.RulesPanel.Name = "RulesPanel";
             this.RulesPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.RulesPanel.Size = new System.Drawing.Size(335, 479);
+            this.RulesPanel.Size = new System.Drawing.Size(335, 503);
             this.RulesPanel.TabIndex = 3;
             // 
             // groupBoxConclusion
@@ -217,7 +217,7 @@
             this.groupBoxConclusion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxConclusion.Location = new System.Drawing.Point(10, 380);
             this.groupBoxConclusion.Name = "groupBoxConclusion";
-            this.groupBoxConclusion.Size = new System.Drawing.Size(315, 89);
+            this.groupBoxConclusion.Size = new System.Drawing.Size(315, 113);
             this.groupBoxConclusion.TabIndex = 2;
             this.groupBoxConclusion.TabStop = false;
             this.groupBoxConclusion.Text = "Заключение";
@@ -300,12 +300,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1003, 537);
+            this.ClientSize = new System.Drawing.Size(1003, 561);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
-            this.Text = "Form1";
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.tabControl.ResumeLayout(false);
