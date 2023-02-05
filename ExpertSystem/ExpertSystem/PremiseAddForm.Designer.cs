@@ -1,6 +1,6 @@
 ﻿namespace ExpertSystem
 {
-    partial class AddingPremiseForm
+    partial class PremiseAddForm
     {
         /// <summary>
         /// Required designer variable.

@@ -15,6 +15,7 @@ namespace ExpertSystem
         public VariableCreationForm()
         {
             InitializeComponent();
+            // TODO auto generate question text
         }
 
         private void createDomenButton_Click(object sender, EventArgs e)

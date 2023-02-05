@@ -19,7 +19,7 @@ namespace ExpertSystem
 
         private void addPremiseButton_Click(object sender, EventArgs e)
         {
-            var addingPremiseForm = new AddingPremiseForm();
+            var addingPremiseForm = new PremiseAddForm();
             addingPremiseForm.ShowDialog();
         }
     }
