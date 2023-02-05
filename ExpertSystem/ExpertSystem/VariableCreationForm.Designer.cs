@@ -70,6 +70,7 @@
             this.domenComboBox.Name = "domenComboBox";
             this.domenComboBox.Size = new System.Drawing.Size(393, 23);
             this.domenComboBox.TabIndex = 1;
+            this.domenComboBox.SelectedIndexChanged += new System.EventHandler(this.domenComboBox_SelectedIndexChanged);
             // 
             // domenLabel
             // 
@@ -148,6 +149,7 @@
             this.questionTextBox.Name = "questionTextBox";
             this.questionTextBox.Size = new System.Drawing.Size(414, 60);
             this.questionTextBox.TabIndex = 7;
+            this.questionTextBox.TextChanged += new System.EventHandler(this.questionTextBox_TextChanged);
             // 
             // variableNameTextBox
             // 
@@ -155,6 +157,7 @@
             this.variableNameTextBox.Name = "variableNameTextBox";
             this.variableNameTextBox.Size = new System.Drawing.Size(423, 23);
             this.variableNameTextBox.TabIndex = 8;
+            this.variableNameTextBox.TextChanged += new System.EventHandler(this.variableNameTextBox_TextChanged);
             // 
             // okCancelPremisePanelTablePanel
             // 
@@ -199,6 +202,7 @@
             this.okCancelAddingPremisePanel.Name = "okCancelAddingPremisePanel";
             this.okCancelAddingPremisePanel.Size = new System.Drawing.Size(447, 34);
             this.okCancelAddingPremisePanel.TabIndex = 9;
+            this.okCancelAddingPremisePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.okCancelAddingPremisePanel_Paint);
             // 
             // tableLayoutPanel1
             // 
