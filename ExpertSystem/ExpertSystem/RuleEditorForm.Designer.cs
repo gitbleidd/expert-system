@@ -41,14 +41,14 @@
             this.ruleEditorConclusionGroupBox = new System.Windows.Forms.GroupBox();
             this.ruleEditorPremisePanel = new System.Windows.Forms.Panel();
             this.ruleEditorPremiseGroupBox = new System.Windows.Forms.GroupBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.ruleEditorRuleNamePanel = new System.Windows.Forms.Panel();
             this.ruleEditorRuleNameLabel = new System.Windows.Forms.Label();
             this.ruleEditorRuleNameTextBox = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.ruleEditorButtomPanel.SuspendLayout();
             this.ruleEditorSubmitButtonsPanel.SuspendLayout();
             this.ruleEditorExplanationPanel.SuspendLayout();
@@ -57,8 +57,8 @@
             this.ruleEditorConclusionPanel.SuspendLayout();
             this.ruleEditorPremisePanel.SuspendLayout();
             this.ruleEditorPremiseGroupBox.SuspendLayout();
-            this.ruleEditorRuleNamePanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.ruleEditorRuleNamePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ruleEditorButtomPanel
@@ -66,7 +66,7 @@
             this.ruleEditorButtomPanel.Controls.Add(this.ruleEditorExplanationTextBox);
             this.ruleEditorButtomPanel.Controls.Add(this.ruleEditorSubmitButtonsPanel);
             this.ruleEditorButtomPanel.Controls.Add(this.ruleEditorExplanationPanel);
-            this.ruleEditorButtomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ruleEditorButtomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ruleEditorButtomPanel.Location = new System.Drawing.Point(0, 453);
             this.ruleEditorButtomPanel.Name = "ruleEditorButtomPanel";
             this.ruleEditorButtomPanel.Size = new System.Drawing.Size(780, 173);
@@ -133,8 +133,8 @@
             // 
             // ruleEditorMainPanel
             // 
-            this.ruleEditorMainPanel.Controls.Add(this.ruleEditorButtomPanel);
             this.ruleEditorMainPanel.Controls.Add(this.ruleEditorEditPanel);
+            this.ruleEditorMainPanel.Controls.Add(this.ruleEditorButtomPanel);
             this.ruleEditorMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ruleEditorMainPanel.Location = new System.Drawing.Point(10, 0);
             this.ruleEditorMainPanel.Name = "ruleEditorMainPanel";
@@ -147,12 +147,12 @@
             this.ruleEditorEditPanel.Controls.Add(this.ruleEditorConclusionPanel);
             this.ruleEditorEditPanel.Controls.Add(this.ruleEditorPremisePanel);
             this.ruleEditorEditPanel.Controls.Add(this.ruleEditorRuleNamePanel);
-            this.ruleEditorEditPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ruleEditorEditPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ruleEditorEditPanel.Location = new System.Drawing.Point(0, 0);
             this.ruleEditorEditPanel.Name = "ruleEditorEditPanel";
             this.ruleEditorEditPanel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.ruleEditorEditPanel.Size = new System.Drawing.Size(780, 453);
-            this.ruleEditorEditPanel.TabIndex = 10;
+            this.ruleEditorEditPanel.TabIndex = 12;
             // 
             // ruleEditorConclusionPanel
             // 
@@ -196,6 +196,57 @@
             this.ruleEditorPremiseGroupBox.TabStop = false;
             this.ruleEditorPremiseGroupBox.Text = "Посылка";
             // 
+            // listBox1
+            // 
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(3, 19);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(313, 303);
+            this.listBox1.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(3, 322);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(313, 26);
+            this.panel1.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.Location = new System.Drawing.Point(75, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(163, 26);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button3.Location = new System.Drawing.Point(238, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 26);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 26);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // ruleEditorRuleNamePanel
             // 
             this.ruleEditorRuleNamePanel.Controls.Add(this.ruleEditorRuleNameLabel);
@@ -224,57 +275,6 @@
             this.ruleEditorRuleNameTextBox.Size = new System.Drawing.Size(780, 23);
             this.ruleEditorRuleNameTextBox.TabIndex = 1;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 322);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(313, 26);
-            this.panel1.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 26);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button3.Location = new System.Drawing.Point(238, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 26);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(75, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(163, 26);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(3, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(313, 303);
-            this.listBox1.TabIndex = 3;
-            // 
             // RuleEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -294,9 +294,9 @@
             this.ruleEditorConclusionPanel.ResumeLayout(false);
             this.ruleEditorPremisePanel.ResumeLayout(false);
             this.ruleEditorPremiseGroupBox.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ruleEditorRuleNamePanel.ResumeLayout(false);
             this.ruleEditorRuleNamePanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -316,13 +316,13 @@
         private GroupBox ruleEditorConclusionGroupBox;
         private Panel ruleEditorPremisePanel;
         private GroupBox ruleEditorPremiseGroupBox;
-        private Panel ruleEditorRuleNamePanel;
-        private Label ruleEditorRuleNameLabel;
-        private TextBox ruleEditorRuleNameTextBox;
+        private ListBox listBox1;
         private Panel panel1;
         private Button button2;
         private Button button3;
         private Button button1;
-        private ListBox listBox1;
+        private Panel ruleEditorRuleNamePanel;
+        private Label ruleEditorRuleNameLabel;
+        private TextBox ruleEditorRuleNameTextBox;
     }
 }
