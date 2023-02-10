@@ -5,13 +5,9 @@ namespace ExpertSystem
         public MainForm()
         {
             InitializeComponent();
-            dgvRules.Rows.Add(new string[] { "Orange-Salsa Pork Chops", "Main Dish" });
-            dgvRules.Rows.Add(new string[] { "Other", "Stuff" });
-            dgvRules.Rows.Add(new string[] { "Hmm", "Testing datagrid view rules" });
-
-            listViewRules.Items.Add(new ListViewItem(new string[] { "1", "1" }));
-            listViewRules.Items.Add(new ListViewItem(new string[] { "2", "2" }));
-            listViewRules.Items.Add(new ListViewItem(new string[] { "3", "3" }));
+            //dgvRules.Rows.Add(new string[] { "Orange-Salsa Pork Chops", "Main Dish" });
+            //dgvRules.Rows.Add(new string[] { "Other", "Stuff" });
+            //dgvRules.Rows.Add(new string[] { "Hmm", "Testing datagrid visew rules" });
         }
 
         private void addRuleButton_Click(object sender, EventArgs e)
@@ -20,48 +16,7 @@ namespace ExpertSystem
             ruleEditForm.ShowDialog();
         }
 
-        private void listViewRules_ItemDrag(object sender, ItemDragEventArgs e)
-        {
-            if (listViewRules.SelectedItems.Count > 0)
-            {
-                var listViewItem = listViewRules.SelectedItems[0];
-                listViewRules.DoDragDrop(listViewItem, DragDropEffects.Move);
-            }
-        }
-
-        private void listViewRules_DragDrop(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(typeof(ListViewItem)))
-            {
-                var selectedItem = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
-
-                Point clientPoint = listViewRules.PointToClient(new Point(e.X, e.Y));
-                ListViewItem itemAtMouse = listViewRules.GetItemAt(clientPoint.X, clientPoint.Y);
-
-                if (itemAtMouse == null || e.Effect != DragDropEffects.Move)
-                {
-                    return;
-                }
-
-                int selectedItemIndex = selectedItem.Index;
-                int itemAtMouseIndex = itemAtMouse.Index;
-
-                var listWithSwappedItems = listViewRules.Items.Cast<ListViewItem>().ToArray();
-                listWithSwappedItems[selectedItemIndex] = itemAtMouse;
-                listWithSwappedItems[itemAtMouseIndex] = selectedItem;
-                listViewRules.Items.Clear();
-                listViewRules.Items.AddRange(listWithSwappedItems);
-            }
-        }
-
-        private void listViewRules_DragEnter(object sender, DragEventArgs e)
-        {
-            if (listViewRules.SelectedItems.Count > 0)
-            {
-                e.Effect = DragDropEffects.Move;
-            }
-        }
-
+        #region DGV - drag and drop
         private void dgvRules_DragEnter(object sender, DragEventArgs e)
         {
             if (dgvRules.SelectedRows.Count > 0)
@@ -81,7 +36,6 @@ namespace ExpertSystem
 
 
             Point clientPoint = dgvRules.PointToClient(new Point(e.X, e.Y));
-            //var hitInfo = dgvRules.HitTest(e.X, e.Y);
             var hitInfo = dgvRules.HitTest(clientPoint.X, clientPoint.Y);
             if (hitInfo.Type == DataGridViewHitTestType.None)
                 return;
@@ -100,14 +54,47 @@ namespace ExpertSystem
             dgvRules.Rows[swapRow].Selected = true;
         }
 
-        private void dgvRules_DragOver(object sender, DragEventArgs e) { }
-
         private void dgvRules_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && dgvRules.SelectedRows.Count > 0)
             {
                 dgvRules.DoDragDrop(dgvRules.SelectedRows, DragDropEffects.Move);
             }
+        }
+
+        #endregion
+
+        private void dgvRules_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvRules.SelectedRows.Count > 0)
+            {
+                SetEditAndDeleteButtonStatus(true);
+                //TODO update premise rule listbox
+                //TODO update conclusion rule listbox
+            }
+            else
+            {
+                SetEditAndDeleteButtonStatus(false);
+            }
+        }
+
+        private void editRuleButton_Click(object sender, EventArgs e)
+        {
+            // TODO RuleEditForm.dialog()
+        }
+
+        private void deleteRuleButton_Click(object sender, EventArgs e)
+        {
+            if (dgvRules.SelectedRows.Count > 0)
+            {
+                dgvRules.Rows.RemoveAt(dgvRules.SelectedRows[0].Index);
+            }
+        }
+
+        private void SetEditAndDeleteButtonStatus(bool status)
+        {
+            editRuleButton.Enabled = status;
+            deleteRuleButton.Enabled = status;
         }
     }
 }

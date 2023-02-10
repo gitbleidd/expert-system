@@ -39,16 +39,15 @@
             this.explainToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.rulesPage = new System.Windows.Forms.TabPage();
-            this.dgvPanel = new System.Windows.Forms.Panel();
-            this.listViewRules = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.panelForDgv = new System.Windows.Forms.Panel();
             this.dgvRules = new System.Windows.Forms.DataGridView();
             this.RuleNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RuleDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RulesPanel = new System.Windows.Forms.Panel();
             this.groupBoxConclusion = new System.Windows.Forms.GroupBox();
+            this.conclusionListBox = new System.Windows.Forms.ListBox();
             this.groupBoxPremise = new System.Windows.Forms.GroupBox();
+            this.premiseListBox = new System.Windows.Forms.ListBox();
             this.groupBoxEditRule = new System.Windows.Forms.GroupBox();
             this.deleteRuleButton = new System.Windows.Forms.Button();
             this.editRuleButton = new System.Windows.Forms.Button();
@@ -58,9 +57,11 @@
             this.mainMenuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.rulesPage.SuspendLayout();
-            this.dgvPanel.SuspendLayout();
+            this.panelForDgv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRules)).BeginInit();
             this.RulesPanel.SuspendLayout();
+            this.groupBoxConclusion.SuspendLayout();
+            this.groupBoxPremise.SuspendLayout();
             this.groupBoxEditRule.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -152,7 +153,7 @@
             // 
             // rulesPage
             // 
-            this.rulesPage.Controls.Add(this.dgvPanel);
+            this.rulesPage.Controls.Add(this.panelForDgv);
             this.rulesPage.Controls.Add(this.RulesPanel);
             this.rulesPage.Location = new System.Drawing.Point(4, 24);
             this.rulesPage.Name = "rulesPage";
@@ -162,34 +163,14 @@
             this.rulesPage.Text = "Правила";
             this.rulesPage.UseVisualStyleBackColor = true;
             // 
-            // dgvPanel
+            // panelForDgv
             // 
-            this.dgvPanel.Controls.Add(this.listViewRules);
-            this.dgvPanel.Controls.Add(this.dgvRules);
-            this.dgvPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPanel.Location = new System.Drawing.Point(3, 3);
-            this.dgvPanel.Name = "dgvPanel";
-            this.dgvPanel.Size = new System.Drawing.Size(654, 503);
-            this.dgvPanel.TabIndex = 4;
-            // 
-            // listViewRules
-            // 
-            this.listViewRules.AllowDrop = true;
-            this.listViewRules.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.listViewRules.FullRowSelect = true;
-            this.listViewRules.GridLines = true;
-            this.listViewRules.Location = new System.Drawing.Point(128, 158);
-            this.listViewRules.MultiSelect = false;
-            this.listViewRules.Name = "listViewRules";
-            this.listViewRules.Size = new System.Drawing.Size(304, 97);
-            this.listViewRules.TabIndex = 4;
-            this.listViewRules.UseCompatibleStateImageBehavior = false;
-            this.listViewRules.View = System.Windows.Forms.View.Details;
-            this.listViewRules.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listViewRules_ItemDrag);
-            this.listViewRules.DragDrop += new System.Windows.Forms.DragEventHandler(this.listViewRules_DragDrop);
-            this.listViewRules.DragEnter += new System.Windows.Forms.DragEventHandler(this.listViewRules_DragEnter);
+            this.panelForDgv.Controls.Add(this.dgvRules);
+            this.panelForDgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelForDgv.Location = new System.Drawing.Point(3, 3);
+            this.panelForDgv.Name = "panelForDgv";
+            this.panelForDgv.Size = new System.Drawing.Size(654, 503);
+            this.panelForDgv.TabIndex = 4;
             // 
             // dgvRules
             // 
@@ -212,9 +193,9 @@
             this.dgvRules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRules.Size = new System.Drawing.Size(654, 503);
             this.dgvRules.TabIndex = 3;
+            this.dgvRules.SelectionChanged += new System.EventHandler(this.dgvRules_SelectionChanged);
             this.dgvRules.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvRules_DragDrop);
             this.dgvRules.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvRules_DragEnter);
-            this.dgvRules.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvRules_DragOver);
             this.dgvRules.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvRules_MouseMove);
             // 
             // RuleNameColumn
@@ -245,23 +226,47 @@
             // 
             // groupBoxConclusion
             // 
+            this.groupBoxConclusion.Controls.Add(this.conclusionListBox);
             this.groupBoxConclusion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxConclusion.Location = new System.Drawing.Point(10, 380);
             this.groupBoxConclusion.Name = "groupBoxConclusion";
+            this.groupBoxConclusion.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
             this.groupBoxConclusion.Size = new System.Drawing.Size(315, 113);
             this.groupBoxConclusion.TabIndex = 2;
             this.groupBoxConclusion.TabStop = false;
             this.groupBoxConclusion.Text = "Заключение";
             // 
+            // conclusionListBox
+            // 
+            this.conclusionListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conclusionListBox.FormattingEnabled = true;
+            this.conclusionListBox.ItemHeight = 15;
+            this.conclusionListBox.Location = new System.Drawing.Point(8, 19);
+            this.conclusionListBox.Name = "conclusionListBox";
+            this.conclusionListBox.Size = new System.Drawing.Size(299, 91);
+            this.conclusionListBox.TabIndex = 0;
+            // 
             // groupBoxPremise
             // 
+            this.groupBoxPremise.Controls.Add(this.premiseListBox);
             this.groupBoxPremise.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBoxPremise.Location = new System.Drawing.Point(10, 108);
             this.groupBoxPremise.Name = "groupBoxPremise";
+            this.groupBoxPremise.Padding = new System.Windows.Forms.Padding(8, 3, 8, 3);
             this.groupBoxPremise.Size = new System.Drawing.Size(315, 272);
             this.groupBoxPremise.TabIndex = 1;
             this.groupBoxPremise.TabStop = false;
             this.groupBoxPremise.Text = "Посылка";
+            // 
+            // premiseListBox
+            // 
+            this.premiseListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.premiseListBox.FormattingEnabled = true;
+            this.premiseListBox.ItemHeight = 15;
+            this.premiseListBox.Location = new System.Drawing.Point(8, 19);
+            this.premiseListBox.Name = "premiseListBox";
+            this.premiseListBox.Size = new System.Drawing.Size(299, 250);
+            this.premiseListBox.TabIndex = 0;
             // 
             // groupBoxEditRule
             // 
@@ -279,22 +284,26 @@
             // deleteRuleButton
             // 
             this.deleteRuleButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.deleteRuleButton.Enabled = false;
             this.deleteRuleButton.Location = new System.Drawing.Point(3, 65);
             this.deleteRuleButton.Name = "deleteRuleButton";
             this.deleteRuleButton.Size = new System.Drawing.Size(309, 23);
             this.deleteRuleButton.TabIndex = 2;
             this.deleteRuleButton.Text = "Удалить";
             this.deleteRuleButton.UseVisualStyleBackColor = true;
+            this.deleteRuleButton.Click += new System.EventHandler(this.deleteRuleButton_Click);
             // 
             // editRuleButton
             // 
             this.editRuleButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.editRuleButton.Enabled = false;
             this.editRuleButton.Location = new System.Drawing.Point(3, 42);
             this.editRuleButton.Name = "editRuleButton";
             this.editRuleButton.Size = new System.Drawing.Size(309, 23);
             this.editRuleButton.TabIndex = 1;
             this.editRuleButton.Text = "Изменить";
             this.editRuleButton.UseVisualStyleBackColor = true;
+            this.editRuleButton.Click += new System.EventHandler(this.editRuleButton_Click);
             // 
             // addRuleButton
             // 
@@ -341,9 +350,11 @@
             this.mainMenuStrip.PerformLayout();
             this.tabControl.ResumeLayout(false);
             this.rulesPage.ResumeLayout(false);
-            this.dgvPanel.ResumeLayout(false);
+            this.panelForDgv.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRules)).EndInit();
             this.RulesPanel.ResumeLayout(false);
+            this.groupBoxConclusion.ResumeLayout(false);
+            this.groupBoxPremise.ResumeLayout(false);
             this.groupBoxEditRule.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -365,10 +376,6 @@
         private ToolStripMenuItem beginConsultToolStrip;
         private ToolStripMenuItem explainToolStrip;
         private TabPage rulesPage;
-        private Panel dgvPanel;
-        private DataGridView dgvRules;
-        private DataGridViewTextBoxColumn RuleNameColumn;
-        private DataGridViewTextBoxColumn RuleDescriptionColumn;
         private Panel RulesPanel;
         private GroupBox groupBoxConclusion;
         private GroupBox groupBoxPremise;
@@ -376,8 +383,11 @@
         private Button deleteRuleButton;
         private Button editRuleButton;
         private Button addRuleButton;
-        private ListView listViewRules;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
+        private ListBox conclusionListBox;
+        private ListBox premiseListBox;
+        private Panel panelForDgv;
+        private DataGridView dgvRules;
+        private DataGridViewTextBoxColumn RuleNameColumn;
+        private DataGridViewTextBoxColumn RuleDescriptionColumn;
     }
 }
