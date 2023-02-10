@@ -40,7 +40,10 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.rulesPage = new System.Windows.Forms.TabPage();
             this.dgvPanel = new System.Windows.Forms.Panel();
-            this.dataGridViewRules = new System.Windows.Forms.DataGridView();
+            this.listViewRules = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.dgvRules = new System.Windows.Forms.DataGridView();
             this.RuleNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RuleDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RulesPanel = new System.Windows.Forms.Panel();
@@ -56,7 +59,7 @@
             this.tabControl.SuspendLayout();
             this.rulesPage.SuspendLayout();
             this.dgvPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRules)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRules)).BeginInit();
             this.RulesPanel.SuspendLayout();
             this.groupBoxEditRule.SuspendLayout();
             this.SuspendLayout();
@@ -161,30 +164,58 @@
             // 
             // dgvPanel
             // 
-            this.dgvPanel.Controls.Add(this.dataGridViewRules);
+            this.dgvPanel.Controls.Add(this.listViewRules);
+            this.dgvPanel.Controls.Add(this.dgvRules);
             this.dgvPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPanel.Location = new System.Drawing.Point(3, 3);
             this.dgvPanel.Name = "dgvPanel";
             this.dgvPanel.Size = new System.Drawing.Size(654, 503);
             this.dgvPanel.TabIndex = 4;
             // 
-            // dataGridViewRules
+            // listViewRules
             // 
-            this.dataGridViewRules.AllowUserToAddRows = false;
-            this.dataGridViewRules.AllowUserToDeleteRows = false;
-            this.dataGridViewRules.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.listViewRules.AllowDrop = true;
+            this.listViewRules.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listViewRules.FullRowSelect = true;
+            this.listViewRules.GridLines = true;
+            this.listViewRules.Location = new System.Drawing.Point(128, 158);
+            this.listViewRules.MultiSelect = false;
+            this.listViewRules.Name = "listViewRules";
+            this.listViewRules.Size = new System.Drawing.Size(304, 97);
+            this.listViewRules.TabIndex = 4;
+            this.listViewRules.UseCompatibleStateImageBehavior = false;
+            this.listViewRules.View = System.Windows.Forms.View.Details;
+            this.listViewRules.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listViewRules_ItemDrag);
+            this.listViewRules.DragDrop += new System.Windows.Forms.DragEventHandler(this.listViewRules_DragDrop);
+            this.listViewRules.DragEnter += new System.Windows.Forms.DragEventHandler(this.listViewRules_DragEnter);
+            // 
+            // dgvRules
+            // 
+            this.dgvRules.AllowDrop = true;
+            this.dgvRules.AllowUserToAddRows = false;
+            this.dgvRules.AllowUserToDeleteRows = false;
+            this.dgvRules.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RuleNameColumn,
             this.RuleDescriptionColumn});
-            this.dataGridViewRules.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewRules.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewRules.Name = "dataGridViewRules";
-            this.dataGridViewRules.ReadOnly = true;
-            this.dataGridViewRules.RowHeadersVisible = false;
-            this.dataGridViewRules.RowTemplate.Height = 25;
-            this.dataGridViewRules.Size = new System.Drawing.Size(654, 503);
-            this.dataGridViewRules.TabIndex = 3;
+            this.dgvRules.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRules.Location = new System.Drawing.Point(0, 0);
+            this.dgvRules.MultiSelect = false;
+            this.dgvRules.Name = "dgvRules";
+            this.dgvRules.ReadOnly = true;
+            this.dgvRules.RowHeadersVisible = false;
+            this.dgvRules.RowTemplate.Height = 25;
+            this.dgvRules.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvRules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRules.Size = new System.Drawing.Size(654, 503);
+            this.dgvRules.TabIndex = 3;
+            this.dgvRules.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvRules_DragDrop);
+            this.dgvRules.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvRules_DragEnter);
+            this.dgvRules.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvRules_DragOver);
+            this.dgvRules.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvRules_MouseMove);
             // 
             // RuleNameColumn
             // 
@@ -281,7 +312,7 @@
             this.variablesPage.Location = new System.Drawing.Point(4, 24);
             this.variablesPage.Name = "variablesPage";
             this.variablesPage.Padding = new System.Windows.Forms.Padding(3);
-            this.variablesPage.Size = new System.Drawing.Size(995, 485);
+            this.variablesPage.Size = new System.Drawing.Size(995, 509);
             this.variablesPage.TabIndex = 1;
             this.variablesPage.Text = "Переменные";
             this.variablesPage.UseVisualStyleBackColor = true;
@@ -291,7 +322,7 @@
             this.domensPage.Location = new System.Drawing.Point(4, 24);
             this.domensPage.Name = "domensPage";
             this.domensPage.Padding = new System.Windows.Forms.Padding(3);
-            this.domensPage.Size = new System.Drawing.Size(995, 485);
+            this.domensPage.Size = new System.Drawing.Size(995, 509);
             this.domensPage.TabIndex = 2;
             this.domensPage.Text = "Домены";
             this.domensPage.UseVisualStyleBackColor = true;
@@ -311,7 +342,7 @@
             this.tabControl.ResumeLayout(false);
             this.rulesPage.ResumeLayout(false);
             this.dgvPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRules)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRules)).EndInit();
             this.RulesPanel.ResumeLayout(false);
             this.groupBoxEditRule.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -335,7 +366,7 @@
         private ToolStripMenuItem explainToolStrip;
         private TabPage rulesPage;
         private Panel dgvPanel;
-        private DataGridView dataGridViewRules;
+        private DataGridView dgvRules;
         private DataGridViewTextBoxColumn RuleNameColumn;
         private DataGridViewTextBoxColumn RuleDescriptionColumn;
         private Panel RulesPanel;
@@ -345,5 +376,8 @@
         private Button deleteRuleButton;
         private Button editRuleButton;
         private Button addRuleButton;
+        private ListView listViewRules;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
     }
 }
