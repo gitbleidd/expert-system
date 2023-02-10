@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ruleEditorMainPanel = new System.Windows.Forms.Panel();
-            this.ruleEditorEditPanel = new System.Windows.Forms.Panel();
-            this.ruleEditorPremiseGroupBox = new System.Windows.Forms.GroupBox();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.editPanel = new System.Windows.Forms.Panel();
             this.okCancelTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.ruleEditorSaveButton = new System.Windows.Forms.Button();
-            this.ruleEditorCancelButton = new System.Windows.Forms.Button();
-            this.ruleEditorExplanationLabel = new System.Windows.Forms.Label();
-            this.ruleEditorExplanationTextBox = new System.Windows.Forms.TextBox();
-            this.ruleEditorRuleNameLabel = new System.Windows.Forms.Label();
-            this.ruleEditorRuleNameTextBox = new System.Windows.Forms.TextBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.explanationLabel = new System.Windows.Forms.Label();
+            this.explanationTextBox = new System.Windows.Forms.TextBox();
+            this.ruleNameLabel = new System.Windows.Forms.Label();
+            this.ruleNameTextBox = new System.Windows.Forms.TextBox();
             this.mainTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.premiseConclusionTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.conclusionGroupBox = new System.Windows.Forms.GroupBox();
@@ -48,45 +47,35 @@
             this.addConclusionButton = new System.Windows.Forms.Button();
             this.premiseGroupBox = new System.Windows.Forms.GroupBox();
             this.premiseListBox = new System.Windows.Forms.ListBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.premiseTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.deletePremiseButton = new System.Windows.Forms.Button();
-            this.editPremiseButton = new System.Windows.Forms.Button();
             this.addPremiseButton = new System.Windows.Forms.Button();
+            this.editPremiseButton = new System.Windows.Forms.Button();
+            this.deletePremiseButton = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.okCancelTablePanel.SuspendLayout();
             this.mainTablePanel.SuspendLayout();
             this.premiseConclusionTablePanel.SuspendLayout();
             this.conclusionGroupBox.SuspendLayout();
             this.conclusionTablePanel.SuspendLayout();
             this.premiseGroupBox.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.premiseTablePanel.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ruleEditorMainPanel
+            // mainPanel
             // 
-            this.ruleEditorMainPanel.Location = new System.Drawing.Point(0, 0);
-            this.ruleEditorMainPanel.Name = "ruleEditorMainPanel";
-            this.ruleEditorMainPanel.Size = new System.Drawing.Size(200, 100);
-            this.ruleEditorMainPanel.TabIndex = 0;
+            this.mainPanel.Location = new System.Drawing.Point(0, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(200, 100);
+            this.mainPanel.TabIndex = 0;
             // 
-            // ruleEditorEditPanel
+            // editPanel
             // 
-            this.ruleEditorEditPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.ruleEditorEditPanel.Location = new System.Drawing.Point(0, 0);
-            this.ruleEditorEditPanel.Name = "ruleEditorEditPanel";
-            this.ruleEditorEditPanel.Size = new System.Drawing.Size(200, 100);
-            this.ruleEditorEditPanel.TabIndex = 0;
-            // 
-            // ruleEditorPremiseGroupBox
-            // 
-            this.ruleEditorPremiseGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ruleEditorPremiseGroupBox.Location = new System.Drawing.Point(3, 3);
-            this.ruleEditorPremiseGroupBox.Name = "ruleEditorPremiseGroupBox";
-            this.ruleEditorPremiseGroupBox.Size = new System.Drawing.Size(94, 365);
-            this.ruleEditorPremiseGroupBox.TabIndex = 2;
-            this.ruleEditorPremiseGroupBox.TabStop = false;
-            this.ruleEditorPremiseGroupBox.Text = "Посылка";
+            this.editPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.editPanel.Location = new System.Drawing.Point(0, 0);
+            this.editPanel.Name = "editPanel";
+            this.editPanel.Size = new System.Drawing.Size(200, 100);
+            this.editPanel.TabIndex = 0;
             // 
             // okCancelTablePanel
             // 
@@ -94,8 +83,8 @@
             this.okCancelTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.okCancelTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.okCancelTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.okCancelTablePanel.Controls.Add(this.ruleEditorSaveButton, 1, 0);
-            this.okCancelTablePanel.Controls.Add(this.ruleEditorCancelButton, 2, 0);
+            this.okCancelTablePanel.Controls.Add(this.saveButton, 1, 0);
+            this.okCancelTablePanel.Controls.Add(this.cancelButton, 2, 0);
             this.okCancelTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.okCancelTablePanel.Location = new System.Drawing.Point(13, 520);
             this.okCancelTablePanel.Name = "okCancelTablePanel";
@@ -104,73 +93,73 @@
             this.okCancelTablePanel.Size = new System.Drawing.Size(774, 31);
             this.okCancelTablePanel.TabIndex = 15;
             // 
-            // ruleEditorSaveButton
+            // saveButton
             // 
-            this.ruleEditorSaveButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ruleEditorSaveButton.Location = new System.Drawing.Point(617, 3);
-            this.ruleEditorSaveButton.Name = "ruleEditorSaveButton";
-            this.ruleEditorSaveButton.Size = new System.Drawing.Size(74, 25);
-            this.ruleEditorSaveButton.TabIndex = 7;
-            this.ruleEditorSaveButton.Text = "OK";
-            this.ruleEditorSaveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.saveButton.Location = new System.Drawing.Point(617, 3);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(74, 25);
+            this.saveButton.TabIndex = 7;
+            this.saveButton.Text = "OK";
+            this.saveButton.UseVisualStyleBackColor = true;
             // 
-            // ruleEditorCancelButton
+            // cancelButton
             // 
-            this.ruleEditorCancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ruleEditorCancelButton.Location = new System.Drawing.Point(697, 3);
-            this.ruleEditorCancelButton.Name = "ruleEditorCancelButton";
-            this.ruleEditorCancelButton.Size = new System.Drawing.Size(74, 25);
-            this.ruleEditorCancelButton.TabIndex = 10;
-            this.ruleEditorCancelButton.Text = "Отмена";
-            this.ruleEditorCancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelButton.Location = new System.Drawing.Point(697, 3);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(74, 25);
+            this.cancelButton.TabIndex = 10;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // ruleEditorExplanationLabel
+            // explanationLabel
             // 
-            this.ruleEditorExplanationLabel.AutoSize = true;
-            this.ruleEditorExplanationLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ruleEditorExplanationLabel.Location = new System.Drawing.Point(13, 380);
-            this.ruleEditorExplanationLabel.Name = "ruleEditorExplanationLabel";
-            this.ruleEditorExplanationLabel.Size = new System.Drawing.Size(774, 15);
-            this.ruleEditorExplanationLabel.TabIndex = 10;
-            this.ruleEditorExplanationLabel.Text = "Пояснение:";
+            this.explanationLabel.AutoSize = true;
+            this.explanationLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.explanationLabel.Location = new System.Drawing.Point(13, 380);
+            this.explanationLabel.Name = "explanationLabel";
+            this.explanationLabel.Size = new System.Drawing.Size(774, 15);
+            this.explanationLabel.TabIndex = 10;
+            this.explanationLabel.Text = "Пояснение:";
             // 
-            // ruleEditorExplanationTextBox
+            // explanationTextBox
             // 
-            this.ruleEditorExplanationTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ruleEditorExplanationTextBox.Location = new System.Drawing.Point(13, 398);
-            this.ruleEditorExplanationTextBox.MinimumSize = new System.Drawing.Size(100, 50);
-            this.ruleEditorExplanationTextBox.Multiline = true;
-            this.ruleEditorExplanationTextBox.Name = "ruleEditorExplanationTextBox";
-            this.ruleEditorExplanationTextBox.Size = new System.Drawing.Size(774, 116);
-            this.ruleEditorExplanationTextBox.TabIndex = 12;
+            this.explanationTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.explanationTextBox.Location = new System.Drawing.Point(13, 398);
+            this.explanationTextBox.MinimumSize = new System.Drawing.Size(100, 50);
+            this.explanationTextBox.Multiline = true;
+            this.explanationTextBox.Name = "explanationTextBox";
+            this.explanationTextBox.Size = new System.Drawing.Size(774, 116);
+            this.explanationTextBox.TabIndex = 12;
             // 
-            // ruleEditorRuleNameLabel
+            // ruleNameLabel
             // 
-            this.ruleEditorRuleNameLabel.AutoSize = true;
-            this.ruleEditorRuleNameLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ruleEditorRuleNameLabel.Location = new System.Drawing.Point(13, 25);
-            this.ruleEditorRuleNameLabel.Name = "ruleEditorRuleNameLabel";
-            this.ruleEditorRuleNameLabel.Size = new System.Drawing.Size(774, 15);
-            this.ruleEditorRuleNameLabel.TabIndex = 2;
-            this.ruleEditorRuleNameLabel.Text = "Имя правила:";
+            this.ruleNameLabel.AutoSize = true;
+            this.ruleNameLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ruleNameLabel.Location = new System.Drawing.Point(13, 25);
+            this.ruleNameLabel.Name = "ruleNameLabel";
+            this.ruleNameLabel.Size = new System.Drawing.Size(774, 15);
+            this.ruleNameLabel.TabIndex = 2;
+            this.ruleNameLabel.Text = "Имя правила:";
             // 
-            // ruleEditorRuleNameTextBox
+            // ruleNameTextBox
             // 
-            this.ruleEditorRuleNameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ruleEditorRuleNameTextBox.Location = new System.Drawing.Point(13, 44);
-            this.ruleEditorRuleNameTextBox.Name = "ruleEditorRuleNameTextBox";
-            this.ruleEditorRuleNameTextBox.Size = new System.Drawing.Size(774, 23);
-            this.ruleEditorRuleNameTextBox.TabIndex = 14;
+            this.ruleNameTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ruleNameTextBox.Location = new System.Drawing.Point(13, 44);
+            this.ruleNameTextBox.Name = "ruleNameTextBox";
+            this.ruleNameTextBox.Size = new System.Drawing.Size(774, 23);
+            this.ruleNameTextBox.TabIndex = 14;
             // 
             // mainTablePanel
             // 
             this.mainTablePanel.ColumnCount = 1;
             this.mainTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTablePanel.Controls.Add(this.ruleEditorRuleNameTextBox, 0, 1);
-            this.mainTablePanel.Controls.Add(this.ruleEditorRuleNameLabel, 0, 0);
-            this.mainTablePanel.Controls.Add(this.ruleEditorExplanationTextBox, 0, 4);
+            this.mainTablePanel.Controls.Add(this.ruleNameTextBox, 0, 1);
+            this.mainTablePanel.Controls.Add(this.ruleNameLabel, 0, 0);
+            this.mainTablePanel.Controls.Add(this.explanationTextBox, 0, 4);
             this.mainTablePanel.Controls.Add(this.premiseConclusionTablePanel, 0, 2);
-            this.mainTablePanel.Controls.Add(this.ruleEditorExplanationLabel, 0, 3);
+            this.mainTablePanel.Controls.Add(this.explanationLabel, 0, 3);
             this.mainTablePanel.Controls.Add(this.okCancelTablePanel, 0, 5);
             this.mainTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTablePanel.Location = new System.Drawing.Point(0, 0);
@@ -294,15 +283,6 @@
             this.premiseListBox.Size = new System.Drawing.Size(375, 239);
             this.premiseListBox.TabIndex = 3;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.premiseTablePanel);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(3, 258);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(375, 32);
-            this.panel3.TabIndex = 1;
-            // 
             // premiseTablePanel
             // 
             this.premiseTablePanel.ColumnCount = 3;
@@ -320,16 +300,16 @@
             this.premiseTablePanel.Size = new System.Drawing.Size(375, 32);
             this.premiseTablePanel.TabIndex = 1;
             // 
-            // deletePremiseButton
+            // addPremiseButton
             // 
-            this.deletePremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deletePremiseButton.Enabled = false;
-            this.deletePremiseButton.Location = new System.Drawing.Point(253, 3);
-            this.deletePremiseButton.Name = "deletePremiseButton";
-            this.deletePremiseButton.Size = new System.Drawing.Size(119, 26);
-            this.deletePremiseButton.TabIndex = 2;
-            this.deletePremiseButton.Text = "Удалить";
-            this.deletePremiseButton.UseVisualStyleBackColor = true;
+            this.addPremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addPremiseButton.Location = new System.Drawing.Point(3, 3);
+            this.addPremiseButton.Name = "addPremiseButton";
+            this.addPremiseButton.Size = new System.Drawing.Size(119, 26);
+            this.addPremiseButton.TabIndex = 0;
+            this.addPremiseButton.Text = "Добавить";
+            this.addPremiseButton.UseVisualStyleBackColor = true;
+            this.addPremiseButton.Click += new System.EventHandler(this.addPremiseButton_Click);
             // 
             // editPremiseButton
             // 
@@ -342,16 +322,25 @@
             this.editPremiseButton.Text = "Изменить";
             this.editPremiseButton.UseVisualStyleBackColor = true;
             // 
-            // addPremiseButton
+            // deletePremiseButton
             // 
-            this.addPremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addPremiseButton.Location = new System.Drawing.Point(3, 3);
-            this.addPremiseButton.Name = "addPremiseButton";
-            this.addPremiseButton.Size = new System.Drawing.Size(119, 26);
-            this.addPremiseButton.TabIndex = 0;
-            this.addPremiseButton.Text = "Добавить";
-            this.addPremiseButton.UseVisualStyleBackColor = true;
-            this.addPremiseButton.Click += new System.EventHandler(this.addPremiseButton_Click);
+            this.deletePremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deletePremiseButton.Enabled = false;
+            this.deletePremiseButton.Location = new System.Drawing.Point(253, 3);
+            this.deletePremiseButton.Name = "deletePremiseButton";
+            this.deletePremiseButton.Size = new System.Drawing.Size(119, 26);
+            this.deletePremiseButton.TabIndex = 2;
+            this.deletePremiseButton.Text = "Удалить";
+            this.deletePremiseButton.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.premiseTablePanel);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(3, 258);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(375, 32);
+            this.panel3.TabIndex = 1;
             // 
             // RuleEditForm
             // 
@@ -369,24 +358,23 @@
             this.conclusionGroupBox.ResumeLayout(false);
             this.conclusionTablePanel.ResumeLayout(false);
             this.premiseGroupBox.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.premiseTablePanel.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Panel ruleEditorMainPanel;
-        private Panel ruleEditorEditPanel;
-        private GroupBox ruleEditorPremiseGroupBox;
+        private Panel mainPanel;
+        private Panel editPanel;
         private TableLayoutPanel okCancelTablePanel;
-        private Button ruleEditorSaveButton;
-        private Button ruleEditorCancelButton;
-        private Label ruleEditorExplanationLabel;
-        private TextBox ruleEditorExplanationTextBox;
-        private Label ruleEditorRuleNameLabel;
-        private TextBox ruleEditorRuleNameTextBox;
+        private Button saveButton;
+        private Button cancelButton;
+        private Label explanationLabel;
+        private TextBox explanationTextBox;
+        private Label ruleNameLabel;
+        private TextBox ruleNameTextBox;
         private TableLayoutPanel mainTablePanel;
         private TableLayoutPanel premiseConclusionTablePanel;
         private GroupBox conclusionGroupBox;
