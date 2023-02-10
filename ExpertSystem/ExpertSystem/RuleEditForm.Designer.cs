@@ -33,8 +33,8 @@
             this.okCancelTablePanel = new System.Windows.Forms.TableLayoutPanel();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.explanationLabel = new System.Windows.Forms.Label();
-            this.explanationTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionLabel = new System.Windows.Forms.Label();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.ruleNameLabel = new System.Windows.Forms.Label();
             this.ruleNameTextBox = new System.Windows.Forms.TextBox();
             this.mainTablePanel = new System.Windows.Forms.TableLayoutPanel();
@@ -47,19 +47,19 @@
             this.addConclusionButton = new System.Windows.Forms.Button();
             this.premiseGroupBox = new System.Windows.Forms.GroupBox();
             this.premiseListBox = new System.Windows.Forms.ListBox();
-            this.premiseTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.addPremiseButton = new System.Windows.Forms.Button();
-            this.editPremiseButton = new System.Windows.Forms.Button();
-            this.deletePremiseButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.premiseTablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.deletePremiseButton = new System.Windows.Forms.Button();
+            this.editPremiseButton = new System.Windows.Forms.Button();
+            this.addPremiseButton = new System.Windows.Forms.Button();
             this.okCancelTablePanel.SuspendLayout();
             this.mainTablePanel.SuspendLayout();
             this.premiseConclusionTablePanel.SuspendLayout();
             this.conclusionGroupBox.SuspendLayout();
             this.conclusionTablePanel.SuspendLayout();
             this.premiseGroupBox.SuspendLayout();
-            this.premiseTablePanel.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.premiseTablePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -113,25 +113,25 @@
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // explanationLabel
+            // descriptionLabel
             // 
-            this.explanationLabel.AutoSize = true;
-            this.explanationLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.explanationLabel.Location = new System.Drawing.Point(13, 380);
-            this.explanationLabel.Name = "explanationLabel";
-            this.explanationLabel.Size = new System.Drawing.Size(774, 15);
-            this.explanationLabel.TabIndex = 10;
-            this.explanationLabel.Text = "Пояснение:";
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.descriptionLabel.Location = new System.Drawing.Point(13, 380);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(774, 15);
+            this.descriptionLabel.TabIndex = 10;
+            this.descriptionLabel.Text = "Пояснение:";
             // 
-            // explanationTextBox
+            // descriptionTextBox
             // 
-            this.explanationTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.explanationTextBox.Location = new System.Drawing.Point(13, 398);
-            this.explanationTextBox.MinimumSize = new System.Drawing.Size(100, 50);
-            this.explanationTextBox.Multiline = true;
-            this.explanationTextBox.Name = "explanationTextBox";
-            this.explanationTextBox.Size = new System.Drawing.Size(774, 116);
-            this.explanationTextBox.TabIndex = 12;
+            this.descriptionTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionTextBox.Location = new System.Drawing.Point(13, 398);
+            this.descriptionTextBox.MinimumSize = new System.Drawing.Size(100, 50);
+            this.descriptionTextBox.Multiline = true;
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(774, 116);
+            this.descriptionTextBox.TabIndex = 12;
             // 
             // ruleNameLabel
             // 
@@ -157,9 +157,9 @@
             this.mainTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainTablePanel.Controls.Add(this.ruleNameTextBox, 0, 1);
             this.mainTablePanel.Controls.Add(this.ruleNameLabel, 0, 0);
-            this.mainTablePanel.Controls.Add(this.explanationTextBox, 0, 4);
+            this.mainTablePanel.Controls.Add(this.descriptionTextBox, 0, 4);
             this.mainTablePanel.Controls.Add(this.premiseConclusionTablePanel, 0, 2);
-            this.mainTablePanel.Controls.Add(this.explanationLabel, 0, 3);
+            this.mainTablePanel.Controls.Add(this.descriptionLabel, 0, 3);
             this.mainTablePanel.Controls.Add(this.okCancelTablePanel, 0, 5);
             this.mainTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainTablePanel.Location = new System.Drawing.Point(0, 0);
@@ -211,6 +211,7 @@
             this.conclusionListBox.Name = "conclusionListBox";
             this.conclusionListBox.Size = new System.Drawing.Size(375, 239);
             this.conclusionListBox.TabIndex = 5;
+            this.conclusionListBox.SelectedIndexChanged += new System.EventHandler(this.conclusionListBox_SelectedIndexChanged);
             // 
             // conclusionTablePanel
             // 
@@ -239,6 +240,7 @@
             this.deleteConclusionButton.TabIndex = 2;
             this.deleteConclusionButton.Text = "Удалить";
             this.deleteConclusionButton.UseVisualStyleBackColor = true;
+            this.deleteConclusionButton.Click += new System.EventHandler(this.deleteConclusionButton_Click);
             // 
             // editConclusionButton
             // 
@@ -250,6 +252,7 @@
             this.editConclusionButton.TabIndex = 1;
             this.editConclusionButton.Text = "Изменить";
             this.editConclusionButton.UseVisualStyleBackColor = true;
+            this.editConclusionButton.Click += new System.EventHandler(this.editConclusionButton_Click);
             // 
             // addConclusionButton
             // 
@@ -260,6 +263,7 @@
             this.addConclusionButton.TabIndex = 0;
             this.addConclusionButton.Text = "Добавить";
             this.addConclusionButton.UseVisualStyleBackColor = true;
+            this.addConclusionButton.Click += new System.EventHandler(this.addConclusionButton_Click);
             // 
             // premiseGroupBox
             // 
@@ -282,6 +286,16 @@
             this.premiseListBox.Name = "premiseListBox";
             this.premiseListBox.Size = new System.Drawing.Size(375, 239);
             this.premiseListBox.TabIndex = 3;
+            this.premiseListBox.SelectedIndexChanged += new System.EventHandler(this.premiseListBox_SelectedIndexChanged);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.premiseTablePanel);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(3, 258);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(375, 32);
+            this.panel3.TabIndex = 1;
             // 
             // premiseTablePanel
             // 
@@ -300,16 +314,17 @@
             this.premiseTablePanel.Size = new System.Drawing.Size(375, 32);
             this.premiseTablePanel.TabIndex = 1;
             // 
-            // addPremiseButton
+            // deletePremiseButton
             // 
-            this.addPremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.addPremiseButton.Location = new System.Drawing.Point(3, 3);
-            this.addPremiseButton.Name = "addPremiseButton";
-            this.addPremiseButton.Size = new System.Drawing.Size(119, 26);
-            this.addPremiseButton.TabIndex = 0;
-            this.addPremiseButton.Text = "Добавить";
-            this.addPremiseButton.UseVisualStyleBackColor = true;
-            this.addPremiseButton.Click += new System.EventHandler(this.addPremiseButton_Click);
+            this.deletePremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deletePremiseButton.Enabled = false;
+            this.deletePremiseButton.Location = new System.Drawing.Point(253, 3);
+            this.deletePremiseButton.Name = "deletePremiseButton";
+            this.deletePremiseButton.Size = new System.Drawing.Size(119, 26);
+            this.deletePremiseButton.TabIndex = 2;
+            this.deletePremiseButton.Text = "Удалить";
+            this.deletePremiseButton.UseVisualStyleBackColor = true;
+            this.deletePremiseButton.Click += new System.EventHandler(this.deletePremiseButton_Click);
             // 
             // editPremiseButton
             // 
@@ -321,26 +336,18 @@
             this.editPremiseButton.TabIndex = 1;
             this.editPremiseButton.Text = "Изменить";
             this.editPremiseButton.UseVisualStyleBackColor = true;
+            this.editPremiseButton.Click += new System.EventHandler(this.editPremiseButton_Click);
             // 
-            // deletePremiseButton
+            // addPremiseButton
             // 
-            this.deletePremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deletePremiseButton.Enabled = false;
-            this.deletePremiseButton.Location = new System.Drawing.Point(253, 3);
-            this.deletePremiseButton.Name = "deletePremiseButton";
-            this.deletePremiseButton.Size = new System.Drawing.Size(119, 26);
-            this.deletePremiseButton.TabIndex = 2;
-            this.deletePremiseButton.Text = "Удалить";
-            this.deletePremiseButton.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.premiseTablePanel);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(3, 258);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(375, 32);
-            this.panel3.TabIndex = 1;
+            this.addPremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addPremiseButton.Location = new System.Drawing.Point(3, 3);
+            this.addPremiseButton.Name = "addPremiseButton";
+            this.addPremiseButton.Size = new System.Drawing.Size(119, 26);
+            this.addPremiseButton.TabIndex = 0;
+            this.addPremiseButton.Text = "Добавить";
+            this.addPremiseButton.UseVisualStyleBackColor = true;
+            this.addPremiseButton.Click += new System.EventHandler(this.addPremiseButton_Click);
             // 
             // RuleEditForm
             // 
@@ -358,8 +365,8 @@
             this.conclusionGroupBox.ResumeLayout(false);
             this.conclusionTablePanel.ResumeLayout(false);
             this.premiseGroupBox.ResumeLayout(false);
-            this.premiseTablePanel.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.premiseTablePanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -371,8 +378,8 @@
         private TableLayoutPanel okCancelTablePanel;
         private Button saveButton;
         private Button cancelButton;
-        private Label explanationLabel;
-        private TextBox explanationTextBox;
+        private Label descriptionLabel;
+        private TextBox descriptionTextBox;
         private Label ruleNameLabel;
         private TextBox ruleNameTextBox;
         private TableLayoutPanel mainTablePanel;
