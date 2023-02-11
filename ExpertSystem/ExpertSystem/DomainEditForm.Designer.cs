@@ -1,6 +1,6 @@
 ﻿namespace ExpertSystem
 {
-    partial class DomainCreationForm
+    partial class DomainEditForm
     {
         /// <summary>
         /// Required designer variable.
