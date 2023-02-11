@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ExpertSystem
 {
-    public partial class DomainCreationForm : Form
+    public partial class DomainEditForm : Form
     {
-        public DomainCreationForm()
+        public DomainEditForm()
         {
             InitializeComponent();
         }

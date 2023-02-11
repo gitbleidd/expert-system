@@ -8,9 +8,11 @@ namespace ExpertSystem
             //dgvRules.Rows.Add(new string[] { "Orange-Salsa Pork Chops", "Main Dish" });
             //dgvRules.Rows.Add(new string[] { "Other", "Stuff" });
             //dgvRules.Rows.Add(new string[] { "Hmm", "Testing datagrid visew rules" });
-
-            new DomainCreationForm().ShowDialog();
         }
+
+        //----------------------------------------------------------------
+        // Rules Tab
+        //----------------------------------------------------------------
 
         private void addRuleButton_Click(object sender, EventArgs e)
         {
@@ -69,13 +71,13 @@ namespace ExpertSystem
         {
             if (dgvRules.SelectedRows.Count > 0)
             {
-                SetEditAndDeleteButtonStatus(true);
+                SetEditAndDeleteRuleButtonStatus(true);
                 //TODO update premise rule listbox
                 //TODO update conclusion rule listbox
             }
             else
             {
-                SetEditAndDeleteButtonStatus(false);
+                SetEditAndDeleteRuleButtonStatus(false);
             }
         }
 
@@ -89,10 +91,55 @@ namespace ExpertSystem
             if (dgvRules.SelectedRows.Count > 0)
             {
                 dgvRules.Rows.RemoveAt(dgvRules.SelectedRows[0].Index);
+                //TODO delete at shell
             }
         }
 
-        private void SetEditAndDeleteButtonStatus(bool status)
+        private void SetEditAndDeleteRuleButtonStatus(bool status)
+        {
+            editRuleButton.Enabled = status;
+            deleteRuleButton.Enabled = status;
+        }
+
+        //----------------------------------------------------------------
+        // Variables Tab
+        //----------------------------------------------------------------
+
+        private void addVariableButton_Click(object sender, EventArgs e)
+        {
+            var variableEditForm = new VariableCreationForm();
+            variableEditForm.ShowDialog();
+        }
+
+        private void editVariableButton_Click(object sender, EventArgs e)
+        {
+            // TODO var variableEditForm = new VariableEditForm();
+        }
+
+        private void deleteVariableButton_Click(object sender, EventArgs e)
+        {
+            if (dgvVariables.SelectedRows.Count == 0)
+                return;
+            
+            dgvVariables.Rows.RemoveAt(dgvVariables.SelectedRows[0].Index);
+            // TODO delete from shell
+        }
+
+        private void dgvVariables_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvVariables.SelectedRows.Count == 0)
+            {
+                SetEditAndDeleteVariableButtonStatus(false);
+            }
+            else
+            {
+                SetEditAndDeleteVariableButtonStatus(true);
+                //TODO update question rule textbox
+                //TODO update domain values listbox
+            }
+        }
+
+        private void SetEditAndDeleteVariableButtonStatus(bool status)
         {
             editRuleButton.Enabled = status;
             deleteRuleButton.Enabled = status;
