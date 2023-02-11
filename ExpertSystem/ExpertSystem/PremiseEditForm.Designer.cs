@@ -182,6 +182,7 @@
             // 
             // factEqualsValueComboBox
             // 
+            this.factEqualsValueComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.factEqualsValueComboBox.FormattingEnabled = true;
             this.factEqualsValueComboBox.Location = new System.Drawing.Point(13, 86);
             this.factEqualsValueComboBox.Name = "factEqualsValueComboBox";
@@ -218,7 +219,7 @@
             this.equalLabel.Text = "=";
             this.equalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // AddingPremiseForm
+            // PremiseEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -226,7 +227,7 @@
             this.Controls.Add(this.mainAddindPremisePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimumSize = new System.Drawing.Size(460, 196);
-            this.Name = "AddingPremiseForm";
+            this.Name = "PremiseEditForm";
             this.Text = "Добавление факта посылки";
             this.conclusionTablePanel.ResumeLayout(false);
             this.okCancelTablePanel.ResumeLayout(false);

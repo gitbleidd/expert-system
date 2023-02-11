@@ -8,6 +8,8 @@ namespace ExpertSystem
             //dgvRules.Rows.Add(new string[] { "Orange-Salsa Pork Chops", "Main Dish" });
             //dgvRules.Rows.Add(new string[] { "Other", "Stuff" });
             //dgvRules.Rows.Add(new string[] { "Hmm", "Testing datagrid visew rules" });
+
+            new DomainCreationForm().ShowDialog();
         }
 
         private void addRuleButton_Click(object sender, EventArgs e)
@@ -17,6 +19,14 @@ namespace ExpertSystem
         }
 
         #region DGV - drag and drop
+        private void dgvRules_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && dgvRules.SelectedRows.Count > 0)
+            {
+                dgvRules.DoDragDrop(dgvRules.SelectedRows, DragDropEffects.Move);
+            }
+        }
+
         private void dgvRules_DragEnter(object sender, DragEventArgs e)
         {
             if (dgvRules.SelectedRows.Count > 0)
@@ -27,7 +37,6 @@ namespace ExpertSystem
 
         private void dgvRules_DragDrop(object sender, DragEventArgs e)
         {
-
             var dragRows = e.Data.GetData(typeof(DataGridViewSelectedRowCollection))
                 as DataGridViewSelectedRowCollection;
 
@@ -52,14 +61,6 @@ namespace ExpertSystem
 
             dgvRules.ClearSelection();
             dgvRules.Rows[swapRow].Selected = true;
-        }
-
-        private void dgvRules_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left && dgvRules.SelectedRows.Count > 0)
-            {
-                dgvRules.DoDragDrop(dgvRules.SelectedRows, DragDropEffects.Move);
-            }
         }
 
         #endregion

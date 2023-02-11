@@ -357,7 +357,7 @@
             this.Controls.Add(this.mainTablePanel);
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "RuleEditForm";
-            this.Text = "RuleEditForm";
+            this.Text = "Редактирование правила";
             this.okCancelTablePanel.ResumeLayout(false);
             this.mainTablePanel.ResumeLayout(false);
             this.mainTablePanel.PerformLayout();

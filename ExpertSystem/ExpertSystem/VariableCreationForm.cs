@@ -20,7 +20,7 @@ namespace ExpertSystem
 
         private void createDomenButton_Click(object sender, EventArgs e)
         {
-            var domenCreationForm = new DomenCreationForm();
+            var domenCreationForm = new DomainEditForm();
             domenCreationForm.ShowDialog();
         }
 
