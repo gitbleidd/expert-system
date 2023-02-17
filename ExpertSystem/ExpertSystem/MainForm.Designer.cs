@@ -67,6 +67,19 @@
             this.deleteVariableButton = new System.Windows.Forms.Button();
             this.editVariableButton = new System.Windows.Forms.Button();
             this.addVariableButton = new System.Windows.Forms.Button();
+            this.domainTabPage = new System.Windows.Forms.TabPage();
+            this.dgvDomainsPanel = new System.Windows.Forms.Panel();
+            this.dgvDomains = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.domainsRightPanel = new System.Windows.Forms.Panel();
+            this.domainValuesGroupBox = new System.Windows.Forms.GroupBox();
+            this.domainValuesListBox = new System.Windows.Forms.ListBox();
+            this.domainInfoGroupBox = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.editDomainGroupBox = new System.Windows.Forms.GroupBox();
+            this.deleteDomainButton = new System.Windows.Forms.Button();
+            this.editDomainButton = new System.Windows.Forms.Button();
+            this.addDomainButton = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.variablesTab.SuspendLayout();
             this.rulesPage.SuspendLayout();
@@ -83,6 +96,13 @@
             this.ruleDomainValuesGroupBox.SuspendLayout();
             this.questionGroupBox.SuspendLayout();
             this.variableEditGroupBox.SuspendLayout();
+            this.domainTabPage.SuspendLayout();
+            this.dgvDomainsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDomains)).BeginInit();
+            this.domainsRightPanel.SuspendLayout();
+            this.domainValuesGroupBox.SuspendLayout();
+            this.domainInfoGroupBox.SuspendLayout();
+            this.editDomainGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -163,6 +183,7 @@
             // 
             this.variablesTab.Controls.Add(this.rulesPage);
             this.variablesTab.Controls.Add(this.variablesTabPage);
+            this.variablesTab.Controls.Add(this.domainTabPage);
             this.variablesTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.variablesTab.Location = new System.Drawing.Point(0, 24);
             this.variablesTab.Name = "variablesTab";
@@ -502,6 +523,158 @@
             this.addVariableButton.UseVisualStyleBackColor = true;
             this.addVariableButton.Click += new System.EventHandler(this.addVariableButton_Click);
             // 
+            // domainTabPage
+            // 
+            this.domainTabPage.Controls.Add(this.dgvDomainsPanel);
+            this.domainTabPage.Controls.Add(this.domainsRightPanel);
+            this.domainTabPage.Location = new System.Drawing.Point(4, 24);
+            this.domainTabPage.Name = "domainTabPage";
+            this.domainTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.domainTabPage.Size = new System.Drawing.Size(995, 509);
+            this.domainTabPage.TabIndex = 4;
+            this.domainTabPage.Text = "Домены";
+            this.domainTabPage.UseVisualStyleBackColor = true;
+            // 
+            // dgvDomainsPanel
+            // 
+            this.dgvDomainsPanel.Controls.Add(this.dgvDomains);
+            this.dgvDomainsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDomainsPanel.Location = new System.Drawing.Point(3, 3);
+            this.dgvDomainsPanel.Name = "dgvDomainsPanel";
+            this.dgvDomainsPanel.Size = new System.Drawing.Size(654, 503);
+            this.dgvDomainsPanel.TabIndex = 4;
+            // 
+            // dgvDomains
+            // 
+            this.dgvDomains.AllowDrop = true;
+            this.dgvDomains.AllowUserToAddRows = false;
+            this.dgvDomains.AllowUserToDeleteRows = false;
+            this.dgvDomains.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDomains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDomains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+            this.dgvDomains.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDomains.Location = new System.Drawing.Point(0, 0);
+            this.dgvDomains.MultiSelect = false;
+            this.dgvDomains.Name = "dgvDomains";
+            this.dgvDomains.ReadOnly = true;
+            this.dgvDomains.RowHeadersVisible = false;
+            this.dgvDomains.RowTemplate.Height = 25;
+            this.dgvDomains.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvDomains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDomains.Size = new System.Drawing.Size(654, 503);
+            this.dgvDomains.TabIndex = 3;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Имя";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // domainsRightPanel
+            // 
+            this.domainsRightPanel.Controls.Add(this.domainValuesGroupBox);
+            this.domainsRightPanel.Controls.Add(this.domainInfoGroupBox);
+            this.domainsRightPanel.Controls.Add(this.editDomainGroupBox);
+            this.domainsRightPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.domainsRightPanel.Location = new System.Drawing.Point(657, 3);
+            this.domainsRightPanel.Name = "domainsRightPanel";
+            this.domainsRightPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.domainsRightPanel.Size = new System.Drawing.Size(335, 503);
+            this.domainsRightPanel.TabIndex = 3;
+            // 
+            // domainValuesGroupBox
+            // 
+            this.domainValuesGroupBox.Controls.Add(this.domainValuesListBox);
+            this.domainValuesGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.domainValuesGroupBox.Location = new System.Drawing.Point(10, 242);
+            this.domainValuesGroupBox.Name = "domainValuesGroupBox";
+            this.domainValuesGroupBox.Padding = new System.Windows.Forms.Padding(8, 3, 8, 6);
+            this.domainValuesGroupBox.Size = new System.Drawing.Size(315, 251);
+            this.domainValuesGroupBox.TabIndex = 2;
+            this.domainValuesGroupBox.TabStop = false;
+            this.domainValuesGroupBox.Text = "Значения домена";
+            // 
+            // domainValuesListBox
+            // 
+            this.domainValuesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.domainValuesListBox.FormattingEnabled = true;
+            this.domainValuesListBox.ItemHeight = 15;
+            this.domainValuesListBox.Location = new System.Drawing.Point(8, 19);
+            this.domainValuesListBox.Name = "domainValuesListBox";
+            this.domainValuesListBox.Size = new System.Drawing.Size(299, 226);
+            this.domainValuesListBox.TabIndex = 0;
+            // 
+            // domainInfoGroupBox
+            // 
+            this.domainInfoGroupBox.Controls.Add(this.textBox1);
+            this.domainInfoGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.domainInfoGroupBox.Location = new System.Drawing.Point(10, 108);
+            this.domainInfoGroupBox.Name = "domainInfoGroupBox";
+            this.domainInfoGroupBox.Padding = new System.Windows.Forms.Padding(8, 3, 8, 6);
+            this.domainInfoGroupBox.Size = new System.Drawing.Size(315, 134);
+            this.domainInfoGroupBox.TabIndex = 1;
+            this.domainInfoGroupBox.TabStop = false;
+            this.domainInfoGroupBox.Text = "??";
+            this.domainInfoGroupBox.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(8, 19);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(299, 109);
+            this.textBox1.TabIndex = 0;
+            // 
+            // editDomainGroupBox
+            // 
+            this.editDomainGroupBox.Controls.Add(this.deleteDomainButton);
+            this.editDomainGroupBox.Controls.Add(this.editDomainButton);
+            this.editDomainGroupBox.Controls.Add(this.addDomainButton);
+            this.editDomainGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.editDomainGroupBox.Location = new System.Drawing.Point(10, 10);
+            this.editDomainGroupBox.Name = "editDomainGroupBox";
+            this.editDomainGroupBox.Size = new System.Drawing.Size(315, 98);
+            this.editDomainGroupBox.TabIndex = 0;
+            this.editDomainGroupBox.TabStop = false;
+            this.editDomainGroupBox.Text = "Редактирование";
+            // 
+            // deleteDomainButton
+            // 
+            this.deleteDomainButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.deleteDomainButton.Enabled = false;
+            this.deleteDomainButton.Location = new System.Drawing.Point(3, 65);
+            this.deleteDomainButton.Name = "deleteDomainButton";
+            this.deleteDomainButton.Size = new System.Drawing.Size(309, 23);
+            this.deleteDomainButton.TabIndex = 2;
+            this.deleteDomainButton.Text = "Удалить";
+            this.deleteDomainButton.UseVisualStyleBackColor = true;
+            this.deleteDomainButton.Click += new System.EventHandler(this.deleteDomainButton_Click);
+            // 
+            // editDomainButton
+            // 
+            this.editDomainButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.editDomainButton.Enabled = false;
+            this.editDomainButton.Location = new System.Drawing.Point(3, 42);
+            this.editDomainButton.Name = "editDomainButton";
+            this.editDomainButton.Size = new System.Drawing.Size(309, 23);
+            this.editDomainButton.TabIndex = 1;
+            this.editDomainButton.Text = "Изменить";
+            this.editDomainButton.UseVisualStyleBackColor = true;
+            this.editDomainButton.Click += new System.EventHandler(this.editDomainButton_Click);
+            // 
+            // addDomainButton
+            // 
+            this.addDomainButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addDomainButton.Location = new System.Drawing.Point(3, 19);
+            this.addDomainButton.Name = "addDomainButton";
+            this.addDomainButton.Size = new System.Drawing.Size(309, 23);
+            this.addDomainButton.TabIndex = 0;
+            this.addDomainButton.Text = "Добавить";
+            this.addDomainButton.UseVisualStyleBackColor = true;
+            this.addDomainButton.Click += new System.EventHandler(this.addDomainButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -530,6 +703,14 @@
             this.questionGroupBox.ResumeLayout(false);
             this.questionGroupBox.PerformLayout();
             this.variableEditGroupBox.ResumeLayout(false);
+            this.domainTabPage.ResumeLayout(false);
+            this.dgvDomainsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDomains)).EndInit();
+            this.domainsRightPanel.ResumeLayout(false);
+            this.domainValuesGroupBox.ResumeLayout(false);
+            this.domainInfoGroupBox.ResumeLayout(false);
+            this.domainInfoGroupBox.PerformLayout();
+            this.editDomainGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -576,5 +757,18 @@
         private DataGridViewTextBoxColumn VariableNameColumn;
         private DataGridViewTextBoxColumn VariableTypeColumn;
         private DataGridViewTextBoxColumn VariableDomainColumn;
+        private TabPage domainTabPage;
+        private Panel dgvDomainsPanel;
+        private DataGridView dgvDomains;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private Panel domainsRightPanel;
+        private GroupBox domainValuesGroupBox;
+        private ListBox domainValuesListBox;
+        private GroupBox domainInfoGroupBox;
+        private TextBox textBox1;
+        private GroupBox editDomainGroupBox;
+        private Button deleteDomainButton;
+        private Button editDomainButton;
+        private Button addDomainButton;
     }
 }

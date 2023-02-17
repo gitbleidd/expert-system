@@ -144,5 +144,25 @@ namespace ExpertSystem
             editRuleButton.Enabled = status;
             deleteRuleButton.Enabled = status;
         }
+
+        //----------------------------------------------------------------
+        // Domains Tab
+        //----------------------------------------------------------------
+
+        private void addDomainButton_Click(object sender, EventArgs e)
+        {
+            var domainEditForm = new DomainEditForm();
+            domainEditForm.ShowDialog();
+        }
+
+        private void editDomainButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteDomainButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
