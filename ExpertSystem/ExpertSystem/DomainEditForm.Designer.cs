@@ -206,6 +206,7 @@
             this.Controls.Add(this.domainValuesLabel);
             this.Controls.Add(this.domainNameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "DomainEditForm";
             this.Text = "Создание домена";
             this.exitPanel.ResumeLayout(false);

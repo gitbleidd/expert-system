@@ -215,6 +215,13 @@ namespace ExpertSystem
         private void dgvDomains_SelectionChanged(object sender, EventArgs e)
         {
             dgvSelectionChanged(sender, editDomainButton, deleteDomainButton);
+
+            domainValuesListBox.Items.Clear();
+            var domain = (Domain)dgvDomains.SelectedRows[0].Cells[0].Value;
+            foreach (var value in domain.Values)
+            {
+                domainValuesListBox.Items.Add(value.ToString());
+            }
         }
 
         private void dgvSelectionChanged(object sender, Button editButton, Button deleteButton)
