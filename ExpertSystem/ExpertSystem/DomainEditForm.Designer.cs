@@ -80,6 +80,7 @@
             this.saveButton.TabIndex = 7;
             this.saveButton.Text = "OK";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // cancelButton
             // 
@@ -90,6 +91,7 @@
             this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // domainNameTextBox
             // 
@@ -189,7 +191,7 @@
             this.ValuesColumn.ReadOnly = true;
             this.ValuesColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // DomainCreationForm
+            // DomainEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -204,7 +206,7 @@
             this.Controls.Add(this.domainValuesLabel);
             this.Controls.Add(this.domainNameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "DomainCreationForm";
+            this.Name = "DomainEditForm";
             this.Text = "Создание домена";
             this.exitPanel.ResumeLayout(false);
             this.exitTablePanel.ResumeLayout(false);

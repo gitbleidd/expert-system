@@ -37,7 +37,7 @@
             this.toolStripConsult = new System.Windows.Forms.ToolStripMenuItem();
             this.beginConsultToolStrip = new System.Windows.Forms.ToolStripMenuItem();
             this.explainToolStrip = new System.Windows.Forms.ToolStripMenuItem();
-            this.variablesTab = new System.Windows.Forms.TabControl();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.rulesPage = new System.Windows.Forms.TabPage();
             this.dgvRulesPanel = new System.Windows.Forms.Panel();
             this.dgvRules = new System.Windows.Forms.DataGridView();
@@ -70,7 +70,6 @@
             this.domainTabPage = new System.Windows.Forms.TabPage();
             this.dgvDomainsPanel = new System.Windows.Forms.Panel();
             this.dgvDomains = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.domainsRightPanel = new System.Windows.Forms.Panel();
             this.domainValuesGroupBox = new System.Windows.Forms.GroupBox();
             this.domainValuesListBox = new System.Windows.Forms.ListBox();
@@ -80,8 +79,9 @@
             this.deleteDomainButton = new System.Windows.Forms.Button();
             this.editDomainButton = new System.Windows.Forms.Button();
             this.addDomainButton = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMenuStrip.SuspendLayout();
-            this.variablesTab.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.rulesPage.SuspendLayout();
             this.dgvRulesPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRules)).BeginInit();
@@ -133,6 +133,7 @@
             this.newToolStrip.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newToolStrip.Size = new System.Drawing.Size(235, 22);
             this.newToolStrip.Text = "Новый...";
+            this.newToolStrip.Click += new System.EventHandler(this.newToolStrip_Click);
             // 
             // openToolStrip
             // 
@@ -140,6 +141,7 @@
             this.openToolStrip.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.openToolStrip.Size = new System.Drawing.Size(235, 22);
             this.openToolStrip.Text = "Открыть...";
+            this.openToolStrip.Click += new System.EventHandler(this.openToolStrip_Click);
             // 
             // saveToolStrip
             // 
@@ -179,17 +181,18 @@
             this.explainToolStrip.Size = new System.Drawing.Size(228, 22);
             this.explainToolStrip.Text = "Покать объяснение";
             // 
-            // variablesTab
+            // tabControl
             // 
-            this.variablesTab.Controls.Add(this.rulesPage);
-            this.variablesTab.Controls.Add(this.variablesTabPage);
-            this.variablesTab.Controls.Add(this.domainTabPage);
-            this.variablesTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.variablesTab.Location = new System.Drawing.Point(0, 24);
-            this.variablesTab.Name = "variablesTab";
-            this.variablesTab.SelectedIndex = 0;
-            this.variablesTab.Size = new System.Drawing.Size(1003, 537);
-            this.variablesTab.TabIndex = 1;
+            this.tabControl.Controls.Add(this.rulesPage);
+            this.tabControl.Controls.Add(this.variablesTabPage);
+            this.tabControl.Controls.Add(this.domainTabPage);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 24);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(1003, 537);
+            this.tabControl.TabIndex = 1;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // rulesPage
             // 
@@ -564,12 +567,7 @@
             this.dgvDomains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDomains.Size = new System.Drawing.Size(654, 503);
             this.dgvDomains.TabIndex = 3;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Имя";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dgvDomains.SelectionChanged += new System.EventHandler(this.dgvDomains_SelectionChanged);
             // 
             // domainsRightPanel
             // 
@@ -675,19 +673,26 @@
             this.addDomainButton.UseVisualStyleBackColor = true;
             this.addDomainButton.Click += new System.EventHandler(this.addDomainButton_Click);
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Имя";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1003, 561);
-            this.Controls.Add(this.variablesTab);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MainForm";
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
-            this.variablesTab.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.rulesPage.ResumeLayout(false);
             this.dgvRulesPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRules)).EndInit();
@@ -719,7 +724,7 @@
         #endregion
 
         private MenuStrip mainMenuStrip;
-        private TabControl variablesTab;
+        private TabControl tabControl;
         private ToolStripMenuItem toolStripFile;
         private ToolStripMenuItem toolStripConsult;
         private ToolStripMenuItem newToolStrip;
@@ -760,7 +765,6 @@
         private TabPage domainTabPage;
         private Panel dgvDomainsPanel;
         private DataGridView dgvDomains;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private Panel domainsRightPanel;
         private GroupBox domainValuesGroupBox;
         private ListBox domainValuesListBox;
@@ -770,5 +774,6 @@
         private Button deleteDomainButton;
         private Button editDomainButton;
         private Button addDomainButton;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExpertSystem.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,26 +13,79 @@ namespace ExpertSystem
 {
     public partial class DomainEditForm : Form
     {
-        public DomainEditForm()
+        private Domain Domain { get; }
+        private ExpertSystemShell Shell { get; }
+
+        private string _originalName;
+
+        public DomainEditForm(ExpertSystemShell shell) : this(shell, new Domain(""))
+        {
+            this.Text = "Создание домена";
+        }
+
+        public DomainEditForm(ExpertSystemShell shell, Domain domain)
         {
             InitializeComponent();
+            this.Text = "Изменение домена";
+            _originalName = domain.Name;
+
+            Domain = domain;
+            Shell = shell;
+
+            domainNameTextBox.Text = Domain.Name;
+            foreach (var value in Domain.Values)
+            {
+                dgvValues.Rows.Add(value);
+            }
         }
 
         private void addValueButton_Click(object sender, EventArgs e)
         {
-            // TODO new value instance
+            if (string.IsNullOrEmpty(domainValueTextBox.Text))
+            {
+                MessageBox.Show("Заполните поле значения!");
+                return;
+            }
+
+            if (Domain.GetDomainValue(domainValueTextBox.Text) != null)
+            {
+                MessageBox.Show("В домене уже существует данное значение!");
+                return;
+            }
+
+            var domainValue = new DomainValue(domainValueTextBox.Text);
+            Domain.Values.Add(domainValue);
+            dgvValues.Rows.Add(domainValue);
         }
 
         private void editValueButton_Click(object sender, EventArgs e)
         {
-            // TODO update domain's value string value
+            if (string.IsNullOrEmpty(domainValueTextBox.Text))
+            {
+                MessageBox.Show("Заполните поле значения!");
+                return;
+            }
+
+            if (Domain.GetDomainValue(domainValueTextBox.Text) != null)
+            {
+                MessageBox.Show("В домене уже существует данное значение!");
+                return;
+            }
+
+            var selectedDomainValue = (DomainValue)dgvValues.SelectedRows[0].Cells[0].Value;
+            selectedDomainValue.Value = domainValueTextBox.Text;
+            
+            dgvValues.Refresh();
         }
 
         private void deleteValueButton_Click(object sender, EventArgs e)
         {
             if (dgvValues.SelectedRows.Count == 0)
                 return;
-            dgvValues.Rows.RemoveAt(dgvValues.SelectedRows[0].Index);
+
+            int index = dgvValues.SelectedRows[0].Index;
+            dgvValues.Rows.RemoveAt(index);
+            Domain.Values.RemoveAt(index);
         }
 
         private void dgvValues_SelectionChanged(object sender, EventArgs e)
@@ -39,6 +93,7 @@ namespace ExpertSystem
             if (dgvValues.SelectedRows.Count > 0)
             {
                 SetEditAndDeleteValueButtonStatus(true);
+                domainValueTextBox.Text = ((DomainValue)dgvValues.SelectedRows[0].Cells[0].Value).Value;
             }
             else
             {
@@ -79,25 +134,32 @@ namespace ExpertSystem
 
             var updatedCopyOfDgvItems = dgvValues.Rows.Cast<DataGridViewRow>().ToArray();
 
-            int dragRow = dragRows[0].Index;
-            int swapRow = hitInfo.RowIndex;
+            int dragRowIndex = dragRows[0].Index;
+            int swapRowIndex = hitInfo.RowIndex;
 
-            updatedCopyOfDgvItems[dragRow] = dgvValues.Rows[swapRow];
-            updatedCopyOfDgvItems[swapRow] = dgvValues.Rows[dragRow];
-            dgvValues.Rows.Clear();
-            dgvValues.Rows.AddRange(updatedCopyOfDgvItems);
+            var dragValue = Domain.Values[dragRowIndex];
+            var swapValue = Domain.Values[swapRowIndex];
+
+            dgvValues.Rows[dragRowIndex].Cells[0].Value = swapValue;
+            dgvValues.Rows[swapRowIndex].Cells[0].Value = dragValue;
+
+            Domain.Values[dragRowIndex] = swapValue;
+            Domain.Values[swapRowIndex] = dragValue;
+            
+            dgvValues.Refresh();
 
             dgvValues.ClearSelection();
-            dgvValues.Rows[swapRow].Selected = true;
+            dgvValues.Rows[swapRowIndex].Selected = true;
         }
         #endregion
 
         private void domainValueTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (dgvValues.SelectedRows.Count > 0 && 
+            if (dgvValues.SelectedRows.Count == 0 || 
                 (domainValueTextBox.Text.Length == 0 || string.IsNullOrWhiteSpace(domainValueTextBox.Text)))
             {
                 editValueButton.Enabled = false;
+                return;
             }
 
             editValueButton.Enabled = true;
@@ -107,6 +169,40 @@ namespace ExpertSystem
         {
             editValueButton.Enabled = status;
             deleteValueButton.Enabled = status;
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            if (Domain.Values.Count == 0)
+            {
+                MessageBox.Show("Домен должен содержать более одного значения!");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(domainNameTextBox.Text))
+            {
+                MessageBox.Show("Заполните имя домена!");
+                return;
+            }
+
+            bool domainExist = _originalName != domainNameTextBox.Text && Shell.GetDomainByName(domainNameTextBox.Text) != null;
+
+            if (domainExist)
+            {
+                MessageBox.Show("Домен с таким именем уже сущестует!");
+                return;
+            }
+
+            Domain.Name = domainNameTextBox.Text;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

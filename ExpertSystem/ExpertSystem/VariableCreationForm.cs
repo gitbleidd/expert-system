@@ -20,8 +20,8 @@ namespace ExpertSystem
 
         private void createDomenButton_Click(object sender, EventArgs e)
         {
-            var domenCreationForm = new DomainEditForm();
-            domenCreationForm.ShowDialog();
+            //var domenCreationForm = new DomainEditForm();
+            //domenCreationForm.ShowDialog();
         }
 
         private void domenComboBox_SelectedIndexChanged(object sender, EventArgs e)
