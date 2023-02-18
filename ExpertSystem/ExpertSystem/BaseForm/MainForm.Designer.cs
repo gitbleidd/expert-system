@@ -1,4 +1,4 @@
-﻿namespace ExpertSystem
+﻿namespace ExpertSystem.BaseForm
 {
     partial class MainForm
     {

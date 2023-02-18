@@ -19,5 +19,15 @@ namespace ExpertSystem.Entities
         public override string ToString() => Name;
 
         public DomainValue? GetDomainValue(string value) => Values.FirstOrDefault(v => v.Value == value);
+
+        public Domain DeepCopy()
+        {
+            var domain = new Domain(Name);
+            foreach (var value in Values)
+            {
+                domain.Values.Add(new DomainValue(value.Value));
+            }
+            return domain;
+        }
     }
 }

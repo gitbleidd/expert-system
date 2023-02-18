@@ -9,18 +9,23 @@ namespace ExpertSystem.Entities
     public class Variable
     {
         public string Name { get; set; }
-        public Domain Value { get; set; }
+        public Domain Domain { get; set; }
         public VarType VariableType { get; set; }
         public string QuestionText { get; set; }
 
         public Variable(string name, Domain value, VarType variableType, string questionText)
         {
             Name = name;
-            Value = value;
+            Domain = value;
             VariableType = variableType;
             QuestionText = questionText;
         }
 
         public override string ToString() => Name;
+
+        public Variable DeepCopy()
+        {
+            return new Variable(Name, Domain, VariableType, QuestionText);
+        }
     }
 }

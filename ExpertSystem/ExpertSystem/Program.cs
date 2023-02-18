@@ -1,3 +1,5 @@
+using ExpertSystem.BaseForm;
+
 namespace ExpertSystem
 {
     internal static class Program

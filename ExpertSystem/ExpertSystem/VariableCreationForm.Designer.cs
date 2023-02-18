@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.variableNameLabel = new System.Windows.Forms.Label();
-            this.domenComboBox = new System.Windows.Forms.ComboBox();
-            this.domenLabel = new System.Windows.Forms.Label();
+            this.domainComboBox = new System.Windows.Forms.ComboBox();
+            this.domainLabel = new System.Windows.Forms.Label();
             this.variableTypeLabel = new System.Windows.Forms.Label();
             this.questionTextLabel = new System.Windows.Forms.Label();
             this.variableTypePanel = new System.Windows.Forms.Panel();
@@ -45,8 +45,8 @@
             this.okCancelAddingPremisePanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.createDomenButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.createDomainButton = new System.Windows.Forms.Button();
             this.variableTypePanel.SuspendLayout();
             this.okCancelPremisePanelTablePanel.SuspendLayout();
             this.okCancelAddingPremisePanel.SuspendLayout();
@@ -62,24 +62,24 @@
             this.variableNameLabel.TabIndex = 0;
             this.variableNameLabel.Text = "Имя переменной:";
             // 
-            // domenComboBox
+            // domainComboBox
             // 
-            this.domenComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.domenComboBox.FormattingEnabled = true;
-            this.domenComboBox.Location = new System.Drawing.Point(12, 84);
-            this.domenComboBox.Name = "domenComboBox";
-            this.domenComboBox.Size = new System.Drawing.Size(393, 23);
-            this.domenComboBox.TabIndex = 1;
-            this.domenComboBox.SelectedIndexChanged += new System.EventHandler(this.domenComboBox_SelectedIndexChanged);
+            this.domainComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.domainComboBox.FormattingEnabled = true;
+            this.domainComboBox.Location = new System.Drawing.Point(12, 84);
+            this.domainComboBox.Name = "domainComboBox";
+            this.domainComboBox.Size = new System.Drawing.Size(393, 23);
+            this.domainComboBox.TabIndex = 1;
+            this.domainComboBox.SelectedIndexChanged += new System.EventHandler(this.domainComboBox_SelectedIndexChanged);
             // 
-            // domenLabel
+            // domainLabel
             // 
-            this.domenLabel.AutoSize = true;
-            this.domenLabel.Location = new System.Drawing.Point(12, 66);
-            this.domenLabel.Name = "domenLabel";
-            this.domenLabel.Size = new System.Drawing.Size(47, 15);
-            this.domenLabel.TabIndex = 2;
-            this.domenLabel.Text = "Домен:";
+            this.domainLabel.AutoSize = true;
+            this.domainLabel.Location = new System.Drawing.Point(12, 66);
+            this.domainLabel.Name = "domainLabel";
+            this.domainLabel.Size = new System.Drawing.Size(47, 15);
+            this.domainLabel.TabIndex = 2;
+            this.domainLabel.Text = "Домен:";
             // 
             // variableTypeLabel
             // 
@@ -211,7 +211,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cancelButton, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -230,43 +230,45 @@
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // cancelButton
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.Location = new System.Drawing.Point(370, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(74, 28);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelButton.Location = new System.Drawing.Point(370, 3);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(74, 28);
+            this.cancelButton.TabIndex = 10;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // createDomenButton
+            // createDomainButton
             // 
-            this.createDomenButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.createDomenButton.Location = new System.Drawing.Point(411, 84);
-            this.createDomenButton.Name = "createDomenButton";
-            this.createDomenButton.Size = new System.Drawing.Size(24, 23);
-            this.createDomenButton.TabIndex = 10;
-            this.createDomenButton.Text = "+";
-            this.createDomenButton.UseVisualStyleBackColor = true;
-            this.createDomenButton.Click += new System.EventHandler(this.createDomenButton_Click);
+            this.createDomainButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.createDomainButton.Location = new System.Drawing.Point(411, 84);
+            this.createDomainButton.Name = "createDomainButton";
+            this.createDomainButton.Size = new System.Drawing.Size(24, 23);
+            this.createDomainButton.TabIndex = 10;
+            this.createDomainButton.Text = "+";
+            this.createDomainButton.UseVisualStyleBackColor = true;
+            this.createDomainButton.Click += new System.EventHandler(this.createDomainButton_Click);
             // 
             // VariableCreationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 351);
-            this.Controls.Add(this.createDomenButton);
+            this.Controls.Add(this.createDomainButton);
             this.Controls.Add(this.okCancelAddingPremisePanel);
             this.Controls.Add(this.variableNameTextBox);
             this.Controls.Add(this.questionTextBox);
             this.Controls.Add(this.variableTypePanel);
             this.Controls.Add(this.questionTextLabel);
             this.Controls.Add(this.variableTypeLabel);
-            this.Controls.Add(this.domenLabel);
-            this.Controls.Add(this.domenComboBox);
+            this.Controls.Add(this.domainLabel);
+            this.Controls.Add(this.domainComboBox);
             this.Controls.Add(this.variableNameLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "VariableCreationForm";
             this.Text = "Создание переменной";
             this.variableTypePanel.ResumeLayout(false);
@@ -282,8 +284,8 @@
         #endregion
 
         private Label variableNameLabel;
-        private ComboBox domenComboBox;
-        private Label domenLabel;
+        private ComboBox domainComboBox;
+        private Label domainLabel;
         private Label variableTypeLabel;
         private Label questionTextLabel;
         private Panel variableTypePanel;
@@ -298,7 +300,7 @@
         private Panel okCancelAddingPremisePanel;
         private TableLayoutPanel tableLayoutPanel1;
         private Button button1;
-        private Button button2;
-        private Button createDomenButton;
+        private Button cancelButton;
+        private Button createDomainButton;
     }
 }
