@@ -67,10 +67,16 @@ namespace ExpertSystem.BaseForm
 
         private void dgvDomains_SelectionChanged(object sender, EventArgs e)
         {
+            if (dgvDomains.Rows.Count == 0 || dgvDomains.SelectedRows.Count == 0)
+                return;
+
+            var domain = dgvDomains.SelectedRows[0].Cells[0].Value as Domain;
+            if (domain == null)
+                return;
+
             dgvSelectionChanged(sender, editDomainButton, deleteDomainButton);
 
             domainValuesListBox.Items.Clear();
-            var domain = (Domain)dgvDomains.SelectedRows[0].Cells[0].Value;
             foreach (var value in domain.Values)
             {
                 domainValuesListBox.Items.Add(value.ToString());

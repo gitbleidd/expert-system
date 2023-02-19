@@ -92,8 +92,12 @@ namespace ExpertSystem
         {
             if (dgvValues.SelectedRows.Count > 0)
             {
+                var domain = dgvValues.SelectedRows[0].Cells[0].Value as DomainValue;
+                if (domain == null)
+                    return;
+                
+                domainValueTextBox.Text = domain.Value;
                 SetEditAndDeleteValueButtonStatus(true);
-                domainValueTextBox.Text = ((DomainValue)dgvValues.SelectedRows[0].Cells[0].Value).Value;
             }
             else
             {

@@ -59,7 +59,8 @@ namespace ExpertSystem
             }
 
             Shell.Domains.Add(domain);
-            domainComboBox.Items.Add(domain);
+            int index = domainComboBox.Items.Add(domain);
+            domainComboBox.SelectedIndex = index;
             domainComboBox.Refresh();
         }
 
@@ -68,38 +69,6 @@ namespace ExpertSystem
         private void questionTextBox_TextChanged(object sender, EventArgs e) { }
 
         private void variableNameTextBox_TextChanged(object sender, EventArgs e) { }
-
-        private void okCancelAddingPremisePanel_Paint(object sender, PaintEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(variableNameTextBox.Text))
-            {
-                MessageBox.Show("Необходимо заполнить поле с именем переменной!");
-                return;
-            }
-            if (Shell.GetVariableByName(variableNameTextBox.Text) != null)
-            {
-                MessageBox.Show("Переменная с таким именем уже существует!");
-                return;
-            }
-            if (domainComboBox.Items.Count == 0 || domainComboBox.SelectedIndex < 0)
-            {
-                MessageBox.Show("Необходимо выбрать домен!");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(questionTextBox.Text))
-            {
-                MessageBox.Show("Необходимо заполнить поле вопроса!");
-                return;
-            }
-
-            Variable.Name = questionTextBox.Text;
-            Variable.Domain = (Domain)domainComboBox.SelectedItem;
-            Variable.VariableType = GetSeletedVariableType();
-            Variable.QuestionText = questionTextBox.Text;
-
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
 
         private void SetRadioButtonOnVariableType(VarType type)
         {
@@ -149,6 +118,38 @@ namespace ExpertSystem
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(variableNameTextBox.Text))
+            {
+                MessageBox.Show("Необходимо заполнить поле с именем переменной!");
+                return;
+            }
+            if (Shell.GetVariableByName(variableNameTextBox.Text) != null)
+            {
+                MessageBox.Show("Переменная с таким именем уже существует!");
+                return;
+            }
+            if (domainComboBox.Items.Count == 0 || domainComboBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Необходимо выбрать домен!");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(questionTextBox.Text))
+            {
+                MessageBox.Show("Необходимо заполнить поле вопроса!");
+                return;
+            }
+
+            Variable.Name = questionTextBox.Text;
+            Variable.Domain = (Domain)domainComboBox.SelectedItem;
+            Variable.VariableType = GetSeletedVariableType();
+            Variable.QuestionText = questionTextBox.Text;
+
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

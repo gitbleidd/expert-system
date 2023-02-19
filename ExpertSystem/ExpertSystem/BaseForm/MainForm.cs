@@ -66,22 +66,41 @@ namespace ExpertSystem.BaseForm
                     // TODO fill rules page
                     break;
                 case 1:
-                    // TODO fill variables page
+                    // Fill variables page
+                    dgvVariables.Rows.Clear();
+                    foreach (var variable in Shell.Variables)
+                    {
+                        int index = dgvVariables.Rows.Add();
+                        UpdateVariableRow(dgvVariables.Rows[index], variable);
+                    }
+                    if (dgvVariables.Rows.Count > 0)
+                    {
+                        // Bug: turn on manually because dgv on select_change_event
+                        // always return null if there is one element
+                        SetEditAndDeleteVariableButtonStatus(true);
+                        dgvVariables.Rows[0].Selected = true;
+                    }
+                    dgvVariables.Refresh();
                     break;
                 case 2:
                     // Fill domain page
+                    dgvDomains.Rows.Clear();
                     foreach (var domain in Shell.Domains)
                     {
                         //dgvRules.Rows.Add(new string[] { "Orange-Salsa Pork Chops", "Main Dish" });
-                        dgvRules.Rows.Add(domain);
+                        dgvDomains.Rows.Add(domain);
                     }
+                    if (dgvDomains.Rows.Count > 0)
+                    {
+                        dgvDomains.Rows[0].Selected = true;
+                    }
+                    dgvDomains.Refresh();
 
                     // ?? dgvRules.Rows.Add(Shell.Domains.ToArray());
                     break;
                 default:
                     break;
             }
-            //Shell
         }
     }
 }

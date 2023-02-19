@@ -16,15 +16,20 @@ namespace ExpertSystem.BaseForm
         private void addVariableButton_Click(object sender, EventArgs e)
         {
             using var variableEditForm = new VariableCreationForm(Shell);
-            if (variableEditForm.ShowDialog() != DialogResult.OK)
+            var dialogResult = variableEditForm.ShowDialog();
+            if (dialogResult != DialogResult.OK)
                 return;
 
-            Variable variable = variableEditForm.Variable;
+            Variable variable = variableEditForm.Variable; // Get created variable from form
             Shell.Variables.Add(variable);
-
+            
             int index = dgvVariables.Rows.Add();
             UpdateVariableRow(dgvVariables.Rows[index], variable);
             dgvVariables.Refresh();
+
+            // Bug: turn on manually because dgv on select_change_event
+            // always return null if there is one element
+            SetEditAndDeleteVariableButtonStatus(true); 
         }
 
         private void editVariableButton_Click(object sender, EventArgs e)
@@ -37,9 +42,8 @@ namespace ExpertSystem.BaseForm
             if (variableEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
-            selectedRow.Cells[0].Value = variableCopy;
-            UpdateVariableRow(selectedRow, variable);
-            dgvVariables_SelectionChanged(sender, e);
+            UpdateVariableRow(selectedRow, variableCopy);
+            dgvVariables_SelectionChanged(sender, e); // Redraw variable question and domain textboxes
             dgvDomains.Refresh();
         }
 
@@ -65,8 +69,11 @@ namespace ExpertSystem.BaseForm
                 return;
             }
 
+            var variable = dgvVariables.SelectedRows[0].Cells[0].Value as Variable;
+            if (variable == null)
+                return;
+
             SetEditAndDeleteVariableButtonStatus(true);
-            var variable = (Variable)dgvVariables.SelectedRows[0].Cells[0].Value;
             questionTextBox.Text = variable.QuestionText;
             ruleDomainValuesListBox.Items.Clear();
             foreach (var value in variable.Domain.Values)
@@ -77,8 +84,8 @@ namespace ExpertSystem.BaseForm
 
         private void SetEditAndDeleteVariableButtonStatus(bool status)
         {
-            editRuleButton.Enabled = status;
-            deleteRuleButton.Enabled = status;
+            editVariableButton.Enabled = status;
+            deleteVariableButton.Enabled = status;
         }
 
         private void UpdateVariableRow(DataGridViewRow row, Variable variable)

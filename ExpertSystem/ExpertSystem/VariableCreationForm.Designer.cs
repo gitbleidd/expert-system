@@ -44,7 +44,7 @@
             this.cancelAddingPremiseButton = new System.Windows.Forms.Button();
             this.okCancelAddingPremisePanel = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.createDomainButton = new System.Windows.Forms.Button();
             this.variableTypePanel.SuspendLayout();
@@ -202,7 +202,6 @@
             this.okCancelAddingPremisePanel.Name = "okCancelAddingPremisePanel";
             this.okCancelAddingPremisePanel.Size = new System.Drawing.Size(447, 34);
             this.okCancelAddingPremisePanel.TabIndex = 9;
-            this.okCancelAddingPremisePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.okCancelAddingPremisePanel_Paint);
             // 
             // tableLayoutPanel1
             // 
@@ -210,7 +209,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.okButton, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.cancelButton, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -220,15 +219,16 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(447, 34);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
-            // button1
+            // okButton
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(290, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 28);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.okButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.okButton.Location = new System.Drawing.Point(290, 3);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(74, 28);
+            this.okButton.TabIndex = 7;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
@@ -299,7 +299,7 @@
         private Button cancelAddingPremiseButton;
         private Panel okCancelAddingPremisePanel;
         private TableLayoutPanel tableLayoutPanel1;
-        private Button button1;
+        private Button okButton;
         private Button cancelButton;
         private Button createDomainButton;
     }

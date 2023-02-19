@@ -19,8 +19,8 @@ namespace ExpertSystem
 
         private void createFactButton_Click(object sender, EventArgs e)
         {
-            var variableCreationForm = new VariableCreationForm();
-            variableCreationForm.ShowDialog();
+            //var variableCreationForm = new VariableCreationForm();
+            //variableCreationForm.ShowDialog();
         }
     }
 }
