@@ -89,15 +89,17 @@ namespace ExpertSystem
             if (dgvValues.SelectedRows.Count == 0)
                 return;
 
-            // TODO (!)check value if it is using in fact
-            //if ()
-            //{
-            //    MessageBox.Show()
-            //    return;
-            //}
-
             int index = dgvValues.SelectedRows[0].Index;
             var value = (DomainValue)dgvValues.SelectedRows[0].Cells[0].Value;
+
+            // TODO (!)check domain value if it is using in fact
+            var (rule, fact) = Shell.GetRuleAndFactByDomainValue(value) ?? default;
+            if (rule != null)
+            {
+                MessageBox.Show($"Данное значение исползуется в правиле {rule.Name}!");
+                return;
+            }
+
             dgvValues.Rows.RemoveAt(index);
             Domain.Values.Remove(value);
         }

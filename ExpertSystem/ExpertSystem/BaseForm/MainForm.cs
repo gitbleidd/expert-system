@@ -9,10 +9,6 @@ namespace ExpertSystem.BaseForm
         {
             InitializeComponent();
             tabControl.Visible = false;
-
-            //dgvRules.Rows.Add(new string[] { "Orange-Salsa Pork Chops", "Main Dish" });
-            //dgvRules.Rows.Add(new string[] { "Other", "Stuff" });
-            //dgvRules.Rows.Add(new string[] { "Hmm", "Testing datagrid visew rules" });
         }
 
         //----------------------------------------------------------------
@@ -23,6 +19,8 @@ namespace ExpertSystem.BaseForm
         {
             tabControl.Visible = true;
             Shell = new ExpertSystemShell();
+            tabControl.SelectedIndex = 0;
+            // TODO clear consulting form (?)
         }
 
         private void openToolStrip_Click(object sender, EventArgs e)
@@ -63,6 +61,18 @@ namespace ExpertSystem.BaseForm
             {
                 case 0:
                     // TODO fill rules page
+                    dgvRules.Rows.Clear();
+                    foreach (var rule in Shell.Rules)
+                    {
+                        int index = dgvVariables.Rows.Add();
+                        SetRuleRowCells(dgvVariables.Rows[index], rule);
+                    }
+                    if (dgvRules.Rows.Count > 0)
+                    {
+                        // TODO bugfix
+                    }
+                    dgvRules.Refresh();
+
                     break;
                 case 1:
                     // Fill variables page

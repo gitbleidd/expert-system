@@ -102,6 +102,7 @@
             this.saveButton.TabIndex = 7;
             this.saveButton.Text = "OK";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // cancelButton
             // 
@@ -112,6 +113,7 @@
             this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // descriptionLabel
             // 

@@ -1,6 +1,6 @@
 ﻿namespace ExpertSystem
 {
-    partial class PremiseEditForm
+    partial class FactEditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,12 +36,12 @@
             this.ruleEditorCancelButton = new System.Windows.Forms.Button();
             this.okCancelAddingPremisePanel = new System.Windows.Forms.Panel();
             this.okCancelPremisePanelTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.okAddingPremiseButton = new System.Windows.Forms.Button();
-            this.cancelAddingPremiseButton = new System.Windows.Forms.Button();
+            this.okButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.mainAddindPremisePanel = new System.Windows.Forms.Panel();
-            this.factEqualsValueComboBox = new System.Windows.Forms.ComboBox();
-            this.createFactButton = new System.Windows.Forms.Button();
-            this.factVariableComboBox = new System.Windows.Forms.ComboBox();
+            this.domainValueComboBox = new System.Windows.Forms.ComboBox();
+            this.createVariableButton = new System.Windows.Forms.Button();
+            this.variableComboBox = new System.Windows.Forms.ComboBox();
             this.equalLabel = new System.Windows.Forms.Label();
             this.conclusionTablePanel.SuspendLayout();
             this.okCancelTablePanel.SuspendLayout();
@@ -136,8 +136,8 @@
             this.okCancelPremisePanelTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.okCancelPremisePanelTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.okCancelPremisePanelTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.okCancelPremisePanelTablePanel.Controls.Add(this.okAddingPremiseButton, 1, 0);
-            this.okCancelPremisePanelTablePanel.Controls.Add(this.cancelAddingPremiseButton, 2, 0);
+            this.okCancelPremisePanelTablePanel.Controls.Add(this.okButton, 1, 0);
+            this.okCancelPremisePanelTablePanel.Controls.Add(this.cancelButton, 2, 0);
             this.okCancelPremisePanelTablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.okCancelPremisePanelTablePanel.Location = new System.Drawing.Point(0, 0);
             this.okCancelPremisePanelTablePanel.Name = "okCancelPremisePanelTablePanel";
@@ -146,31 +146,33 @@
             this.okCancelPremisePanelTablePanel.Size = new System.Drawing.Size(424, 34);
             this.okCancelPremisePanelTablePanel.TabIndex = 16;
             // 
-            // okAddingPremiseButton
+            // okButton
             // 
-            this.okAddingPremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.okAddingPremiseButton.Location = new System.Drawing.Point(267, 3);
-            this.okAddingPremiseButton.Name = "okAddingPremiseButton";
-            this.okAddingPremiseButton.Size = new System.Drawing.Size(74, 28);
-            this.okAddingPremiseButton.TabIndex = 7;
-            this.okAddingPremiseButton.Text = "OK";
-            this.okAddingPremiseButton.UseVisualStyleBackColor = true;
+            this.okButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.okButton.Location = new System.Drawing.Point(267, 3);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(74, 28);
+            this.okButton.TabIndex = 7;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
-            // cancelAddingPremiseButton
+            // cancelButton
             // 
-            this.cancelAddingPremiseButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cancelAddingPremiseButton.Location = new System.Drawing.Point(347, 3);
-            this.cancelAddingPremiseButton.Name = "cancelAddingPremiseButton";
-            this.cancelAddingPremiseButton.Size = new System.Drawing.Size(74, 28);
-            this.cancelAddingPremiseButton.TabIndex = 10;
-            this.cancelAddingPremiseButton.Text = "Отмена";
-            this.cancelAddingPremiseButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelButton.Location = new System.Drawing.Point(347, 3);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(74, 28);
+            this.cancelButton.TabIndex = 10;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // mainAddindPremisePanel
             // 
-            this.mainAddindPremisePanel.Controls.Add(this.factEqualsValueComboBox);
-            this.mainAddindPremisePanel.Controls.Add(this.createFactButton);
-            this.mainAddindPremisePanel.Controls.Add(this.factVariableComboBox);
+            this.mainAddindPremisePanel.Controls.Add(this.domainValueComboBox);
+            this.mainAddindPremisePanel.Controls.Add(this.createVariableButton);
+            this.mainAddindPremisePanel.Controls.Add(this.variableComboBox);
             this.mainAddindPremisePanel.Controls.Add(this.equalLabel);
             this.mainAddindPremisePanel.Controls.Add(this.okCancelAddingPremisePanel);
             this.mainAddindPremisePanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -180,34 +182,35 @@
             this.mainAddindPremisePanel.Size = new System.Drawing.Size(444, 157);
             this.mainAddindPremisePanel.TabIndex = 0;
             // 
-            // factEqualsValueComboBox
+            // domainValueComboBox
             // 
-            this.factEqualsValueComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.factEqualsValueComboBox.FormattingEnabled = true;
-            this.factEqualsValueComboBox.Location = new System.Drawing.Point(13, 86);
-            this.factEqualsValueComboBox.Name = "factEqualsValueComboBox";
-            this.factEqualsValueComboBox.Size = new System.Drawing.Size(421, 23);
-            this.factEqualsValueComboBox.TabIndex = 6;
+            this.domainValueComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.domainValueComboBox.FormattingEnabled = true;
+            this.domainValueComboBox.Location = new System.Drawing.Point(13, 86);
+            this.domainValueComboBox.Name = "domainValueComboBox";
+            this.domainValueComboBox.Size = new System.Drawing.Size(421, 23);
+            this.domainValueComboBox.TabIndex = 6;
             // 
-            // createFactButton
+            // createVariableButton
             // 
-            this.createFactButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.createFactButton.Location = new System.Drawing.Point(410, 28);
-            this.createFactButton.Name = "createFactButton";
-            this.createFactButton.Size = new System.Drawing.Size(24, 23);
-            this.createFactButton.TabIndex = 5;
-            this.createFactButton.Text = "+";
-            this.createFactButton.UseVisualStyleBackColor = true;
-            this.createFactButton.Click += new System.EventHandler(this.createFactButton_Click);
+            this.createVariableButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.createVariableButton.Location = new System.Drawing.Point(410, 28);
+            this.createVariableButton.Name = "createVariableButton";
+            this.createVariableButton.Size = new System.Drawing.Size(24, 23);
+            this.createVariableButton.TabIndex = 5;
+            this.createVariableButton.Text = "+";
+            this.createVariableButton.UseVisualStyleBackColor = true;
+            this.createVariableButton.Click += new System.EventHandler(this.createVariableButton_Click);
             // 
-            // factVariableComboBox
+            // variableComboBox
             // 
-            this.factVariableComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.factVariableComboBox.FormattingEnabled = true;
-            this.factVariableComboBox.Location = new System.Drawing.Point(13, 28);
-            this.factVariableComboBox.Name = "factVariableComboBox";
-            this.factVariableComboBox.Size = new System.Drawing.Size(391, 23);
-            this.factVariableComboBox.TabIndex = 4;
+            this.variableComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.variableComboBox.FormattingEnabled = true;
+            this.variableComboBox.Location = new System.Drawing.Point(13, 28);
+            this.variableComboBox.Name = "variableComboBox";
+            this.variableComboBox.Size = new System.Drawing.Size(391, 23);
+            this.variableComboBox.TabIndex = 4;
+            this.variableComboBox.SelectedIndexChanged += new System.EventHandler(this.variableComboBox_SelectedIndexChanged);
             // 
             // equalLabel
             // 
@@ -219,7 +222,7 @@
             this.equalLabel.Text = "=";
             this.equalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // PremiseEditForm
+            // FactEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -227,7 +230,7 @@
             this.Controls.Add(this.mainAddindPremisePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimumSize = new System.Drawing.Size(460, 196);
-            this.Name = "PremiseEditForm";
+            this.Name = "FactEditForm";
             this.Text = "Добавление факта посылки";
             this.conclusionTablePanel.ResumeLayout(false);
             this.okCancelTablePanel.ResumeLayout(false);
@@ -247,15 +250,15 @@
         private Button ruleEditorCancelButton;
         private Panel okCancelAddingPremisePanel;
         private TableLayoutPanel okCancelPremisePanelTablePanel;
-        private Button okAddingPremiseButton;
-        private Button cancelAddingPremiseButton;
+        private Button okButton;
+        private Button cancelButton;
         private Panel mainAddindPremisePanel;
         private ComboBox comboBox2;
         private Button button1;
         private ComboBox comboBox1;
         private Label equalLabel;
-        private ComboBox factEqualsValueComboBox;
-        private Button createFactButton;
-        private ComboBox factVariableComboBox;
+        private ComboBox domainValueComboBox;
+        private Button createVariableButton;
+        private ComboBox variableComboBox;
     }
 }

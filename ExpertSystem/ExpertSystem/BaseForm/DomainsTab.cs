@@ -60,13 +60,21 @@ namespace ExpertSystem.BaseForm
                 return;
             }
 
-            // TODO (!) check if domainValues are using in Fact.
-            //Fact? domainFact = Shell.GetFactByDomain(domain);
-            //if (domainFact != null)
-            //{
-            //    MessageBox.Show($"Данный домен используется в переменной {Fact}!");
-            //    return;
-            //}
+            // TODO (!) check if Fact is using values of deleting domain.
+            foreach (var rule in Shell.Rules)
+            {
+                foreach (var fact in rule.Conclusions.Concat(rule.Premises))
+                {
+                    foreach (var domainValue in domain.Values)
+                    {
+                        if (fact.DomainValue == domainValue)
+                        {
+                            MessageBox.Show($"Домен используется в факте правила {rule.Name}");
+                            return;
+                        }
+                    }
+                }
+            }
 
             dgvDomains.Rows.RemoveAt(index);
             Shell.Domains.Remove(domain);

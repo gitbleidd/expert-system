@@ -41,8 +41,6 @@
             this.rulesPage = new System.Windows.Forms.TabPage();
             this.dgvRulesPanel = new System.Windows.Forms.Panel();
             this.dgvRules = new System.Windows.Forms.DataGridView();
-            this.RuleNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RuleDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rulesPanel = new System.Windows.Forms.Panel();
             this.groupBoxConclusion = new System.Windows.Forms.GroupBox();
             this.conclusionListBox = new System.Windows.Forms.ListBox();
@@ -80,6 +78,8 @@
             this.deleteDomainButton = new System.Windows.Forms.Button();
             this.editDomainButton = new System.Windows.Forms.Button();
             this.addDomainButton = new System.Windows.Forms.Button();
+            this.RuleNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RuleDescriptionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMenuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.rulesPage.SuspendLayout();
@@ -240,20 +240,6 @@
             this.dgvRules.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvRules_DragDrop);
             this.dgvRules.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvRules_DragEnter);
             this.dgvRules.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvRules_MouseMove);
-            // 
-            // RuleNameColumn
-            // 
-            this.RuleNameColumn.FillWeight = 30F;
-            this.RuleNameColumn.HeaderText = "Имя";
-            this.RuleNameColumn.Name = "RuleNameColumn";
-            this.RuleNameColumn.ReadOnly = true;
-            // 
-            // RuleDescriptionColumn
-            // 
-            this.RuleDescriptionColumn.FillWeight = 200F;
-            this.RuleDescriptionColumn.HeaderText = "Описание";
-            this.RuleDescriptionColumn.Name = "RuleDescriptionColumn";
-            this.RuleDescriptionColumn.ReadOnly = true;
             // 
             // rulesPanel
             // 
@@ -681,6 +667,22 @@
             this.addDomainButton.UseVisualStyleBackColor = true;
             this.addDomainButton.Click += new System.EventHandler(this.addDomainButton_Click);
             // 
+            // RuleNameColumn
+            // 
+            this.RuleNameColumn.FillWeight = 30F;
+            this.RuleNameColumn.HeaderText = "Имя";
+            this.RuleNameColumn.Name = "RuleNameColumn";
+            this.RuleNameColumn.ReadOnly = true;
+            this.RuleNameColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RuleDescriptionColumn
+            // 
+            this.RuleDescriptionColumn.FillWeight = 200F;
+            this.RuleDescriptionColumn.HeaderText = "Описание";
+            this.RuleDescriptionColumn.Name = "RuleDescriptionColumn";
+            this.RuleDescriptionColumn.ReadOnly = true;
+            this.RuleDescriptionColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -746,8 +748,6 @@
         private ListBox premiseListBox;
         private Panel dgvRulesPanel;
         private DataGridView dgvRules;
-        private DataGridViewTextBoxColumn RuleNameColumn;
-        private DataGridViewTextBoxColumn RuleDescriptionColumn;
         private TabPage variablesTabPage;
         private Panel dgvVariablesPanel;
         private DataGridView dgvVariables;
@@ -776,5 +776,7 @@
         private Button editDomainButton;
         private Button addDomainButton;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn RuleNameColumn;
+        private DataGridViewTextBoxColumn RuleDescriptionColumn;
     }
 }

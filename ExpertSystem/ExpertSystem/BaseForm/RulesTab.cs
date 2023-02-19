@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExpertSystem.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,50 @@ namespace ExpertSystem.BaseForm
 
         private void addRuleButton_Click(object sender, EventArgs e)
         {
-            using var ruleEditForm = new RuleEditForm();
+            using var ruleEditForm = new RuleEditForm(Shell);
             ruleEditForm.ShowDialog();
+        }
+
+        private void editRuleButton_Click(object sender, EventArgs e)
+        {
+            // TODO edit mode for RuleEditForm
+        }
+
+        private void deleteRuleButton_Click(object sender, EventArgs e)
+        {
+            if (dgvRules.SelectedRows.Count == 0)
+                return;
+
+            // TODO checks before delete
+
+            //dgvRules.Rows.RemoveAt(dgvRules.SelectedRows[0].Index);
+            //TODO delete at shell
+        }
+
+        private void dgvRules_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvRules.SelectedRows.Count > 0)
+            {
+                SetEditAndDeleteRuleButtonStatus(true);
+                //TODO update premise rule listbox
+                //TODO update conclusion rule listbox
+            }
+            else
+            {
+                SetEditAndDeleteRuleButtonStatus(false);
+            }
+        }
+
+        private void SetEditAndDeleteRuleButtonStatus(bool status)
+        {
+            editRuleButton.Enabled = status;
+            deleteRuleButton.Enabled = status;
+        }
+
+        private void SetRuleRowCells(DataGridViewRow row, Rule rule)
+        {
+            row.Cells[0].Value = rule;
+            row.Cells[1].Value = rule.Description;
         }
 
         #region DGV - drag and drop
@@ -64,38 +107,5 @@ namespace ExpertSystem.BaseForm
         }
 
         #endregion
-
-        private void dgvRules_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvRules.SelectedRows.Count > 0)
-            {
-                SetEditAndDeleteRuleButtonStatus(true);
-                //TODO update premise rule listbox
-                //TODO update conclusion rule listbox
-            }
-            else
-            {
-                SetEditAndDeleteRuleButtonStatus(false);
-            }
-        }
-
-        private void editRuleButton_Click(object sender, EventArgs e)
-        {
-            // TODO using RuleEditForm.dialog()
-        }
-
-        private void deleteRuleButton_Click(object sender, EventArgs e)
-        {
-            if (dgvRules.SelectedRows.Count == 0)
-                return;
-            //dgvRules.Rows.RemoveAt(dgvRules.SelectedRows[0].Index);
-            //TODO delete at shell
-        }
-
-        private void SetEditAndDeleteRuleButtonStatus(bool status)
-        {
-            editRuleButton.Enabled = status;
-            deleteRuleButton.Enabled = status;
-        }
     }
 }

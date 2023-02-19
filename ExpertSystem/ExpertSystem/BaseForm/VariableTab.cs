@@ -54,7 +54,17 @@ namespace ExpertSystem.BaseForm
             var variable = (Variable)dgvVariables.SelectedRows[0].Cells[0].Value;
 
             // TODO (!) check for variable usinging in Fact.
-            throw new NotImplementedException();
+            foreach (var rule in Shell.Rules)
+            {
+                foreach (var fact in rule.Conclusions.Concat(rule.Premises))
+                {
+                    if (fact.Variable == variable)
+                    {
+                        MessageBox.Show($"Переменная используется в факте правила {rule.Name}!");
+                        return;
+                    }
+                }
+            }
 
             dgvVariables.Rows.RemoveAt(dgvVariables.SelectedRows[0].Index);
             Shell.Variables.Remove(variable);
