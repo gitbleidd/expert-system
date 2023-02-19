@@ -84,7 +84,7 @@ namespace ExpertSystem
                 MessageBox.Show("Необходимо заполнить поле с именем переменной!");
                 return;
             }
-            if (Shell.GetVariableByName(variableNameTextBox.Text) != null)
+            if (variableNameTextBox.Text != Variable.Name && Shell.GetVariableByName(variableNameTextBox.Text) != null)
             {
                 MessageBox.Show("Переменная с таким именем уже существует!");
                 return;
@@ -100,7 +100,7 @@ namespace ExpertSystem
                 return;
             }
 
-            Variable.Name = questionTextBox.Text;
+            Variable.Name = variableNameTextBox.Text;
             Variable.Domain = (Domain)domainComboBox.SelectedItem;
             Variable.VariableType = GetSeletedVariableType();
             Variable.QuestionText = questionTextBox.Text;

@@ -56,7 +56,7 @@ namespace ExpertSystem.BaseForm
             Variable? domainVariable = Shell.GetVariableByDomain(domain);
             if (domainVariable != null)
             {
-                MessageBox.Show($"Данный домен используется в переменной {domainVariable.Name}!");
+                MessageBox.Show($"Данный домен используется в переменной '{domainVariable.Name}'!");
                 return;
             }
 

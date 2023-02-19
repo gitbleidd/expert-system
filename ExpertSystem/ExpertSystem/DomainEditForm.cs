@@ -90,6 +90,11 @@ namespace ExpertSystem
                 return;
 
             // TODO (!)check value if it is using in fact
+            //if ()
+            //{
+            //    MessageBox.Show()
+            //    return;
+            //}
 
             int index = dgvValues.SelectedRows[0].Index;
             var value = (DomainValue)dgvValues.SelectedRows[0].Cells[0].Value;
