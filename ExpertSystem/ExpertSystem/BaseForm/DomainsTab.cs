@@ -32,9 +32,8 @@ namespace ExpertSystem.BaseForm
         {
             var selectedRow = dgvDomains.SelectedRows[0];
             var selectedDomain = (Domain)selectedRow.Cells[0].Value;
-            var selectedDomainCopy = selectedDomain.DeepCopy();
 
-            using var domainEditForm = new DomainEditForm(Shell, selectedDomainCopy);
+            using var domainEditForm = new DomainEditForm(Shell, selectedDomain);
             var dialogResult = domainEditForm.ShowDialog();
 
             if (dialogResult != DialogResult.OK)
@@ -42,7 +41,6 @@ namespace ExpertSystem.BaseForm
                 return;
             }
 
-            selectedRow.Cells[0].Value = selectedDomainCopy;
             dgvDomains_SelectionChanged(sender, e);
             dgvDomains.Refresh();
         }
@@ -55,11 +53,20 @@ namespace ExpertSystem.BaseForm
             int index = dgvDomains.SelectedRows[0].Index;
             var domain = (Domain)dgvDomains.SelectedRows[0].Cells[0].Value;
 
-            if (Shell.IsDomainUsing(domain))
+            Variable? domainVariable = Shell.GetVariableByDomain(domain);
+            if (domainVariable != null)
             {
-                MessageBox.Show("Данный домен используется!");
+                MessageBox.Show($"Данный домен используется в переменной {domainVariable.Name}!");
                 return;
             }
+
+            // TODO (!) check if domainValues are using in Fact.
+            //Fact? domainFact = Shell.GetFactByDomain(domain);
+            //if (domainFact != null)
+            //{
+            //    MessageBox.Show($"Данный домен используется в переменной {Fact}!");
+            //    return;
+            //}
 
             dgvDomains.Rows.RemoveAt(index);
             Shell.Domains.Remove(domain);

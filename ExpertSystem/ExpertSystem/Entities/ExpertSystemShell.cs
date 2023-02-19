@@ -14,7 +14,7 @@ namespace ExpertSystem.Entities
 
         public Domain? GetDomainByName(string name) => Domains.FirstOrDefault(d => d.Name == name);
 
-        public bool IsDomainUsing(Domain domain) => Variables.Find(l => l.Domain == domain) != null;
+        public Variable? GetVariableByDomain(Domain domain) => Variables.FirstOrDefault(l => l.Domain == domain);
 
         public Variable? GetVariableByName(string name) => Variables.FirstOrDefault(v => v.Name == name);
     }

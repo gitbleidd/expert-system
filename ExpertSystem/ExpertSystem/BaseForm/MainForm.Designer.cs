@@ -70,6 +70,7 @@
             this.domainTabPage = new System.Windows.Forms.TabPage();
             this.dgvDomainsPanel = new System.Windows.Forms.Panel();
             this.dgvDomains = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.domainsRightPanel = new System.Windows.Forms.Panel();
             this.domainValuesGroupBox = new System.Windows.Forms.GroupBox();
             this.domainValuesListBox = new System.Windows.Forms.ListBox();
@@ -79,7 +80,6 @@
             this.deleteDomainButton = new System.Windows.Forms.Button();
             this.editDomainButton = new System.Windows.Forms.Button();
             this.addDomainButton = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMenuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.rulesPage.SuspendLayout();
@@ -475,6 +475,7 @@
             this.questionTextBox.Location = new System.Drawing.Point(8, 19);
             this.questionTextBox.Multiline = true;
             this.questionTextBox.Name = "questionTextBox";
+            this.questionTextBox.ReadOnly = true;
             this.questionTextBox.Size = new System.Drawing.Size(299, 109);
             this.questionTextBox.TabIndex = 0;
             // 
@@ -568,6 +569,13 @@
             this.dgvDomains.Size = new System.Drawing.Size(654, 503);
             this.dgvDomains.TabIndex = 3;
             this.dgvDomains.SelectionChanged += new System.EventHandler(this.dgvDomains_SelectionChanged);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Имя";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // domainsRightPanel
             // 
@@ -672,13 +680,6 @@
             this.addDomainButton.Text = "Добавить";
             this.addDomainButton.UseVisualStyleBackColor = true;
             this.addDomainButton.Click += new System.EventHandler(this.addDomainButton_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Имя";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // MainForm
             // 

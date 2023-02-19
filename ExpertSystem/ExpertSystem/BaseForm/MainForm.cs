@@ -23,7 +23,6 @@ namespace ExpertSystem.BaseForm
         {
             tabControl.Visible = true;
             Shell = new ExpertSystemShell();
-            // TODO update current tab
         }
 
         private void openToolStrip_Click(object sender, EventArgs e)
@@ -71,14 +70,13 @@ namespace ExpertSystem.BaseForm
                     foreach (var variable in Shell.Variables)
                     {
                         int index = dgvVariables.Rows.Add();
-                        UpdateVariableRow(dgvVariables.Rows[index], variable);
+                        SetVariableRowCells(dgvVariables.Rows[index], variable);
                     }
                     if (dgvVariables.Rows.Count > 0)
                     {
                         // Bug: turn on manually because dgv on select_change_event
                         // always return null if there is one element
-                        SetEditAndDeleteVariableButtonStatus(true);
-                        dgvVariables.Rows[0].Selected = true;
+                        UpdateFormOnSelectedChange(Shell.Variables.First());
                     }
                     dgvVariables.Refresh();
                     break;

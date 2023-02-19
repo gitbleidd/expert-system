@@ -18,6 +18,10 @@ namespace ExpertSystem
 
         private string _originalName;
 
+        private List<DomainValue> _orinalValuesList;
+        private List<string> _orinalValuesNames;
+        private bool isDomainSaved = false;
+
         public DomainEditForm(ExpertSystemShell shell) : this(shell, new Domain(""))
         {
             this.Text = "Создание домена";
@@ -28,6 +32,8 @@ namespace ExpertSystem
             InitializeComponent();
             this.Text = "Изменение домена";
             _originalName = domain.Name;
+            _orinalValuesList = new List<DomainValue>(domain.Values);
+            _orinalValuesNames = domain.Values.Select(v => v.Value).ToList();
 
             Domain = domain;
             Shell = shell;
@@ -83,9 +89,12 @@ namespace ExpertSystem
             if (dgvValues.SelectedRows.Count == 0)
                 return;
 
+            // TODO (!)check value if it is using in fact
+
             int index = dgvValues.SelectedRows[0].Index;
+            var value = (DomainValue)dgvValues.SelectedRows[0].Cells[0].Value;
             dgvValues.Rows.RemoveAt(index);
-            Domain.Values.RemoveAt(index);
+            Domain.Values.Remove(value);
         }
 
         private void dgvValues_SelectionChanged(object sender, EventArgs e)
@@ -198,6 +207,7 @@ namespace ExpertSystem
             }
 
             Domain.Name = domainNameTextBox.Text;
+            isDomainSaved = true;
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -205,8 +215,25 @@ namespace ExpertSystem
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            CancelEditActions();
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void DomainEditForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isDomainSaved)
+                return;
+            CancelEditActions();
+        }
+
+        private void CancelEditActions()
+        {
+            Domain.Values = _orinalValuesList;
+            for (int i = 0; i < Domain.Values.Count; i++)
+            {
+                Domain.Values[i].Value = _orinalValuesNames[i];
+            }
         }
     }
 }

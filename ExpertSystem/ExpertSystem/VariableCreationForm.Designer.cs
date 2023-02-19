@@ -70,7 +70,6 @@
             this.domainComboBox.Name = "domainComboBox";
             this.domainComboBox.Size = new System.Drawing.Size(393, 23);
             this.domainComboBox.TabIndex = 1;
-            this.domainComboBox.SelectedIndexChanged += new System.EventHandler(this.domainComboBox_SelectedIndexChanged);
             // 
             // domainLabel
             // 
@@ -149,7 +148,6 @@
             this.questionTextBox.Name = "questionTextBox";
             this.questionTextBox.Size = new System.Drawing.Size(414, 60);
             this.questionTextBox.TabIndex = 7;
-            this.questionTextBox.TextChanged += new System.EventHandler(this.questionTextBox_TextChanged);
             // 
             // variableNameTextBox
             // 
@@ -157,7 +155,6 @@
             this.variableNameTextBox.Name = "variableNameTextBox";
             this.variableNameTextBox.Size = new System.Drawing.Size(423, 23);
             this.variableNameTextBox.TabIndex = 8;
-            this.variableNameTextBox.TextChanged += new System.EventHandler(this.variableNameTextBox_TextChanged);
             // 
             // okCancelPremisePanelTablePanel
             // 

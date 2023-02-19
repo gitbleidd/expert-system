@@ -209,6 +209,7 @@
             this.MaximizeBox = false;
             this.Name = "DomainEditForm";
             this.Text = "Создание домена";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DomainEditForm_FormClosing);
             this.exitPanel.ResumeLayout(false);
             this.exitTablePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvValues)).EndInit();

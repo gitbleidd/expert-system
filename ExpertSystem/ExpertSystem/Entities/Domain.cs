@@ -9,7 +9,7 @@ namespace ExpertSystem.Entities
     public class Domain
     {
         public string Name { get; set; }
-        public List<DomainValue> Values { get; } = new();
+        public List<DomainValue> Values { get; set; } = new();
 
         public Domain(string name)
         {
