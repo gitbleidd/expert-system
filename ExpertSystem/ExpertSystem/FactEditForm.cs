@@ -69,12 +69,12 @@ namespace ExpertSystem
 
         private void variableComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var domain = variableComboBox.SelectedItem as Domain;
-            if (domain == null)
+            var variable = variableComboBox.SelectedItem as Variable;
+            if (variable == null)
                 return;
 
             domainValueComboBox.Items.Clear();
-            foreach (var domainValue in domain.Values)
+            foreach (var domainValue in variable.Domain.Values)
             {
                 domainValueComboBox.Items.Add(domainValue);
             }

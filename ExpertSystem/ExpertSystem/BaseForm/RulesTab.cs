@@ -16,7 +16,19 @@ namespace ExpertSystem.BaseForm
         private void addRuleButton_Click(object sender, EventArgs e)
         {
             using var ruleEditForm = new RuleEditForm(Shell);
-            ruleEditForm.ShowDialog();
+            if (ruleEditForm.ShowDialog() != DialogResult.OK)
+                return;
+
+            Rule rule = ruleEditForm.Rule; // Get created variable from form
+            Shell.Rules.Add(rule);
+            
+            int index = dgvRules.Rows.Add();
+            SetRuleRowCells(dgvVariables.Rows[index], rule);
+            dgvRules.Refresh();
+
+            // Bug: turn on manually because dgv on select_change_event
+            // always return null if there is one element
+            // UpdateFormOnSelectedChange(variable);
         }
 
         private void editRuleButton_Click(object sender, EventArgs e)
