@@ -24,15 +24,15 @@ namespace ExpertSystem
             this.Text = "Создание переменной";
 
             // Initializing form fields
-            variableNameTextBox.Text = string.Empty;
+            string initVariableName = $"Variable {KnowledgeBase.Variables.Count + 1}";
+            variableNameTextBox.Text = initVariableName;
             foreach (var domain in KnowledgeBase.Domains)
             {
                 domainComboBox.Items.Add(domain);
             }
             SetRadioButtonOnVariableType(VarType.Inquire);
-
-            // TODO auto generate question text
-            questionTextBox.Text = string.Empty;
+            
+            questionTextBox.Text = $"{initVariableName}?";
         }
 
         public VariableCreationForm(KnowledgeBase knowledgeBase, Variable variable)
