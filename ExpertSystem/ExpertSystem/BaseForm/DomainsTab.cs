@@ -16,7 +16,7 @@ namespace ExpertSystem.BaseForm
         private void addDomainButton_Click(object sender, EventArgs e)
         {
             var domain = new Domain("");
-            using var domainEditForm = new DomainEditForm(Shell, domain);
+            using var domainEditForm = new DomainEditForm(KnowledgeBase, domain);
             var dialogResult = domainEditForm.ShowDialog();
 
             if (dialogResult != DialogResult.OK)
@@ -24,7 +24,7 @@ namespace ExpertSystem.BaseForm
                 return;
             }
 
-            Shell.Domains.Add(domain);
+            KnowledgeBase.Domains.Add(domain);
             dgvDomains.Rows.Add(domain);
         }
 
@@ -33,7 +33,7 @@ namespace ExpertSystem.BaseForm
             var selectedRow = dgvDomains.SelectedRows[0];
             var selectedDomain = (Domain)selectedRow.Cells[0].Value;
 
-            using var domainEditForm = new DomainEditForm(Shell, selectedDomain);
+            using var domainEditForm = new DomainEditForm(KnowledgeBase, selectedDomain);
             var dialogResult = domainEditForm.ShowDialog();
 
             if (dialogResult != DialogResult.OK)
@@ -53,7 +53,7 @@ namespace ExpertSystem.BaseForm
             int index = dgvDomains.SelectedRows[0].Index;
             var domain = (Domain)dgvDomains.SelectedRows[0].Cells[0].Value;
 
-            Variable? domainVariable = Shell.GetVariableByDomain(domain);
+            Variable? domainVariable = KnowledgeBase.GetVariableByDomain(domain);
             if (domainVariable != null)
             {
                 MessageBox.Show($"Данный домен используется в переменной '{domainVariable.Name}'!");
@@ -61,7 +61,7 @@ namespace ExpertSystem.BaseForm
             }
 
             // TODO (!) check if Fact is using values of deleting domain.
-            foreach (var rule in Shell.Rules)
+            foreach (var rule in KnowledgeBase.Rules)
             {
                 foreach (var fact in rule.Conclusions.Concat(rule.Premises))
                 {
@@ -77,7 +77,7 @@ namespace ExpertSystem.BaseForm
             }
 
             dgvDomains.Rows.RemoveAt(index);
-            Shell.Domains.Remove(domain);
+            KnowledgeBase.Domains.Remove(domain);
         }
 
         private void dgvDomains_SelectionChanged(object sender, EventArgs e)

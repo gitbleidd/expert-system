@@ -13,28 +13,28 @@ namespace ExpertSystem
 {
     public partial class FactEditForm : Form
     {
-        private ExpertSystemShell Shell { get; }
+        private KnowledgeBase KnowledgeBase { get; }
         private bool IsPremiseForm { get; }
         public Fact Fact { get; private set; }
 
-        public FactEditForm(ExpertSystemShell shell, bool isPremiseForm)
+        public FactEditForm(KnowledgeBase knowledgeBase, bool isPremiseForm)
         {
             InitializeComponent();
             this.Text = "Добавление факта";
 
-            Shell = shell;
+            KnowledgeBase = knowledgeBase;
             IsPremiseForm = isPremiseForm;
             Fact = new Fact(null, null);
 
             IntializeVariableCombobox();
         }
 
-        public FactEditForm(ExpertSystemShell shell, Fact fact, bool isPremiseForm)
+        public FactEditForm(KnowledgeBase knowledgeBase, Fact fact, bool isPremiseForm)
         {
             InitializeComponent();
             this.Text = $"Изменение факта";
 
-            Shell = shell;
+            KnowledgeBase = knowledgeBase;
             Fact = fact;
             IsPremiseForm = isPremiseForm;
 
@@ -43,13 +43,13 @@ namespace ExpertSystem
 
         private void createVariableButton_Click(object sender, EventArgs e)
         {
-            using var variableEditForm = new VariableCreationForm(Shell);
+            using var variableEditForm = new VariableCreationForm(KnowledgeBase);
             var dialogResult = variableEditForm.ShowDialog();
             if (dialogResult != DialogResult.OK)
                 return;
 
             var variable = variableEditForm.Variable; // Get created variable from Form
-            Shell.Variables.Add(variable);
+            KnowledgeBase.Variables.Add(variable);
 
             // TODO уточнить насчет типов переменных (1)
             // Посылка: запрашиваемые и запрашиваемо-выводимые (неточно)
@@ -112,7 +112,7 @@ namespace ExpertSystem
         private void IntializeVariableCombobox()
         {
             // TODO уточнить насчет типов переменных (2)
-            foreach (var variable in Shell.Variables)
+            foreach (var variable in KnowledgeBase.Variables)
             {
                 // Посылка: запрашиваемые и запрашиваемо-выводимые (неточно)
                 if (IsPremiseForm && (variable.VariableType == VarType.Inquire || variable.VariableType == VarType.InquireProduce))

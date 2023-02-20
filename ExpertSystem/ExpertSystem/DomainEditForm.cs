@@ -14,7 +14,7 @@ namespace ExpertSystem
     public partial class DomainEditForm : Form
     {
         private Domain Domain { get; }
-        private ExpertSystemShell Shell { get; }
+        private KnowledgeBase KnowledgeBase { get; }
 
         private string _originalName;
 
@@ -22,12 +22,12 @@ namespace ExpertSystem
         private List<string> _orinalValuesNames;
         private bool isDomainSaved = false;
 
-        public DomainEditForm(ExpertSystemShell shell) : this(shell, new Domain(""))
+        public DomainEditForm(KnowledgeBase knowledgeBase) : this(knowledgeBase, new Domain(""))
         {
             this.Text = "Создание домена";
         }
 
-        public DomainEditForm(ExpertSystemShell shell, Domain domain)
+        public DomainEditForm(KnowledgeBase knowledgeBase, Domain domain)
         {
             InitializeComponent();
             this.Text = "Изменение домена";
@@ -36,7 +36,7 @@ namespace ExpertSystem
             _orinalValuesNames = domain.Values.Select(v => v.Value).ToList();
 
             Domain = domain;
-            Shell = shell;
+            KnowledgeBase = knowledgeBase;
 
             domainNameTextBox.Text = Domain.Name;
             foreach (var value in Domain.Values)
@@ -93,7 +93,7 @@ namespace ExpertSystem
             var value = (DomainValue)dgvValues.SelectedRows[0].Cells[0].Value;
 
             // TODO (!)check domain value if it is using in fact
-            var (rule, fact) = Shell.GetRuleAndFactByDomainValue(value) ?? default;
+            var (rule, fact) = KnowledgeBase.GetRuleAndFactByDomainValue(value) ?? default;
             if (rule != null)
             {
                 MessageBox.Show($"Данное значение исползуется в правиле {rule.Name}!");
@@ -205,7 +205,7 @@ namespace ExpertSystem
                 return;
             }
 
-            bool domainExist = _originalName != domainNameTextBox.Text && Shell.GetDomainByName(domainNameTextBox.Text) != null;
+            bool domainExist = _originalName != domainNameTextBox.Text && KnowledgeBase.GetDomainByName(domainNameTextBox.Text) != null;
 
             if (domainExist)
             {

@@ -15,12 +15,12 @@ namespace ExpertSystem.BaseForm
 
         private void addRuleButton_Click(object sender, EventArgs e)
         {
-            using var ruleEditForm = new RuleEditForm(Shell);
+            using var ruleEditForm = new RuleEditForm(KnowledgeBase);
             if (ruleEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
             Rule rule = ruleEditForm.Rule; // Get created variable from form
-            Shell.Rules.Add(rule);
+            KnowledgeBase.Rules.Add(rule);
             
             int index = dgvRules.Rows.Add();
             SetRuleRowCells(dgvVariables.Rows[index], rule);
@@ -44,7 +44,7 @@ namespace ExpertSystem.BaseForm
             // TODO checks before delete
 
             //dgvRules.Rows.RemoveAt(dgvRules.SelectedRows[0].Index);
-            //TODO delete at shell
+            //TODO delete at knowledgeBase
         }
 
         private void dgvRules_SelectionChanged(object sender, EventArgs e)

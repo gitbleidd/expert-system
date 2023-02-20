@@ -13,13 +13,13 @@ namespace ExpertSystem
 {
     public partial class RuleEditForm : Form
     {
-        private ExpertSystemShell Shell { get; }
+        private KnowledgeBase Shell { get; }
         public Rule Rule { get; private set; }
 
         private List<Fact> _originalPremises;
         private List<Fact> _originalConclusions;
 
-        public RuleEditForm(ExpertSystemShell shell)
+        public RuleEditForm(KnowledgeBase shell)
         {
             InitializeComponent();
             this.Text = "Создание правила";
@@ -31,7 +31,7 @@ namespace ExpertSystem
             // TODO auto-generated description
         }
 
-        public RuleEditForm(ExpertSystemShell shell, Rule rule)
+        public RuleEditForm(KnowledgeBase shell, Rule rule)
         {
             InitializeComponent();
             this.Text = "Изменение правила";

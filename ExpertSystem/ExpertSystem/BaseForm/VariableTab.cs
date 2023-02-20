@@ -15,13 +15,13 @@ namespace ExpertSystem.BaseForm
 
         private void addVariableButton_Click(object sender, EventArgs e)
         {
-            using var variableEditForm = new VariableCreationForm(Shell);
+            using var variableEditForm = new VariableCreationForm(KnowledgeBase);
             var dialogResult = variableEditForm.ShowDialog();
             if (dialogResult != DialogResult.OK)
                 return;
 
             Variable variable = variableEditForm.Variable; // Get created variable from form
-            Shell.Variables.Add(variable);
+            KnowledgeBase.Variables.Add(variable);
             
             int index = dgvVariables.Rows.Add();
             SetVariableRowCells(dgvVariables.Rows[index], variable);
@@ -38,7 +38,7 @@ namespace ExpertSystem.BaseForm
             var variable = (Variable)selectedRow.Cells[0].Value;
             //var variableEditCopy = variable.DeepCopy();
 
-            using var variableEditForm = new VariableCreationForm(Shell, variable);
+            using var variableEditForm = new VariableCreationForm(KnowledgeBase, variable);
             if (variableEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
@@ -54,7 +54,7 @@ namespace ExpertSystem.BaseForm
             var variable = (Variable)dgvVariables.SelectedRows[0].Cells[0].Value;
 
             // TODO (!) check for variable usinging in Fact.
-            foreach (var rule in Shell.Rules)
+            foreach (var rule in KnowledgeBase.Rules)
             {
                 foreach (var fact in rule.Conclusions.Concat(rule.Premises))
                 {
@@ -67,7 +67,7 @@ namespace ExpertSystem.BaseForm
             }
 
             dgvVariables.Rows.RemoveAt(dgvVariables.SelectedRows[0].Index);
-            Shell.Variables.Remove(variable);
+            KnowledgeBase.Variables.Remove(variable);
         }
 
         private void dgvVariables_SelectionChanged(object sender, EventArgs e)

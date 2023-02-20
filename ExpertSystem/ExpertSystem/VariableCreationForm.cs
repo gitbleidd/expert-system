@@ -13,19 +13,19 @@ namespace ExpertSystem
 {
     public partial class VariableCreationForm : Form
     {
-        private ExpertSystemShell Shell { get; }
+        private KnowledgeBase KnowledgeBase { get; }
         public Variable Variable { get; private set; }
 
-        public VariableCreationForm(ExpertSystemShell shell)
+        public VariableCreationForm(KnowledgeBase knowledgeBase)
         {
             InitializeComponent();
-            Shell = shell;
+            KnowledgeBase = knowledgeBase;
             Variable = new Variable(string.Empty, null, VarType.Inquire, string.Empty);
             this.Text = "Создание переменной";
 
             // Initializing form fields
             variableNameTextBox.Text = string.Empty;
-            foreach (var domain in Shell.Domains)
+            foreach (var domain in KnowledgeBase.Domains)
             {
                 domainComboBox.Items.Add(domain);
             }
@@ -35,17 +35,17 @@ namespace ExpertSystem
             questionTextBox.Text = string.Empty;
         }
 
-        public VariableCreationForm(ExpertSystemShell shell, Variable variable)
+        public VariableCreationForm(KnowledgeBase knowledgeBase, Variable variable)
         {
             InitializeComponent();
-            Shell = shell;
+            KnowledgeBase = knowledgeBase;
             Variable = variable;
             this.Text = "Редактирование переменной";
 
 
             // Initializing form fields
             variableNameTextBox.Text = Variable.Name;
-            foreach (var domain in Shell.Domains)
+            foreach (var domain in KnowledgeBase.Domains)
             {
                 domainComboBox.Items.Add(domain);
             }
@@ -57,7 +57,7 @@ namespace ExpertSystem
         private void createDomainButton_Click(object sender, EventArgs e)
         {
             var domain = new Domain(string.Empty);
-            using var domainEditForm = new DomainEditForm(Shell, domain);
+            using var domainEditForm = new DomainEditForm(KnowledgeBase, domain);
             var dialogResult = domainEditForm.ShowDialog();
 
             if (dialogResult != DialogResult.OK)
@@ -65,7 +65,7 @@ namespace ExpertSystem
                 return;
             }
 
-            Shell.Domains.Add(domain);
+            KnowledgeBase.Domains.Add(domain);
             int index = domainComboBox.Items.Add(domain);
             domainComboBox.SelectedIndex = index;
             domainComboBox.Refresh();
@@ -84,7 +84,7 @@ namespace ExpertSystem
                 MessageBox.Show("Необходимо заполнить поле с именем переменной!");
                 return;
             }
-            if (variableNameTextBox.Text != Variable.Name && Shell.GetVariableByName(variableNameTextBox.Text) != null)
+            if (variableNameTextBox.Text != Variable.Name && KnowledgeBase.GetVariableByName(variableNameTextBox.Text) != null)
             {
                 MessageBox.Show("Переменная с таким именем уже существует!");
                 return;

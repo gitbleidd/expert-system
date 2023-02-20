@@ -4,7 +4,7 @@ namespace ExpertSystem.BaseForm
 {
     public partial class MainForm : Form
     {
-        private ExpertSystemShell Shell { get; set; } = null!;
+        private KnowledgeBase KnowledgeBase { get; set; } = null!;
         public MainForm()
         {
             InitializeComponent();
@@ -18,7 +18,7 @@ namespace ExpertSystem.BaseForm
         private void newToolStrip_Click(object sender, EventArgs e)
         {
             tabControl.Visible = true;
-            Shell = new ExpertSystemShell();
+            KnowledgeBase = new KnowledgeBase();
             tabControl.SelectedIndex = 0;
             // TODO clear consulting form (?)
         }
@@ -62,7 +62,7 @@ namespace ExpertSystem.BaseForm
                 case 0:
                     // TODO fill rules page
                     dgvRules.Rows.Clear();
-                    foreach (var rule in Shell.Rules)
+                    foreach (var rule in KnowledgeBase.Rules)
                     {
                         int index = dgvVariables.Rows.Add();
                         SetRuleRowCells(dgvVariables.Rows[index], rule);
@@ -77,7 +77,7 @@ namespace ExpertSystem.BaseForm
                 case 1:
                     // Fill variables page
                     dgvVariables.Rows.Clear();
-                    foreach (var variable in Shell.Variables)
+                    foreach (var variable in KnowledgeBase.Variables)
                     {
                         int index = dgvVariables.Rows.Add();
                         SetVariableRowCells(dgvVariables.Rows[index], variable);
@@ -86,14 +86,14 @@ namespace ExpertSystem.BaseForm
                     {
                         // Bug: turn on manually because dgv on select_change_event
                         // always return null if there is one element
-                        UpdateFormOnSelectedChange(Shell.Variables.First());
+                        UpdateFormOnSelectedChange(KnowledgeBase.Variables.First());
                     }
                     dgvVariables.Refresh();
                     break;
                 case 2:
                     // Fill domain page
                     dgvDomains.Rows.Clear();
-                    foreach (var domain in Shell.Domains)
+                    foreach (var domain in KnowledgeBase.Domains)
                     {
                         //dgvRules.Rows.Add(new string[] { "Orange-Salsa Pork Chops", "Main Dish" });
                         dgvDomains.Rows.Add(domain);
@@ -104,7 +104,7 @@ namespace ExpertSystem.BaseForm
                     }
                     dgvDomains.Refresh();
 
-                    // ?? dgvRules.Rows.Add(Shell.Domains.ToArray());
+                    // ?? dgvRules.Rows.Add(KnowledgeBase.Domains.ToArray());
                     break;
                 default:
                     break;

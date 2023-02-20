@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExpertSystem.Entities
 {
-    public class ExpertSystemShell
+    public class KnowledgeBase
     {
         public List<Domain> Domains { get; } = new();
         public List<Variable> Variables { get; } = new();
