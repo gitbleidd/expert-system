@@ -16,11 +16,11 @@ namespace ExpertSystem
         private Domain Domain { get; }
         private KnowledgeBase KnowledgeBase { get; }
 
-        private string _originalName;
+        private readonly string _originalName;
 
-        private List<DomainValue> _orinalValuesList;
-        private List<string> _orinalValuesNames;
-        private bool isDomainSaved = false;
+        private readonly List<DomainValue> _originalValuesList;
+        private readonly List<string> _originalValuesNames;
+        private bool _isDomainSaved = false;
 
         public DomainEditForm(KnowledgeBase knowledgeBase) : this(knowledgeBase, new Domain(""))
         {
@@ -32,13 +32,15 @@ namespace ExpertSystem
             InitializeComponent();
             this.Text = "Изменение домена";
             _originalName = domain.Name;
-            _orinalValuesList = new List<DomainValue>(domain.Values);
-            _orinalValuesNames = domain.Values.Select(v => v.Value).ToList();
+            _originalValuesList = new List<DomainValue>(domain.Values);
+            _originalValuesNames = domain.Values.Select(v => v.Value).ToList();
 
             Domain = domain;
             KnowledgeBase = knowledgeBase;
 
-            domainNameTextBox.Text = Domain.Name;
+            domainNameTextBox.Text = string.IsNullOrEmpty(Domain.Name) ? $"Domain {KnowledgeBase.Domains.Count + 1}" : Domain.Name;
+            domainValueTextBox.Text = domainValueTextBox.Text = $"Value {Domain.Values.Count + 1}";
+            
             foreach (var value in Domain.Values)
             {
                 dgvValues.Rows.Add(value);
@@ -62,6 +64,8 @@ namespace ExpertSystem
             var domainValue = new DomainValue(domainValueTextBox.Text);
             Domain.Values.Add(domainValue);
             dgvValues.Rows.Add(domainValue);
+
+            domainValueTextBox.Text = $"Value {Domain.Values.Count + 1}";
         }
 
         private void editValueButton_Click(object sender, EventArgs e)
@@ -214,7 +218,7 @@ namespace ExpertSystem
             }
 
             Domain.Name = domainNameTextBox.Text;
-            isDomainSaved = true;
+            _isDomainSaved = true;
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -229,17 +233,17 @@ namespace ExpertSystem
 
         private void DomainEditForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (isDomainSaved)
+            if (_isDomainSaved)
                 return;
             CancelEditActions();
         }
 
         private void CancelEditActions()
         {
-            Domain.Values = _orinalValuesList;
+            Domain.Values = _originalValuesList;
             for (int i = 0; i < Domain.Values.Count; i++)
             {
-                Domain.Values[i].Value = _orinalValuesNames[i];
+                Domain.Values[i].Value = _originalValuesNames[i];
             }
         }
     }
