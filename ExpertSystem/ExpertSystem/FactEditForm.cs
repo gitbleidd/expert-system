@@ -26,7 +26,7 @@ namespace ExpertSystem
             IsPremiseForm = isPremiseForm;
             Fact = new Fact(null, null);
 
-            IntializeVariableCombobox();
+            InitializeVariableCombobox();
         }
 
         public FactEditForm(KnowledgeBase knowledgeBase, Fact fact, bool isPremiseForm)
@@ -38,7 +38,7 @@ namespace ExpertSystem
             Fact = fact;
             IsPremiseForm = isPremiseForm;
 
-            IntializeVariableCombobox();
+            InitializeVariableCombobox();
         }
 
         private void createVariableButton_Click(object sender, EventArgs e)
@@ -73,10 +73,17 @@ namespace ExpertSystem
             if (variable == null)
                 return;
 
+            // Fill domain values combobox for selected variable
             domainValueComboBox.Items.Clear();
             foreach (var domainValue in variable.Domain.Values)
             {
                 domainValueComboBox.Items.Add(domainValue);
+            }
+
+            // Select first element in combobox
+            if (domainValueComboBox.Items.Count > 0)
+            {
+                domainValueComboBox.SelectedIndex = 0;
             }
         }
 
@@ -109,7 +116,7 @@ namespace ExpertSystem
             this.Close();
         }
 
-        private void IntializeVariableCombobox()
+        private void InitializeVariableCombobox()
         {
             // TODO уточнить насчет типов переменных (2)
             foreach (var variable in KnowledgeBase.Variables)
@@ -125,6 +132,12 @@ namespace ExpertSystem
                 {
                     variableComboBox.Items.Add(variable);
                 }
+            }
+
+            // Choose first variable if combobox is not empty
+            if (variableComboBox.Items.Count > 0)
+            {
+                variableComboBox.SelectedIndex = 0;
             }
         }
     }
