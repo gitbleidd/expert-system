@@ -16,13 +16,14 @@ namespace ExpertSystem
         private KnowledgeBase Shell { get; }
         public Rule Rule { get; private set; }
 
-        private List<Fact> _originalPremises;
-        private List<Fact> _originalConclusions;
+        private readonly List<Fact> _originalPremises;
+        private readonly List<Fact> _originalConclusions;
 
         public RuleEditForm(KnowledgeBase shell)
         {
             InitializeComponent();
             this.Text = "Создание правила";
+            
             Shell = shell;
             Rule = new Rule(string.Empty, string.Empty);
             _originalPremises = new List<Fact>();
