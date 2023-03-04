@@ -5,7 +5,7 @@ namespace ExpertSystem
     public partial class RuleEditForm : Form
     {
         private KnowledgeBase Knowledge { get; }
-        public Rule Rule { get; private set; }
+        public Rule Rule { get; }
 
         public RuleEditForm(KnowledgeBase knowledge)
         {
@@ -51,7 +51,7 @@ namespace ExpertSystem
 
         private void editPremiseButton_Click(object sender, EventArgs e)
         {
-            // (!) Changes in the facts will remain if user cancels editing
+            // (!) Changes in the premise will remain if user cancels editing
             
             if (premiseListBox.SelectedItems.Count == 0)
                 return;
@@ -65,7 +65,6 @@ namespace ExpertSystem
                 return;
 
             premiseListBox.Items[selectedIndex] = premise; // Need to redraw with updated premise
-            
             UpdateDescription();
         }
 
@@ -74,8 +73,7 @@ namespace ExpertSystem
             if (premiseListBox.SelectedItems.Count == 0)
                 return;
 
-            var premise = premiseListBox.SelectedItems[0] as Fact;
-            if (premise == null)
+            if (premiseListBox.SelectedItems[0] is not Fact premise)
                 return;
 
             premiseListBox.Items.RemoveAt(premiseListBox.SelectedIndex);
@@ -90,7 +88,7 @@ namespace ExpertSystem
             if (factEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
-            var conclusion = factEditForm.Fact; // Getting result from form and updating data and view
+            var conclusion = factEditForm.Fact; 
             conclusionListBox.Items.Add(conclusion);
             UpdateDescription();
         }
@@ -103,7 +101,7 @@ namespace ExpertSystem
                 return;
             int selectedIndex = conclusionListBox.SelectedIndex;
             
-            // Delegate conclusion to edit. If user cancel result won't be written to it.
+            // Delegate conclusion to edit form. If user cancel result won't be written to it.
             using var factEditForm = new FactEditForm(Knowledge, conclusionListBox.Items.Cast<Fact>(), conclusion, true);
             if (factEditForm.ShowDialog() != DialogResult.OK)
                 return;
@@ -117,8 +115,7 @@ namespace ExpertSystem
             if (conclusionListBox.SelectedItems.Count == 0)
                 return;
 
-            var conclusion = conclusionListBox.SelectedItems[0] as Fact;
-            if (conclusion == null)
+            if (conclusionListBox.SelectedItems[0] is not Fact conclusion)
                 return;
 
             conclusionListBox.Items.RemoveAt(conclusionListBox.SelectedIndex);
@@ -188,6 +185,7 @@ namespace ExpertSystem
             Rule.Name = ruleNameTextBox.Text;
             Rule.Description = descriptionTextBox.Text;
 
+            // Get premises, conclusion from list box and save them in rule
             var premises = new List<Fact>(premiseListBox.Items.Count);
             premises.AddRange(premiseListBox.Items.Cast<Fact>());
             Rule.Premises = premises;
@@ -206,6 +204,10 @@ namespace ExpertSystem
             this.Close();
         }
 
+        /// <summary>
+        /// Form rule description by concatenating premises and conclusions and updates its field.
+        /// Set field to empty string if couldn't form description.  
+        /// </summary>
         private void UpdateDescription()
         {
             if (premiseListBox.Items.Count == 0 || conclusionListBox.Items.Count == 0)
