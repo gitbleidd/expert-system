@@ -1,14 +1,4 @@
 ﻿using ExpertSystem.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Rule = ExpertSystem.Entities.Rule;
 
 namespace ExpertSystem
 {
@@ -17,7 +7,7 @@ namespace ExpertSystem
         private KnowledgeBase KnowledgeBase { get; }
         private IEnumerable<Fact> Facts { get; }
         private bool IsPremiseForm { get; }
-        public Fact Fact { get; private set; }
+        public Fact Fact { get; }
 
         public FactEditForm(KnowledgeBase knowledgeBase, IEnumerable<Fact> facts, bool isPremiseForm)
         {
@@ -35,7 +25,7 @@ namespace ExpertSystem
         public FactEditForm(KnowledgeBase knowledgeBase, IEnumerable<Fact> facts, Fact fact, bool isPremiseForm)
         {
             InitializeComponent();
-            this.Text = $"Изменение факта";
+            this.Text = "Изменение факта";
 
             KnowledgeBase = knowledgeBase;
             Facts = facts;
@@ -72,8 +62,7 @@ namespace ExpertSystem
 
         private void variableComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var variable = variableComboBox.SelectedItem as Variable;
-            if (variable == null)
+            if (variableComboBox.SelectedItem is not Variable variable)
                 return;
 
             // Fill domain values combobox for selected variable
@@ -92,15 +81,13 @@ namespace ExpertSystem
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            var variable = variableComboBox.SelectedItem as Variable;
-            if (variable is null)
+            if (variableComboBox.SelectedItem is not Variable variable)
             {
                 MessageBox.Show("Выберите переменную!");
                 return;
             }
 
-            var domainValue = domainValueComboBox.SelectedItem as DomainValue;
-            if (domainValue is null)
+            if (domainValueComboBox.SelectedItem is not DomainValue domainValue)
             {
                 MessageBox.Show("Выберите значение!");
                 return;
@@ -132,7 +119,6 @@ namespace ExpertSystem
 
         private void InitializeVariableCombobox()
         {
-            // TODO уточнить насчет типов переменных (2)
             foreach (var variable in KnowledgeBase.Variables)
             {
                 // Посылка: запрашиваемые и выводимо-запрашиваемые
@@ -155,7 +141,7 @@ namespace ExpertSystem
             }
         }
         
-        private Fact? FindFactByValues(IEnumerable<Fact> facts, Variable variable, DomainValue domainValue)
+        private static Fact? FindFactByValues(IEnumerable<Fact> facts, Variable variable, DomainValue domainValue)
         {
             return facts.FirstOrDefault(f => f.Variable == variable && f.DomainValue == domainValue);
         }
