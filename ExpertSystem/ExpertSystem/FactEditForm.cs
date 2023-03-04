@@ -8,33 +8,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Rule = ExpertSystem.Entities.Rule;
 
 namespace ExpertSystem
 {
     public partial class FactEditForm : Form
     {
         private KnowledgeBase KnowledgeBase { get; }
+        private IEnumerable<Fact> Facts { get; }
         private bool IsPremiseForm { get; }
         public Fact Fact { get; private set; }
 
-        public FactEditForm(KnowledgeBase knowledgeBase, bool isPremiseForm)
+        public FactEditForm(KnowledgeBase knowledgeBase, IEnumerable<Fact> facts, bool isPremiseForm)
         {
             InitializeComponent();
             this.Text = "Добавление факта";
 
             KnowledgeBase = knowledgeBase;
+            Facts = facts;
             IsPremiseForm = isPremiseForm;
             Fact = new Fact(null, null);
 
             InitializeVariableCombobox();
         }
 
-        public FactEditForm(KnowledgeBase knowledgeBase, Fact fact, bool isPremiseForm)
+        public FactEditForm(KnowledgeBase knowledgeBase, IEnumerable<Fact> facts, Fact fact, bool isPremiseForm)
         {
             InitializeComponent();
             this.Text = $"Изменение факта";
 
             KnowledgeBase = knowledgeBase;
+            Facts = facts;
             Fact = fact;
             IsPremiseForm = isPremiseForm;
 
@@ -50,17 +54,16 @@ namespace ExpertSystem
 
             var variable = variableEditForm.Variable; // Get created variable from Form
             KnowledgeBase.Variables.Add(variable);
-
-            // TODO уточнить насчет типов переменных (1)
-            // Посылка: запрашиваемые и запрашиваемо-выводимые (неточно)
-            if (IsPremiseForm && (variable.VariableType == VarType.Inquire || variable.VariableType == VarType.InquireProduce))
+            
+            // Посылка: запрашиваемые и выводимо-запрашиваемые
+            if (IsPremiseForm && (variable.VariableType == VarType.Inquire || variable.VariableType == VarType.ProduceInquire))
             {
                 variableComboBox.Items.Add(variable);
                 variableComboBox.SelectedItem = variable;
             }
             
-            // Заключение: выводимые и запрашиваемо-выводимые
-            if (!IsPremiseForm && (variable.VariableType == VarType.Produce || variable.VariableType == VarType.InquireProduce))
+            // Заключение: выводимые и выводимо-запрашиваемые
+            if (!IsPremiseForm && (variable.VariableType == VarType.Produce || variable.VariableType == VarType.ProduceInquire))
             {
                 variableComboBox.Items.Add(variable);
                 variableComboBox.SelectedItem = variable;
@@ -103,6 +106,17 @@ namespace ExpertSystem
                 return;
             }
 
+            if (IsPremiseForm && FindFactByValues(Facts, variable, domainValue) != null)
+            {
+                MessageBox.Show("Такая посылка уже существует!");
+                return;
+            }
+            if (!IsPremiseForm && FindFactByValues(Facts, variable, domainValue) != null)
+            {
+                MessageBox.Show("Такое заключение уже существует!");
+                return;
+            }
+
             Fact.Variable = variable;
             Fact.DomainValue = domainValue;
 
@@ -121,14 +135,14 @@ namespace ExpertSystem
             // TODO уточнить насчет типов переменных (2)
             foreach (var variable in KnowledgeBase.Variables)
             {
-                // Посылка: запрашиваемые и запрашиваемо-выводимые (неточно)
-                if (IsPremiseForm && (variable.VariableType == VarType.Inquire || variable.VariableType == VarType.InquireProduce))
+                // Посылка: запрашиваемые и выводимо-запрашиваемые
+                if (IsPremiseForm && (variable.VariableType == VarType.Inquire || variable.VariableType == VarType.ProduceInquire))
                 {
                     variableComboBox.Items.Add(variable);
                 }
 
-                // Заключение: выводимые и запрашиваемо-выводимые
-                if (!IsPremiseForm && (variable.VariableType == VarType.Produce || variable.VariableType == VarType.InquireProduce))
+                // Заключение: выводимые и выводимо-запрашиваемые
+                if (!IsPremiseForm && (variable.VariableType == VarType.Produce || variable.VariableType == VarType.ProduceInquire))
                 {
                     variableComboBox.Items.Add(variable);
                 }
@@ -139,6 +153,11 @@ namespace ExpertSystem
             {
                 variableComboBox.SelectedIndex = 0;
             }
+        }
+        
+        private Fact? FindFactByValues(IEnumerable<Fact> facts, Variable variable, DomainValue domainValue)
+        {
+            return facts.FirstOrDefault(f => f.Variable == variable && f.DomainValue == domainValue);
         }
     }
 }

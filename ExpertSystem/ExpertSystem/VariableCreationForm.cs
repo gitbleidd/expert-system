@@ -114,13 +114,13 @@ namespace ExpertSystem
             switch (type)
             {
                 case VarType.Inquire:
-                    inquireProduceRadioButton.Checked = true;
+                    produceInquireRadioButton.Checked = true;
                     break;
                 case VarType.Produce:
                     produceRadioButton.Checked = true;
                     break;
-                case VarType.InquireProduce:
-                    inquireProduceRadioButton.Checked = true;
+                case VarType.ProduceInquire:
+                    produceInquireRadioButton.Checked = true;
                     break;
                 default:
                     break;
@@ -145,8 +145,8 @@ namespace ExpertSystem
                         return VarType.Inquire;
                     case "produceRadioButton":
                         return VarType.Produce;
-                    case "inquireProduceRadioButton":
-                        return VarType.InquireProduce;
+                    case "produceInquireRadioButton":
+                        return VarType.ProduceInquire;
                     default:
                         break;
                 }

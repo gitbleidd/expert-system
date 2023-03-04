@@ -10,8 +10,7 @@ namespace ExpertSystem.Entities
     {
         Inquire,
         Produce,
-        InquireProduce,
-        //ProduceInquire
+        ProduceInquire
     }
 
     public static class EnumExtention
@@ -24,10 +23,8 @@ namespace ExpertSystem.Entities
                     return "Запрашиваемая";
                 case VarType.Produce:
                     return "Выводимая";
-                case VarType.InquireProduce:
-                    return "Запрашиваемо-выводимая";
-                //case VarType.ProduceInquire:
-                //    return "Выводимо-запрашиваемая";
+                case VarType.ProduceInquire:
+                    return "Выводимо-запрашиваемая";
                 default:
                     throw new Exception("Undefiend enum value");
             }

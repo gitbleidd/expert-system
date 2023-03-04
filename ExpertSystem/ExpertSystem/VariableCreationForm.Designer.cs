@@ -34,7 +34,7 @@
             this.variableTypeLabel = new System.Windows.Forms.Label();
             this.questionTextLabel = new System.Windows.Forms.Label();
             this.variableTypePanel = new System.Windows.Forms.Panel();
-            this.inquireProduceRadioButton = new System.Windows.Forms.RadioButton();
+            this.produceInquireRadioButton = new System.Windows.Forms.RadioButton();
             this.produceRadioButton = new System.Windows.Forms.RadioButton();
             this.inquireRadioButton = new System.Windows.Forms.RadioButton();
             this.questionTextBox = new System.Windows.Forms.TextBox();
@@ -100,7 +100,7 @@
             // 
             // variableTypePanel
             // 
-            this.variableTypePanel.Controls.Add(this.inquireProduceRadioButton);
+            this.variableTypePanel.Controls.Add(this.produceInquireRadioButton);
             this.variableTypePanel.Controls.Add(this.produceRadioButton);
             this.variableTypePanel.Controls.Add(this.inquireRadioButton);
             this.variableTypePanel.Location = new System.Drawing.Point(12, 142);
@@ -110,14 +110,14 @@
             // 
             // inquireProduceRadioButton
             // 
-            this.inquireProduceRadioButton.AutoSize = true;
-            this.inquireProduceRadioButton.Location = new System.Drawing.Point(3, 53);
-            this.inquireProduceRadioButton.Name = "inquireProduceRadioButton";
-            this.inquireProduceRadioButton.Size = new System.Drawing.Size(177, 19);
-            this.inquireProduceRadioButton.TabIndex = 2;
-            this.inquireProduceRadioButton.TabStop = true;
-            this.inquireProduceRadioButton.Text = "Запрашиваемо-выводимая";
-            this.inquireProduceRadioButton.UseVisualStyleBackColor = true;
+            this.produceInquireRadioButton.AutoSize = true;
+            this.produceInquireRadioButton.Location = new System.Drawing.Point(3, 53);
+            this.produceInquireRadioButton.Name = "produceInquireRadioButton";
+            this.produceInquireRadioButton.Size = new System.Drawing.Size(177, 19);
+            this.produceInquireRadioButton.TabIndex = 2;
+            this.produceInquireRadioButton.TabStop = true;
+            this.produceInquireRadioButton.Text = "Выводимо-запрашиваемая";
+            this.produceInquireRadioButton.UseVisualStyleBackColor = true;
             // 
             // produceRadioButton
             // 
@@ -286,7 +286,7 @@
         private Label variableTypeLabel;
         private Label questionTextLabel;
         private Panel variableTypePanel;
-        private RadioButton inquireProduceRadioButton;
+        private RadioButton produceInquireRadioButton;
         private RadioButton produceRadioButton;
         private RadioButton inquireRadioButton;
         private TextBox questionTextBox;
