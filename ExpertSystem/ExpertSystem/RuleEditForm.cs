@@ -1,13 +1,4 @@
 ﻿using ExpertSystem.Entities;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-//using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace ExpertSystem
 {
@@ -69,8 +60,8 @@ namespace ExpertSystem
             int selectedIndex = premiseListBox.SelectedIndex;
 
             // Delegate premise to edit. If user cancel result won't be written to it.
-            using var FactEditForm = new FactEditForm(Knowledge, premiseListBox.Items.Cast<Fact>(), premise, true);
-            if (FactEditForm.ShowDialog() != DialogResult.OK)
+            using var factEditForm = new FactEditForm(Knowledge, premiseListBox.Items.Cast<Fact>(), premise, true);
+            if (factEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
             premiseListBox.Items[selectedIndex] = premise; // Need to redraw with updated premise
@@ -95,11 +86,11 @@ namespace ExpertSystem
         #region Conclusion buttons
         private void addConclusionButton_Click(object sender, EventArgs e)
         {
-            using var FactEditForm = new FactEditForm(Knowledge, conclusionListBox.Items.Cast<Fact>(), false);
-            if (FactEditForm.ShowDialog() != DialogResult.OK)
+            using var factEditForm = new FactEditForm(Knowledge, conclusionListBox.Items.Cast<Fact>(), false);
+            if (factEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
-            var conclusion = FactEditForm.Fact; // Getting result from form and updating data and view
+            var conclusion = factEditForm.Fact; // Getting result from form and updating data and view
             conclusionListBox.Items.Add(conclusion);
             UpdateDescription();
         }
@@ -113,8 +104,8 @@ namespace ExpertSystem
             int selectedIndex = conclusionListBox.SelectedIndex;
             
             // Delegate conclusion to edit. If user cancel result won't be written to it.
-            using var FactEditForm = new FactEditForm(Knowledge, conclusionListBox.Items.Cast<Fact>(), conclusion, true);
-            if (FactEditForm.ShowDialog() != DialogResult.OK)
+            using var factEditForm = new FactEditForm(Knowledge, conclusionListBox.Items.Cast<Fact>(), conclusion, true);
+            if (factEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
             conclusionListBox.Items[selectedIndex] = conclusionListBox; // Need to redraw with updated conclusion
@@ -220,7 +211,7 @@ namespace ExpertSystem
             if (premiseListBox.Items.Count == 0 || conclusionListBox.Items.Count == 0)
             {
                 descriptionTextBox.Text = string.Empty;
-                return;;
+                return;
             }
 
             string premisesText = string.Join(" И ", premiseListBox.Items.Cast<Fact>().Select(f => f.ToString()));
