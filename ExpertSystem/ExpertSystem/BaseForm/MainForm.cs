@@ -32,7 +32,7 @@ namespace ExpertSystem.BaseForm
 
         private void openToolStrip_Click(object sender, EventArgs e)
         {
-            using var openFileDialog = new System.Windows.Forms.OpenFileDialog()
+            using var openFileDialog = new OpenFileDialog()
             {
                 Title = "Открытие к базе знаний",
                 DefaultExt = "kb",
@@ -114,7 +114,7 @@ namespace ExpertSystem.BaseForm
             File.WriteAllText(path, knowledgeBaseJson);
         }
 
-        private void dgvSelectionChanged(object sender, Button editButton, Button deleteButton)
+        private void DgvSelectionChanged(object sender, Button editButton, Button deleteButton)
         {
             if (sender is not DataGridView dgv)
                 return;

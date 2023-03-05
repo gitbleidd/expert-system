@@ -82,7 +82,7 @@ namespace ExpertSystem.BaseForm
             if (domain == null)
                 return;
 
-            dgvSelectionChanged(sender, editDomainButton, deleteDomainButton);
+            DgvSelectionChanged(sender, editDomainButton, deleteDomainButton);
 
             domainValuesListBox.Items.Clear();
             foreach (var value in domain.Values)
