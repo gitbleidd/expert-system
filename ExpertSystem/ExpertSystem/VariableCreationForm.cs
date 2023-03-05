@@ -117,11 +117,11 @@ namespace ExpertSystem
                     requestedRadioButton.Checked = true;
                     // TODO check later was before: produceInquireRadioButton.Checked = true;
                     break;
-                case VarType.Produce:
-                    produceRadioButton.Checked = true;
+                case VarType.Inferred:
+                    inferredRadioButton.Checked = true;
                     break;
-                case VarType.ProduceInquire:
-                    produceInquireRadioButton.Checked = true;
+                case VarType.InferredRequested:
+                    inferredRequestedRadioButton.Checked = true;
                     break;
                 default:
                     break;
@@ -142,10 +142,10 @@ namespace ExpertSystem
                 {
                     case "requestedRadioButton":
                         return VarType.Requested;
-                    case "produceRadioButton":
-                        return VarType.Produce;
-                    case "produceInquireRadioButton":
-                        return VarType.ProduceInquire;
+                    case "inferredRadioButton":
+                        return VarType.Inferred;
+                    case "inferredRequestedRadioButton":
+                        return VarType.InferredRequested;
                     default:
                         break;
                 }

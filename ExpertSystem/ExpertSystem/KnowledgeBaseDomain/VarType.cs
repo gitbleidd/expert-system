@@ -9,11 +9,11 @@ namespace ExpertSystem.KnowledgeBaseDomain
     public enum VarType
     {
         Requested,
-        Produce,
-        ProduceInquire
+        Inferred,
+        InferredRequested
     }
 
-    public static class EnumExtention
+    public static class EnumExtension
     {
         public static string GetName(this VarType varType)
         {
@@ -21,9 +21,9 @@ namespace ExpertSystem.KnowledgeBaseDomain
             {
                 case VarType.Requested:
                     return "Запрашиваемая";
-                case VarType.Produce:
+                case VarType.Inferred:
                     return "Выводимая";
-                case VarType.ProduceInquire:
+                case VarType.InferredRequested:
                     return "Выводимо-запрашиваемая";
                 default:
                     throw new Exception("Undefiend enum value");

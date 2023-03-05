@@ -46,14 +46,14 @@ namespace ExpertSystem
             KnowledgeBase.Variables.Add(variable);
             
             // Посылка: запрашиваемые и выводимо-запрашиваемые
-            if (IsPremiseForm && (variable.VariableType == VarType.Requested || variable.VariableType == VarType.ProduceInquire))
+            if (IsPremiseForm && (variable.VariableType == VarType.Requested || variable.VariableType == VarType.InferredRequested))
             {
                 variableComboBox.Items.Add(variable);
                 variableComboBox.SelectedItem = variable;
             }
             
             // Заключение: выводимые и выводимо-запрашиваемые
-            if (!IsPremiseForm && (variable.VariableType == VarType.Produce || variable.VariableType == VarType.ProduceInquire))
+            if (!IsPremiseForm && (variable.VariableType == VarType.Inferred || variable.VariableType == VarType.InferredRequested))
             {
                 variableComboBox.Items.Add(variable);
                 variableComboBox.SelectedItem = variable;
@@ -122,13 +122,13 @@ namespace ExpertSystem
             foreach (var variable in KnowledgeBase.Variables)
             {
                 // Посылка: запрашиваемые и выводимо-запрашиваемые
-                if (IsPremiseForm && (variable.VariableType == VarType.Requested || variable.VariableType == VarType.ProduceInquire))
+                if (IsPremiseForm && (variable.VariableType == VarType.Requested || variable.VariableType == VarType.InferredRequested))
                 {
                     variableComboBox.Items.Add(variable);
                 }
 
                 // Заключение: выводимые и выводимо-запрашиваемые
-                if (!IsPremiseForm && (variable.VariableType == VarType.Produce || variable.VariableType == VarType.ProduceInquire))
+                if (!IsPremiseForm && (variable.VariableType == VarType.Inferred || variable.VariableType == VarType.InferredRequested))
                 {
                     variableComboBox.Items.Add(variable);
                 }

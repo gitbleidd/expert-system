@@ -34,8 +34,8 @@
             this.variableTypeLabel = new System.Windows.Forms.Label();
             this.questionTextLabel = new System.Windows.Forms.Label();
             this.variableTypePanel = new System.Windows.Forms.Panel();
-            this.produceInquireRadioButton = new System.Windows.Forms.RadioButton();
-            this.produceRadioButton = new System.Windows.Forms.RadioButton();
+            this.inferredRequestedRadioButton = new System.Windows.Forms.RadioButton();
+            this.inferredRadioButton = new System.Windows.Forms.RadioButton();
             this.requestedRadioButton = new System.Windows.Forms.RadioButton();
             this.questionTextBox = new System.Windows.Forms.TextBox();
             this.variableNameTextBox = new System.Windows.Forms.TextBox();
@@ -100,35 +100,35 @@
             // 
             // variableTypePanel
             // 
-            this.variableTypePanel.Controls.Add(this.produceInquireRadioButton);
-            this.variableTypePanel.Controls.Add(this.produceRadioButton);
+            this.variableTypePanel.Controls.Add(this.inferredRequestedRadioButton);
+            this.variableTypePanel.Controls.Add(this.inferredRadioButton);
             this.variableTypePanel.Controls.Add(this.requestedRadioButton);
             this.variableTypePanel.Location = new System.Drawing.Point(12, 142);
             this.variableTypePanel.Name = "variableTypePanel";
             this.variableTypePanel.Size = new System.Drawing.Size(248, 77);
             this.variableTypePanel.TabIndex = 6;
             // 
-            // inquireProduceRadioButton
+            // inferredRequestedRadioButton
             // 
-            this.produceInquireRadioButton.AutoSize = true;
-            this.produceInquireRadioButton.Location = new System.Drawing.Point(3, 53);
-            this.produceInquireRadioButton.Name = "produceInquireRadioButton";
-            this.produceInquireRadioButton.Size = new System.Drawing.Size(177, 19);
-            this.produceInquireRadioButton.TabIndex = 2;
-            this.produceInquireRadioButton.TabStop = true;
-            this.produceInquireRadioButton.Text = "Выводимо-запрашиваемая";
-            this.produceInquireRadioButton.UseVisualStyleBackColor = true;
+            this.inferredRequestedRadioButton.AutoSize = true;
+            this.inferredRequestedRadioButton.Location = new System.Drawing.Point(3, 53);
+            this.inferredRequestedRadioButton.Name = "inferredRequestedRadioButton";
+            this.inferredRequestedRadioButton.Size = new System.Drawing.Size(177, 19);
+            this.inferredRequestedRadioButton.TabIndex = 2;
+            this.inferredRequestedRadioButton.TabStop = true;
+            this.inferredRequestedRadioButton.Text = "Выводимо-запрашиваемая";
+            this.inferredRequestedRadioButton.UseVisualStyleBackColor = true;
             // 
-            // produceRadioButton
+            // inferredRadioButton
             // 
-            this.produceRadioButton.AutoSize = true;
-            this.produceRadioButton.Location = new System.Drawing.Point(3, 28);
-            this.produceRadioButton.Name = "produceRadioButton";
-            this.produceRadioButton.Size = new System.Drawing.Size(88, 19);
-            this.produceRadioButton.TabIndex = 1;
-            this.produceRadioButton.TabStop = true;
-            this.produceRadioButton.Text = "Выводимая";
-            this.produceRadioButton.UseVisualStyleBackColor = true;
+            this.inferredRadioButton.AutoSize = true;
+            this.inferredRadioButton.Location = new System.Drawing.Point(3, 28);
+            this.inferredRadioButton.Name = "inferredRadioButton";
+            this.inferredRadioButton.Size = new System.Drawing.Size(88, 19);
+            this.inferredRadioButton.TabIndex = 1;
+            this.inferredRadioButton.TabStop = true;
+            this.inferredRadioButton.Text = "Выводимая";
+            this.inferredRadioButton.UseVisualStyleBackColor = true;
             // 
             // inquireRadioButton
             // 
@@ -286,8 +286,8 @@
         private Label variableTypeLabel;
         private Label questionTextLabel;
         private Panel variableTypePanel;
-        private RadioButton produceInquireRadioButton;
-        private RadioButton produceRadioButton;
+        private RadioButton inferredRequestedRadioButton;
+        private RadioButton inferredRadioButton;
         private RadioButton requestedRadioButton;
         private TextBox questionTextBox;
         private TextBox variableNameTextBox;
