@@ -112,8 +112,7 @@ namespace ExpertSystem
         {
             if (dgvValues.SelectedRows.Count > 0)
             {
-                var domain = dgvValues.SelectedRows[0].Cells[0].Value as DomainValue;
-                if (domain == null)
+                if (dgvValues.SelectedRows[0].Cells[0].Value is not DomainValue domain)
                     return;
                 
                 domainValueTextBox.Text = domain.Value;
@@ -156,22 +155,20 @@ namespace ExpertSystem
             if (hitInfo.Type == DataGridViewHitTestType.None)
                 return;
 
-            var updatedCopyOfDgvItems = dgvValues.Rows.Cast<DataGridViewRow>().ToArray();
-
             int dragRowIndex = dragRows[0].Index;
             int swapRowIndex = hitInfo.RowIndex;
-
             var dragValue = Domain.Values[dragRowIndex];
             var swapValue = Domain.Values[swapRowIndex];
 
+            // Swap in dgv
             dgvValues.Rows[dragRowIndex].Cells[0].Value = swapValue;
             dgvValues.Rows[swapRowIndex].Cells[0].Value = dragValue;
 
+            // Swap in knowledge base
             Domain.Values[dragRowIndex] = swapValue;
             Domain.Values[swapRowIndex] = dragValue;
             
             dgvValues.Refresh();
-
             dgvValues.ClearSelection();
             dgvValues.Rows[swapRowIndex].Selected = true;
         }

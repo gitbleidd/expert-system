@@ -29,14 +29,20 @@ namespace ExpertSystem.BaseForm
 
             // Bug: turn on manually because dgv on select_change_event
             // always return null if there is one element
-            UpdateFormOnSelectedChange(variable);
+            UpdateVariableTabOnSelectedChange(variable);
         }
 
         private void editVariableButton_Click(object sender, EventArgs e)
         {
             var selectedRow = dgvVariables.SelectedRows[0];
             var variable = (Variable)selectedRow.Cells[0].Value;
-            //var variableEditCopy = variable.DeepCopy();
+            
+            var matchedRules = KnowledgeBase.GetRulesByVariable(variable);
+            if (matchedRules.Count > 0)
+            {
+                MessageBox.Show($"Переменная используется в правилах: {string.Join(", ", matchedRules)}!");
+                return;
+            }
 
             using var variableEditForm = new VariableCreationForm(KnowledgeBase, variable);
             if (variableEditForm.ShowDialog() != DialogResult.OK)
@@ -50,20 +56,13 @@ namespace ExpertSystem.BaseForm
         {
             if (dgvVariables.SelectedRows.Count == 0)
                 return;
-
             var variable = (Variable)dgvVariables.SelectedRows[0].Cells[0].Value;
 
-            // TODO (!) check for variable usinging in Fact.
-            foreach (var rule in KnowledgeBase.Rules)
+            var matchedRules = KnowledgeBase.GetRulesByVariable(variable);
+            if (matchedRules.Count > 0)
             {
-                foreach (var fact in rule.Conclusions.Concat(rule.Premises))
-                {
-                    if (fact.Variable == variable)
-                    {
-                        MessageBox.Show($"Переменная используется в факте правила {rule.Name}!");
-                        return;
-                    }
-                }
+                MessageBox.Show($"Переменная используется в правилах: {string.Join(", ", matchedRules)}!");
+                return;
             }
 
             dgvVariables.Rows.RemoveAt(dgvVariables.SelectedRows[0].Index);
@@ -78,11 +77,10 @@ namespace ExpertSystem.BaseForm
                 return;
             }
 
-            var variable = dgvVariables.SelectedRows[0].Cells[0].Value as Variable;
-            if (variable == null)
+            if (dgvVariables.SelectedRows[0].Cells[0].Value is not Variable variable)
                 return;
 
-            UpdateFormOnSelectedChange(variable);
+            UpdateVariableTabOnSelectedChange(variable);
         }
 
         private void SetEditAndDeleteVariableButtonStatus(bool status)
@@ -98,7 +96,7 @@ namespace ExpertSystem.BaseForm
             row.Cells[2].Value = variable.Domain;
         }
 
-        private void UpdateFormOnSelectedChange(Variable variable)
+        private void UpdateVariableTabOnSelectedChange(Variable variable)
         {
             SetEditAndDeleteVariableButtonStatus(true);
             questionTextBox.Text = variable.QuestionText;

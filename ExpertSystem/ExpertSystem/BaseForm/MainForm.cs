@@ -20,7 +20,7 @@ namespace ExpertSystem.BaseForm
             tabControl.Visible = true;
             KnowledgeBase = new KnowledgeBase();
             tabControl.SelectedIndex = 0;
-            // TODO clear consulting form (?)
+            // TODO (?) clear consulting form 
         }
 
         private void openToolStrip_Click(object sender, EventArgs e)
@@ -32,8 +32,7 @@ namespace ExpertSystem.BaseForm
 
         private void dgvSelectionChanged(object sender, Button editButton, Button deleteButton)
         {
-            var dgv = sender as DataGridView;
-            if (dgv == null)
+            if (sender is not DataGridView dgv)
                 return;
 
             if (dgv.SelectedRows.Count == 0)
@@ -53,62 +52,71 @@ namespace ExpertSystem.BaseForm
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var tabControl = sender as TabControl;
-            if (tabControl == null)
+            if (sender is not TabControl tabControl)
                 return;
 
             switch (tabControl.SelectedIndex)
             {
                 case 0:
-                    // TODO fill rules page
-                    dgvRules.Rows.Clear();
-                    foreach (var rule in KnowledgeBase.Rules)
-                    {
-                        int index = dgvVariables.Rows.Add();
-                        SetRuleRowCells(dgvVariables.Rows[index], rule);
-                    }
-                    if (dgvRules.Rows.Count > 0)
-                    {
-                        // TODO bugfix
-                    }
-                    dgvRules.Refresh();
-
+                    FillRulesPage();
                     break;
                 case 1:
-                    // Fill variables page
-                    dgvVariables.Rows.Clear();
-                    foreach (var variable in KnowledgeBase.Variables)
-                    {
-                        int index = dgvVariables.Rows.Add();
-                        SetVariableRowCells(dgvVariables.Rows[index], variable);
-                    }
-                    if (dgvVariables.Rows.Count > 0)
-                    {
-                        // Bug: turn on manually because dgv on select_change_event
-                        // always return null if there is one element
-                        UpdateFormOnSelectedChange(KnowledgeBase.Variables.First());
-                    }
-                    dgvVariables.Refresh();
+                    FillVariablesPage();
                     break;
                 case 2:
-                    // Fill domain page
-                    dgvDomains.Rows.Clear();
-                    foreach (var domain in KnowledgeBase.Domains)
-                    {
-                        //dgvRules.Rows.Add(new string[] { "Orange-Salsa Pork Chops", "Main Dish" });
-                        dgvDomains.Rows.Add(domain);
-                    }
-                    if (dgvDomains.Rows.Count > 0)
-                    {
-                        dgvDomains.Rows[0].Selected = true;
-                    }
-                    dgvDomains.Refresh();
-
-                    // ?? dgvRules.Rows.Add(KnowledgeBase.Domains.ToArray());
+                    FillDomainPage();
                     break;
                 default:
-                    break;
+                    throw new NotImplementedException();
             }
+        }
+
+        private void FillRulesPage()
+        {
+            dgvRules.Rows.Clear();
+            foreach (var rule in KnowledgeBase.Rules)
+            {
+                int index = dgvRules.Rows.Add();
+                SetRuleRowCells(dgvRules.Rows[index], rule);
+            }
+            if (dgvRules.Rows.Count > 0)
+            {
+                // Bug: turn on manually because dgv on select_change_event
+                // always return null if there is one element
+                UpdateRuleTabOnSelectedChange(KnowledgeBase.Rules.First());
+            }
+            dgvRules.Refresh();
+        }
+        
+        private void FillVariablesPage()
+        {
+            dgvVariables.Rows.Clear();
+            foreach (var variable in KnowledgeBase.Variables)
+            {
+                int index = dgvVariables.Rows.Add();
+                SetVariableRowCells(dgvVariables.Rows[index], variable);
+            }
+            if (dgvVariables.Rows.Count > 0)
+            {
+                // Bug: turn on manually because dgv on select_change_event
+                // always return null if there is one element
+                UpdateVariableTabOnSelectedChange(KnowledgeBase.Variables.First());
+            }
+            dgvVariables.Refresh();
+        }
+
+        private void FillDomainPage()
+        {
+            dgvDomains.Rows.Clear();
+            foreach (var domain in KnowledgeBase.Domains)
+            {
+                dgvDomains.Rows.Add(domain);
+            }
+            if (dgvDomains.Rows.Count > 0)
+            {
+                dgvDomains.Rows[0].Selected = true;
+            }
+            dgvDomains.Refresh();
         }
     }
 }

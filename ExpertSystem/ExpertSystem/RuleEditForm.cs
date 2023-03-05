@@ -40,7 +40,7 @@ namespace ExpertSystem
         #region Premise buttons
         private void addPremiseButton_Click(object sender, EventArgs e)
         {
-            using var factEditForm = new FactEditForm(Knowledge, premiseListBox.Items.Cast<Fact>(), true);
+            using var factEditForm = new FactEditForm(Knowledge, GetFacts(premiseListBox), true);
             if (factEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
@@ -60,7 +60,7 @@ namespace ExpertSystem
             int selectedIndex = premiseListBox.SelectedIndex;
 
             // Delegate premise to edit. If user cancel result won't be written to it.
-            using var factEditForm = new FactEditForm(Knowledge, premiseListBox.Items.Cast<Fact>(), premise, true);
+            using var factEditForm = new FactEditForm(Knowledge, GetFacts(premiseListBox), premise, true);
             if (factEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
@@ -84,7 +84,7 @@ namespace ExpertSystem
         #region Conclusion buttons
         private void addConclusionButton_Click(object sender, EventArgs e)
         {
-            using var factEditForm = new FactEditForm(Knowledge, conclusionListBox.Items.Cast<Fact>(), false);
+            using var factEditForm = new FactEditForm(Knowledge, GetFacts(conclusionListBox), false);
             if (factEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
@@ -102,11 +102,11 @@ namespace ExpertSystem
             int selectedIndex = conclusionListBox.SelectedIndex;
             
             // Delegate conclusion to edit form. If user cancel result won't be written to it.
-            using var factEditForm = new FactEditForm(Knowledge, conclusionListBox.Items.Cast<Fact>(), conclusion, true);
+            using var factEditForm = new FactEditForm(Knowledge, GetFacts(conclusionListBox), conclusion, true);
             if (factEditForm.ShowDialog() != DialogResult.OK)
                 return;
 
-            conclusionListBox.Items[selectedIndex] = conclusionListBox; // Need to redraw with updated conclusion
+            conclusionListBox.Items[selectedIndex] = conclusion; // Need to redraw with updated conclusion
             UpdateDescription();
         }
 
@@ -220,6 +220,13 @@ namespace ExpertSystem
             string conclusionsText = string.Join(" И ", conclusionListBox.Items.Cast<Fact>().Select(f => f.ToString()));
             string description = premisesText + ", ТО " + conclusionsText;
             descriptionTextBox.Text = description;
+        }
+
+        private static List<Fact> GetFacts (ListBox listBox)
+        {
+            return listBox.Items.Count > 0
+                ? listBox.Items.Cast<Fact>().ToList()
+                : new List<Fact>();
         }
     }
 }

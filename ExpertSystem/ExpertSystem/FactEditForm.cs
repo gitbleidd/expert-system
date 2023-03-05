@@ -5,11 +5,11 @@ namespace ExpertSystem
     public partial class FactEditForm : Form
     {
         private KnowledgeBase KnowledgeBase { get; }
-        private IEnumerable<Fact> Facts { get; }
+        private List<Fact> Facts { get; }
         private bool IsPremiseForm { get; }
         public Fact Fact { get; }
 
-        public FactEditForm(KnowledgeBase knowledgeBase, IEnumerable<Fact> facts, bool isPremiseForm)
+        public FactEditForm(KnowledgeBase knowledgeBase, List<Fact> facts, bool isPremiseForm)
         {
             InitializeComponent();
             this.Text = "Добавление факта";
@@ -22,7 +22,7 @@ namespace ExpertSystem
             InitializeVariableCombobox();
         }
 
-        public FactEditForm(KnowledgeBase knowledgeBase, IEnumerable<Fact> facts, Fact fact, bool isPremiseForm)
+        public FactEditForm(KnowledgeBase knowledgeBase, List<Fact> facts, Fact fact, bool isPremiseForm)
         {
             InitializeComponent();
             this.Text = "Изменение факта";
@@ -141,7 +141,7 @@ namespace ExpertSystem
             }
         }
         
-        private static Fact? FindFactByValues(IEnumerable<Fact> facts, Variable variable, DomainValue domainValue)
+        private static Fact? FindFactByValues(List<Fact> facts, Variable variable, DomainValue domainValue)
         {
             return facts.FirstOrDefault(f => f.Variable == variable && f.DomainValue == domainValue);
         }

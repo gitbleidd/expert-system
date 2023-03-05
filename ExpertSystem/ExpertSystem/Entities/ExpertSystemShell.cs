@@ -75,5 +75,23 @@ namespace ExpertSystem.Entities
             }
             return null;
         }
+
+        public List<Rule> GetRulesByVariable(Variable variable)
+        {
+            var rules = new List<Rule>();
+            foreach (var rule in Rules)
+            {
+                foreach (var fact in rule.Conclusions.Concat(rule.Premises))
+                {
+                    if (fact.Variable == variable)
+                    {
+                        rules.Add(rule);
+                        break;
+                    }
+                }
+            }
+
+            return rules;
+        }
     }
 }
