@@ -16,7 +16,7 @@ namespace ExpertSystem.Entities
 
         public Domain? GetDomainByName(string name) => Domains.FirstOrDefault(d => d.Name == name);
 
-        public Variable? GetVariableByDomain(Domain domain) => Variables.FirstOrDefault(l => l.Domain == domain);
+        public List<Variable> GetVariablesByDomain(Domain domain) => Variables.Where(l => l.Domain == domain).ToList();
 
         public Variable? GetVariableByName(string name) => Variables.FirstOrDefault(v => v.Name == name);
 
@@ -27,28 +27,6 @@ namespace ExpertSystem.Entities
                 if (domain.Values.FirstOrDefault(v => v == domainValue) != null)
                 {
                     return domain;
-                }
-            }
-            return null;
-        }
-
-        public (Rule, Fact)? GetRuleAndFactByDomainValue(DomainValue domainValue)
-        {
-            foreach (var rule in Rules)
-            {
-                foreach (var fact in rule.Premises)
-                {
-                    if (fact.DomainValue != domainValue)
-                    {
-                        return new (rule, fact);
-                    }
-                }
-                foreach (var fact in rule.Conclusions)
-                {
-                    if (fact.DomainValue != domainValue)
-                    {
-                        return (rule, fact);
-                    }
                 }
             }
             return null;
@@ -91,6 +69,45 @@ namespace ExpertSystem.Entities
                 }
             }
 
+            return rules;
+        }
+
+        public List<Rule> GetRulesByDomainValues(List<DomainValue> domainValues)
+        {
+            var rules = new List<Rule>();
+            foreach (var rule in Rules)
+            {
+                foreach (var fact in rule.Conclusions.Concat(rule.Premises))
+                {
+                    if (domainValues.Any(domainValue => fact.DomainValue == domainValue))
+                    {
+                        rules.Add(rule);
+                        break;
+                    }
+                }
+            }
+
+            return rules;
+        }
+
+        /// <summary>
+        /// Find rules where in its facts is using domain value.  
+        /// </summary>
+        public List<Rule> GetRulesByDomainValue(DomainValue domainValue)
+        {
+            var rules = new List<Rule>();
+
+            foreach (var rule in Rules)
+            {
+                foreach (var fact in rule.Conclusions.Concat(rule.Premises))
+                {
+                    if (fact.DomainValue == domainValue)
+                    {
+                        rules.Add(rule);
+                        break;
+                    }
+                }
+            }
             return rules;
         }
     }

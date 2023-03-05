@@ -230,6 +230,7 @@
             this.Controls.Add(this.mainAddindPremisePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimumSize = new System.Drawing.Size(460, 196);
+            this.MaximizeBox = false;
             this.Name = "FactEditForm";
             this.Text = "Добавление факта посылки";
             this.conclusionTablePanel.ResumeLayout(false);

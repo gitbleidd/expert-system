@@ -21,7 +21,7 @@ namespace ExpertSystem.BaseForm
             SetRuleRowCells(dgvRules.Rows[index], rule);
             dgvRules.Refresh();
 
-            // Bug: turn on manually because dgv on select_change_event
+            // Bugfix: turn on manually because dgv on select_change_event
             // always return null if there is one element
             UpdateRuleTabOnSelectedChange(rule);
         }

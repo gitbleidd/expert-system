@@ -27,7 +27,7 @@ namespace ExpertSystem.BaseForm
             SetVariableRowCells(dgvVariables.Rows[index], variable);
             dgvVariables.Refresh();
 
-            // Bug: turn on manually because dgv on select_change_event
+            // Bugfix: turn on manually because dgv on select_change_event
             // always return null if there is one element
             UpdateVariableTabOnSelectedChange(variable);
         }
@@ -37,6 +37,7 @@ namespace ExpertSystem.BaseForm
             var selectedRow = dgvVariables.SelectedRows[0];
             var variable = (Variable)selectedRow.Cells[0].Value;
             
+            // Forbid edit if editing variable is using in rules
             var matchedRules = KnowledgeBase.GetRulesByVariable(variable);
             if (matchedRules.Count > 0)
             {

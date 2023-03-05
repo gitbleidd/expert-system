@@ -67,7 +67,7 @@ namespace ExpertSystem.BaseForm
                     FillDomainPage();
                     break;
                 default:
-                    throw new NotImplementedException();
+                    return;
             }
         }
 
@@ -81,7 +81,7 @@ namespace ExpertSystem.BaseForm
             }
             if (dgvRules.Rows.Count > 0)
             {
-                // Bug: turn on manually because dgv on select_change_event
+                // Bugfix: turn on manually because dgv on select_change_event
                 // always return null if there is one element
                 UpdateRuleTabOnSelectedChange(KnowledgeBase.Rules.First());
             }
@@ -98,7 +98,7 @@ namespace ExpertSystem.BaseForm
             }
             if (dgvVariables.Rows.Count > 0)
             {
-                // Bug: turn on manually because dgv on select_change_event
+                // Bugfix: turn on manually because dgv on select_change_event
                 // always return null if there is one element
                 UpdateVariableTabOnSelectedChange(KnowledgeBase.Variables.First());
             }

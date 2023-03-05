@@ -94,18 +94,18 @@ namespace ExpertSystem
                 return;
 
             int index = dgvValues.SelectedRows[0].Index;
-            var value = (DomainValue)dgvValues.SelectedRows[0].Cells[0].Value;
+            var domainValue = (DomainValue)dgvValues.SelectedRows[0].Cells[0].Value;
 
-            // TODO (!)check domain value if it is using in fact
-            var (rule, fact) = KnowledgeBase.GetRuleAndFactByDomainValue(value) ?? default;
-            if (rule != null)
+            // Forbid deleting if selected domain value is using in any rules' facts
+            var matchedRules = KnowledgeBase.GetRulesByDomainValue(domainValue);
+            if (matchedRules.Any())
             {
-                MessageBox.Show($"Данное значение исползуется в правиле {rule.Name}!");
+                MessageBox.Show($"Данное значение используется в фактах правил: {string.Join(", ", matchedRules)}!");
                 return;
             }
 
             dgvValues.Rows.RemoveAt(index);
-            Domain.Values.Remove(value);
+            Domain.Values.Remove(domainValue);
         }
 
         private void dgvValues_SelectionChanged(object sender, EventArgs e)

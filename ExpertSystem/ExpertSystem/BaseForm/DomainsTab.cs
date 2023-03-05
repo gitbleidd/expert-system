@@ -53,27 +53,20 @@ namespace ExpertSystem.BaseForm
             int index = dgvDomains.SelectedRows[0].Index;
             var domain = (Domain)dgvDomains.SelectedRows[0].Cells[0].Value;
 
-            Variable? domainVariable = KnowledgeBase.GetVariableByDomain(domain);
-            if (domainVariable != null)
+            // Forbid deleting domain if it is using in variables
+            List<Variable> domainVariables = KnowledgeBase.GetVariablesByDomain(domain);
+            if (domainVariables.Any())
             {
-                MessageBox.Show($"Данный домен используется в переменной '{domainVariable.Name}'!");
+                MessageBox.Show($"Данный домен используется в переменных: {string.Join(", ", domainVariables)}!");
                 return;
             }
 
-            // TODO (!) check if Fact is using values of deleting domain.
-            foreach (var rule in KnowledgeBase.Rules)
+            // Forbid deleting domain if it's values are using in rules' facts
+            var matchedRules = KnowledgeBase.GetRulesByDomainValues(domain.Values);
+            if (matchedRules.Any())
             {
-                foreach (var fact in rule.Conclusions.Concat(rule.Premises))
-                {
-                    foreach (var domainValue in domain.Values)
-                    {
-                        if (fact.DomainValue == domainValue)
-                        {
-                            MessageBox.Show($"Домен используется в факте правила {rule.Name}");
-                            return;
-                        }
-                    }
-                }
+                MessageBox.Show($"Домен используется в фактах правил: {string.Join(", ", matchedRules)}");
+                return;
             }
 
             dgvDomains.Rows.RemoveAt(index);
