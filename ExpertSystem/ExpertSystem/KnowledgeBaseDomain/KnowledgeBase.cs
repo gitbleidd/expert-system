@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ExpertSystem.Entities
+﻿namespace ExpertSystem.KnowledgeBaseDomain
 {
     public class KnowledgeBase
     {
@@ -16,43 +10,9 @@ namespace ExpertSystem.Entities
 
         public Domain? GetDomainByName(string name) => Domains.FirstOrDefault(d => d.Name == name);
 
-        public List<Variable> GetVariablesByDomain(Domain domain) => Variables.Where(l => l.Domain == domain).ToList();
-
         public Variable? GetVariableByName(string name) => Variables.FirstOrDefault(v => v.Name == name);
-
-        public Domain? GetDomainByDomainValue(DomainValue domainValue)
-        {
-            foreach (var domain in Domains)
-            {
-                if (domain.Values.FirstOrDefault(v => v == domainValue) != null)
-                {
-                    return domain;
-                }
-            }
-            return null;
-        }
-
-        public (Rule, Fact)? GetFactByVariable(Variable variable)
-        {
-            foreach (var rule in Rules)
-            {
-                foreach (var fact in rule.Premises)
-                {
-                    if (fact.Variable != variable)
-                    {
-                        return (rule, fact);
-                    }
-                }
-                foreach (var fact in rule.Conclusions)
-                {
-                    if (fact.Variable != variable)
-                    {
-                        return (rule, fact);
-                    }
-                }
-            }
-            return null;
-        }
+        
+        public List<Variable> GetVariablesByDomain(Domain domain) => Variables.Where(l => l.Domain == domain).ToList();
 
         public List<Rule> GetRulesByVariable(Variable variable)
         {

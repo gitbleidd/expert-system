@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpertSystem.Entities
+namespace ExpertSystem.KnowledgeBaseDomain
 {
     public enum VarType
     {
-        Inquire,
+        Required,
         Produce,
         ProduceInquire
     }
@@ -19,7 +19,7 @@ namespace ExpertSystem.Entities
         {
             switch (varType)
             {
-                case VarType.Inquire:
+                case VarType.Required:
                     return "Запрашиваемая";
                 case VarType.Produce:
                     return "Выводимая";

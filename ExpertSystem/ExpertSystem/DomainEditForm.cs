@@ -1,4 +1,4 @@
-﻿using ExpertSystem.Entities;
+﻿using ExpertSystem.KnowledgeBaseDomain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

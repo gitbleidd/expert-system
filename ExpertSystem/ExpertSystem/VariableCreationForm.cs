@@ -1,4 +1,4 @@
-﻿using ExpertSystem.Entities;
+﻿using ExpertSystem.KnowledgeBaseDomain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +20,7 @@ namespace ExpertSystem
         {
             InitializeComponent();
             KnowledgeBase = knowledgeBase;
-            Variable = new Variable(string.Empty, null, VarType.Inquire, string.Empty);
+            Variable = new Variable(string.Empty, null, VarType.Required, string.Empty);
             this.Text = "Создание переменной";
 
             // Initializing form fields
@@ -30,7 +30,7 @@ namespace ExpertSystem
             {
                 domainComboBox.Items.Add(domain);
             }
-            SetRadioButtonOnVariableType(VarType.Inquire);
+            SetRadioButtonOnVariableType(VarType.Required);
             
             questionTextBox.Text = $"{initVariableName}?";
         }
@@ -102,7 +102,7 @@ namespace ExpertSystem
 
             Variable.Name = variableNameTextBox.Text;
             Variable.Domain = (Domain)domainComboBox.SelectedItem;
-            Variable.VariableType = GetSeletedVariableType();
+            Variable.VariableType = GetSelectedVariableType();
             Variable.QuestionText = questionTextBox.Text;
 
             this.DialogResult = DialogResult.OK;
@@ -113,8 +113,9 @@ namespace ExpertSystem
         {
             switch (type)
             {
-                case VarType.Inquire:
-                    produceInquireRadioButton.Checked = true;
+                case VarType.Required:
+                    requiredRadioButton.Checked = true;
+                    // TODO check later was before: produceInquireRadioButton.Checked = true;
                     break;
                 case VarType.Produce:
                     produceRadioButton.Checked = true;
@@ -127,13 +128,11 @@ namespace ExpertSystem
             }
         }
 
-        private VarType GetSeletedVariableType()
+        private VarType GetSelectedVariableType()
         {
             foreach (var control in variableTypePanel.Controls)
             {
-                RadioButton? radio = control as RadioButton;
-
-                if (radio == null || !radio.Checked)
+                if (control is not RadioButton radio || !radio.Checked)
                 {
                     continue;
                 }
@@ -141,8 +140,8 @@ namespace ExpertSystem
                 var buttonName = radio.Name;
                 switch (buttonName)
                 {
-                    case "inquireRadioButton":
-                        return VarType.Inquire;
+                    case "requiredRadioButton":
+                        return VarType.Required;
                     case "produceRadioButton":
                         return VarType.Produce;
                     case "produceInquireRadioButton":

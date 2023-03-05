@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpertSystem.Entities
+namespace ExpertSystem.KnowledgeBaseDomain
 {
     public class Fact
     {

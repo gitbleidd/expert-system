@@ -1,5 +1,5 @@
 using System.Runtime.Serialization.Formatters.Binary;
-using ExpertSystem.Entities;
+using ExpertSystem.KnowledgeBaseDomain;
 using Newtonsoft.Json;
 
 namespace ExpertSystem.BaseForm
