@@ -36,7 +36,7 @@
             this.variableTypePanel = new System.Windows.Forms.Panel();
             this.produceInquireRadioButton = new System.Windows.Forms.RadioButton();
             this.produceRadioButton = new System.Windows.Forms.RadioButton();
-            this.requiredRadioButton = new System.Windows.Forms.RadioButton();
+            this.requestedRadioButton = new System.Windows.Forms.RadioButton();
             this.questionTextBox = new System.Windows.Forms.TextBox();
             this.variableNameTextBox = new System.Windows.Forms.TextBox();
             this.okCancelPremisePanelTablePanel = new System.Windows.Forms.TableLayoutPanel();
@@ -102,7 +102,7 @@
             // 
             this.variableTypePanel.Controls.Add(this.produceInquireRadioButton);
             this.variableTypePanel.Controls.Add(this.produceRadioButton);
-            this.variableTypePanel.Controls.Add(this.requiredRadioButton);
+            this.variableTypePanel.Controls.Add(this.requestedRadioButton);
             this.variableTypePanel.Location = new System.Drawing.Point(12, 142);
             this.variableTypePanel.Name = "variableTypePanel";
             this.variableTypePanel.Size = new System.Drawing.Size(248, 77);
@@ -132,14 +132,14 @@
             // 
             // inquireRadioButton
             // 
-            this.requiredRadioButton.AutoSize = true;
-            this.requiredRadioButton.Location = new System.Drawing.Point(3, 3);
-            this.requiredRadioButton.Name = "requiredRadioButton";
-            this.requiredRadioButton.Size = new System.Drawing.Size(115, 19);
-            this.requiredRadioButton.TabIndex = 0;
-            this.requiredRadioButton.TabStop = true;
-            this.requiredRadioButton.Text = "Запрашиваемая";
-            this.requiredRadioButton.UseVisualStyleBackColor = true;
+            this.requestedRadioButton.AutoSize = true;
+            this.requestedRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.requestedRadioButton.Name = "requestedRadioButton";
+            this.requestedRadioButton.Size = new System.Drawing.Size(115, 19);
+            this.requestedRadioButton.TabIndex = 0;
+            this.requestedRadioButton.TabStop = true;
+            this.requestedRadioButton.Text = "Запрашиваемая";
+            this.requestedRadioButton.UseVisualStyleBackColor = true;
             // 
             // questionTextBox
             // 
@@ -288,7 +288,7 @@
         private Panel variableTypePanel;
         private RadioButton produceInquireRadioButton;
         private RadioButton produceRadioButton;
-        private RadioButton requiredRadioButton;
+        private RadioButton requestedRadioButton;
         private TextBox questionTextBox;
         private TextBox variableNameTextBox;
         private TableLayoutPanel okCancelPremisePanelTablePanel;

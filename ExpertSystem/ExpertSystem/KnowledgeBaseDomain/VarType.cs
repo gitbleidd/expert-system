@@ -8,7 +8,7 @@ namespace ExpertSystem.KnowledgeBaseDomain
 {
     public enum VarType
     {
-        Required,
+        Requested,
         Produce,
         ProduceInquire
     }
@@ -19,7 +19,7 @@ namespace ExpertSystem.KnowledgeBaseDomain
         {
             switch (varType)
             {
-                case VarType.Required:
+                case VarType.Requested:
                     return "Запрашиваемая";
                 case VarType.Produce:
                     return "Выводимая";

@@ -20,7 +20,7 @@ namespace ExpertSystem
         {
             InitializeComponent();
             KnowledgeBase = knowledgeBase;
-            Variable = new Variable(string.Empty, null, VarType.Required, string.Empty);
+            Variable = new Variable(string.Empty, null, VarType.Requested, string.Empty);
             this.Text = "Создание переменной";
 
             // Initializing form fields
@@ -30,7 +30,7 @@ namespace ExpertSystem
             {
                 domainComboBox.Items.Add(domain);
             }
-            SetRadioButtonOnVariableType(VarType.Required);
+            SetRadioButtonOnVariableType(VarType.Requested);
             
             questionTextBox.Text = $"{initVariableName}?";
         }
@@ -113,8 +113,8 @@ namespace ExpertSystem
         {
             switch (type)
             {
-                case VarType.Required:
-                    requiredRadioButton.Checked = true;
+                case VarType.Requested:
+                    requestedRadioButton.Checked = true;
                     // TODO check later was before: produceInquireRadioButton.Checked = true;
                     break;
                 case VarType.Produce:
@@ -140,8 +140,8 @@ namespace ExpertSystem
                 var buttonName = radio.Name;
                 switch (buttonName)
                 {
-                    case "requiredRadioButton":
-                        return VarType.Required;
+                    case "requestedRadioButton":
+                        return VarType.Requested;
                     case "produceRadioButton":
                         return VarType.Produce;
                     case "produceInquireRadioButton":

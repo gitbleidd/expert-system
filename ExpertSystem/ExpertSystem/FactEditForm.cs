@@ -46,7 +46,7 @@ namespace ExpertSystem
             KnowledgeBase.Variables.Add(variable);
             
             // Посылка: запрашиваемые и выводимо-запрашиваемые
-            if (IsPremiseForm && (variable.VariableType == VarType.Required || variable.VariableType == VarType.ProduceInquire))
+            if (IsPremiseForm && (variable.VariableType == VarType.Requested || variable.VariableType == VarType.ProduceInquire))
             {
                 variableComboBox.Items.Add(variable);
                 variableComboBox.SelectedItem = variable;
@@ -122,7 +122,7 @@ namespace ExpertSystem
             foreach (var variable in KnowledgeBase.Variables)
             {
                 // Посылка: запрашиваемые и выводимо-запрашиваемые
-                if (IsPremiseForm && (variable.VariableType == VarType.Required || variable.VariableType == VarType.ProduceInquire))
+                if (IsPremiseForm && (variable.VariableType == VarType.Requested || variable.VariableType == VarType.ProduceInquire))
                 {
                     variableComboBox.Items.Add(variable);
                 }
