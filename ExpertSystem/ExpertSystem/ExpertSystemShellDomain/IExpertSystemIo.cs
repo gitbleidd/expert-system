@@ -4,6 +4,7 @@ namespace ExpertSystem.ExpertSystemShellDomain;
 
 public interface IExpertSystemIo
 {
+    void InitIo();
     void ShowMessage(string text, string caption);
-    DomainValue CreateVariableRequest();
+    DomainValue? CreateVariableRequest(Variable variable);
 }

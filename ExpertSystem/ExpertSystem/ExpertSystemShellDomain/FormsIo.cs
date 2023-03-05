@@ -4,24 +4,20 @@ namespace ExpertSystem.ExpertSystemShellDomain;
 
 public class FormsIo : IExpertSystemIo
 {
+    public void InitIo()
+    {
+        ConsultationForm.ClearConsultationText();
+    }
 
     public void ShowMessage(string text, string caption)
     {
         MessageBox.Show(text, caption);
     }
 
-    public DomainValue CreateVariableRequest()
+    public DomainValue? CreateVariableRequest(Variable variable)
     {
-        throw new NotImplementedException();
-    }
-
-    public KnowledgeBase? ReadKnowledgeBase(string path)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool SaveKnowledgeBase(string path)
-    {
-        throw new NotImplementedException();
+        using var consultForm = new ConsultationForm(variable);
+        consultForm.ShowDialog();
+        return consultForm.SelectedValue;
     }
 }

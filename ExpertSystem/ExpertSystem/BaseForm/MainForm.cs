@@ -109,6 +109,35 @@ namespace ExpertSystem.BaseForm
             return saveFileDialog.ShowDialog() != DialogResult.OK ? string.Empty : saveFileDialog.FileName;
         }
 
+        private void beginConsultToolStrip_Click(object sender, EventArgs e)
+        {
+            var inferredVariables = KnowledgeBase.Variables
+                .Where(v => v.VariableType == VarType.Inferred || v.VariableType == VarType.InferredRequested).ToList();
+
+            if (!inferredVariables.Any())
+            {
+                MessageBox.Show("Целевые переменные в данной базе знаний не найдены");
+                return;
+            }
+            
+            using var consultForm = new ConsultationForm(inferredVariables);
+            consultForm.ShowDialog();
+
+            var targetVariable = consultForm.SelectedVariable;
+            if (targetVariable is null)
+            {
+                MessageBox.Show("Целевая переменная не выбрана", "Ошибка");
+                return;
+            }
+            
+            _expertSystemShell.Infer(targetVariable);
+        }
+        
+        private void explainToolStrip_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void DgvSelectionChanged(object sender, Button editButton, Button deleteButton)
         {
             if (sender is not DataGridView dgv)

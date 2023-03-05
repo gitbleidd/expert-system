@@ -175,6 +175,7 @@
             this.beginConsultToolStrip.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.beginConsultToolStrip.Size = new System.Drawing.Size(228, 22);
             this.beginConsultToolStrip.Text = "Начать консультацию";
+            this.beginConsultToolStrip.Click += new System.EventHandler(this.beginConsultToolStrip_Click);
             // 
             // explainToolStrip
             // 
@@ -182,6 +183,7 @@
             this.explainToolStrip.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
             this.explainToolStrip.Size = new System.Drawing.Size(228, 22);
             this.explainToolStrip.Text = "Покать объяснение";
+            this.explainToolStrip.Click += new System.EventHandler(this.explainToolStrip_Click);
             // 
             // tabControl
             // 

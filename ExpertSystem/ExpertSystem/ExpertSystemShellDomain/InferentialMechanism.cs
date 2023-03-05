@@ -18,6 +18,8 @@ public class InferentialMechanism
 
     public void StartInference(Variable targetVariable)
     {
+        _io.InitIo();
+        
         // Starting inference with requested variable is forbidden.  
         if (targetVariable.VariableType == VarType.Requested)
             return;
@@ -28,7 +30,7 @@ public class InferentialMechanism
         var variableValueFromMemory = GetVariableValueFromMemory(targetVariable);
         if (variableValueFromMemory is null)
         {
-            _io.ShowMessage("Не удалось достигнуть цели консультации!", "Результат консультации");
+            _io.ShowMessage("Цель консультации не была достигнута. Обратитесь к другой ЭС.", "Результат консультации");
             return;
         }
         
@@ -44,7 +46,10 @@ public class InferentialMechanism
         // Get variable value from IO from and set value in work memory
         if (targetVariable.VariableType == VarType.Requested)
         {
-            var requiredValue = _io.CreateVariableRequest();
+            var requiredValue = _io.CreateVariableRequest(targetVariable);
+            if (requiredValue is null)
+                return;
+
             _workingMemory.VariableValues.Add(targetVariable, requiredValue);
             return;
         }
@@ -70,6 +75,7 @@ public class InferentialMechanism
                 if (variableValue is null)
                 {
                     Infer(premise.Variable);
+                    variableValue = GetVariableValueFromMemory(premise.Variable);
                 }
 
                 // Rule won't fire if mechanism couldn't infer or one of the premises if false 

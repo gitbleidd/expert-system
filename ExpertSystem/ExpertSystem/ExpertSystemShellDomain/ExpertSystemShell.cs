@@ -60,12 +60,6 @@ public class ExpertSystemShell
 
     public void Infer(Variable targetVariable)
     {
-        if (InferentialMechanism is null)
-        {
-            _io.ShowMessage("База знаний не загружена", "Ошибка");
-            return;
-        }
-        
         _workingMemory.FiredRules.Clear();
         _workingMemory.VariableValues.Clear();
         
