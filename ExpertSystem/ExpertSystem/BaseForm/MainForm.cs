@@ -1,14 +1,17 @@
+using System.Runtime.Serialization.Formatters.Binary;
 using ExpertSystem.Entities;
+using Newtonsoft.Json;
 
 namespace ExpertSystem.BaseForm
 {
     public partial class MainForm : Form
     {
-        private KnowledgeBase KnowledgeBase { get; set; } = null!;
+        private KnowledgeBase KnowledgeBase { get; set; } = new KnowledgeBase();
+        private string KnowledgeBaseFilePath { get; set; } = string.Empty;
+        
         public MainForm()
         {
             InitializeComponent();
-            tabControl.Visible = false;
         }
 
         //----------------------------------------------------------------
@@ -17,18 +20,99 @@ namespace ExpertSystem.BaseForm
 
         private void newToolStrip_Click(object sender, EventArgs e)
         {
-            tabControl.Visible = true;
             KnowledgeBase = new KnowledgeBase();
-            tabControl.SelectedIndex = 0;
+            KnowledgeBaseFilePath = string.Empty;
+            
+            // Set to rerender tab
+            tabControl.SelectedIndex = 1; 
+            tabControl.SelectedIndex = 0; 
+            
             // TODO (?) clear consulting form 
         }
 
         private void openToolStrip_Click(object sender, EventArgs e)
         {
+            using var openFileDialog = new System.Windows.Forms.OpenFileDialog()
+            {
+                Title = "Открытие к базе знаний",
+                DefaultExt = "kb",
+                Filter = "knowledge base files (*.kb)|*.kb",
+                CheckFileExists = true,
+                CheckPathExists = true
+            };
+            
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            KnowledgeBaseFilePath = openFileDialog.FileName;
+            var knowledgeBaseJson = File.ReadAllText(KnowledgeBaseFilePath);
+            var deserializedKnowledgeBase = JsonConvert.DeserializeObject<KnowledgeBase>(
+                knowledgeBaseJson,
+                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+
+            if (deserializedKnowledgeBase is null)
+            {
+                MessageBox.Show("Не удалось открыть файл базы знаний");
+                return;
+            }
+
+            KnowledgeBase = deserializedKnowledgeBase;
             tabControl.Visible = true;
-            // TODO open file explorer
+            
+            // Set index to rerender tab
+            tabControl.SelectedIndex = 1; 
+            tabControl.SelectedIndex = 0; 
         }
 
+        private void saveToolStrip_Click(object sender, EventArgs e)
+        {
+            string knowledgeBaseFilePath = KnowledgeBaseFilePath;
+            if (string.IsNullOrWhiteSpace(knowledgeBaseFilePath))
+            {
+                knowledgeBaseFilePath = SelectSaveFolder();
+            }
+            if (string.IsNullOrWhiteSpace(knowledgeBaseFilePath))
+                return;
+            
+            SaveKnowledgeBase(knowledgeBaseFilePath, KnowledgeBase);
+            KnowledgeBaseFilePath = knowledgeBaseFilePath;
+        }
+
+        private void saveAsToolStrip_Click(object sender, EventArgs e)
+        {
+            string knowledgeBaseFilePath = SelectSaveFolder();
+            if (string.IsNullOrWhiteSpace(knowledgeBaseFilePath))
+                return;
+            
+            SaveKnowledgeBase(knowledgeBaseFilePath, KnowledgeBase);
+            KnowledgeBaseFilePath = knowledgeBaseFilePath;
+        }
+
+        /// <summary>
+        /// Open SaveFileDialog and return knowledge base save path or empty string if couldn't select folder.
+        /// </summary>
+        /// <returns>Path to saved file or empty string if couldn't save.</returns>
+        private static string SelectSaveFolder()
+        {
+            var saveFileDialog = new SaveFileDialog()
+            {
+                Title = "Сохранение базы знаний",
+                DefaultExt = "kb",
+                Filter = "knowledge base files (*.kb)|*.kb",
+                RestoreDirectory = true,
+                CheckPathExists = true,
+            };
+
+            return saveFileDialog.ShowDialog() != DialogResult.OK ? string.Empty : saveFileDialog.FileName;
+        }
+
+        private static void SaveKnowledgeBase(string path, KnowledgeBase knowledgeBase)
+        {
+            // TODO bin save
+            string knowledgeBaseJson = JsonConvert.SerializeObject(knowledgeBase, Formatting.Indented, 
+                new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            File.WriteAllText(path, knowledgeBaseJson);
+        }
 
         private void dgvSelectionChanged(object sender, Button editButton, Button deleteButton)
         {
@@ -74,6 +158,9 @@ namespace ExpertSystem.BaseForm
         private void FillRulesPage()
         {
             dgvRules.Rows.Clear();
+            premiseListBox.Items.Clear();
+            conclusionListBox.Items.Clear();
+            
             foreach (var rule in KnowledgeBase.Rules)
             {
                 int index = dgvRules.Rows.Add();
@@ -91,6 +178,9 @@ namespace ExpertSystem.BaseForm
         private void FillVariablesPage()
         {
             dgvVariables.Rows.Clear();
+            questionTextBox.Text = string.Empty;
+            ruleDomainValuesListBox.Items.Clear();
+            
             foreach (var variable in KnowledgeBase.Variables)
             {
                 int index = dgvVariables.Rows.Add();
@@ -108,6 +198,8 @@ namespace ExpertSystem.BaseForm
         private void FillDomainPage()
         {
             dgvDomains.Rows.Clear();
+            domainValuesListBox.Items.Clear();
+            
             foreach (var domain in KnowledgeBase.Domains)
             {
                 dgvDomains.Rows.Add(domain);

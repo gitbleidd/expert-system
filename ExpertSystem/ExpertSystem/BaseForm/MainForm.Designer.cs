@@ -149,6 +149,7 @@
             this.saveToolStrip.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.saveToolStrip.Size = new System.Drawing.Size(235, 22);
             this.saveToolStrip.Text = "Сохранить";
+            this.saveToolStrip.Click += new System.EventHandler(this.saveToolStrip_Click);
             // 
             // saveAsToolStrip
             // 
@@ -157,6 +158,7 @@
             | System.Windows.Forms.Keys.S)));
             this.saveAsToolStrip.Size = new System.Drawing.Size(235, 22);
             this.saveAsToolStrip.Text = "Сохранить как...";
+            this.saveAsToolStrip.Click += new System.EventHandler(this.saveAsToolStrip_Click);
             // 
             // toolStripConsult
             // 
