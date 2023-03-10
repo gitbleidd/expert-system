@@ -280,6 +280,7 @@
             this.conclusionListBox.Name = "conclusionListBox";
             this.conclusionListBox.Size = new System.Drawing.Size(299, 91);
             this.conclusionListBox.TabIndex = 0;
+            this.conclusionListBox.HorizontalScrollbar = true;
             // 
             // groupBoxPremise
             // 
@@ -302,6 +303,7 @@
             this.premiseListBox.Name = "premiseListBox";
             this.premiseListBox.Size = new System.Drawing.Size(299, 250);
             this.premiseListBox.TabIndex = 0;
+            this.premiseListBox.HorizontalScrollbar = true;
             // 
             // groupBoxEditRule
             // 
@@ -448,6 +450,7 @@
             this.ruleDomainValuesListBox.Name = "ruleDomainValuesListBox";
             this.ruleDomainValuesListBox.Size = new System.Drawing.Size(299, 226);
             this.ruleDomainValuesListBox.TabIndex = 0;
+            this.ruleDomainValuesListBox.HorizontalScrollbar = true;
             // 
             // questionGroupBox
             // 
@@ -602,6 +605,7 @@
             this.domainValuesListBox.Name = "domainValuesListBox";
             this.domainValuesListBox.Size = new System.Drawing.Size(299, 226);
             this.domainValuesListBox.TabIndex = 0;
+            this.domainValuesListBox.HorizontalScrollbar = true;
             // 
             // domainInfoGroupBox
             // 

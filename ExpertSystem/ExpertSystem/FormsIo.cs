@@ -1,4 +1,5 @@
-﻿using ExpertSystemShellDomain;
+﻿using ExpertSystem.Forms;
+using ExpertSystemShellDomain;
 using ExpertSystemShellDomain.Entities;
 
 namespace ExpertSystem;

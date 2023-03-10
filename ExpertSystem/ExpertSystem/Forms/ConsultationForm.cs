@@ -1,6 +1,6 @@
 ﻿using ExpertSystemShellDomain.Entities;
 
-namespace ExpertSystem
+namespace ExpertSystem.Forms
 {
     public partial class ConsultationForm : Form
     {

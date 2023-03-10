@@ -1,4 +1,4 @@
-﻿namespace ExpertSystem
+﻿namespace ExpertSystem.Forms
 {
     partial class ConsultationForm
     {
