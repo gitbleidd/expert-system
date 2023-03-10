@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
+            
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.toolStripFile = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStrip = new System.Windows.Forms.ToolStripMenuItem();

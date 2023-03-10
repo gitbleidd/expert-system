@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
+            
             this.mainPanel = new System.Windows.Forms.Panel();
             this.editPanel = new System.Windows.Forms.Panel();
             this.okCancelTablePanel = new System.Windows.Forms.TableLayoutPanel();

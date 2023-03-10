@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
+            
             this.variableNameLabel = new System.Windows.Forms.Label();
             this.domainComboBox = new System.Windows.Forms.ComboBox();
             this.domainLabel = new System.Windows.Forms.Label();

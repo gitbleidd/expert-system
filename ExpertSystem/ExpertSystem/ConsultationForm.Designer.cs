@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;
+            
             this.consultationGroupBox = new System.Windows.Forms.GroupBox();
             this.consultationComboBox = new System.Windows.Forms.ComboBox();
             this.consultationListBox = new System.Windows.Forms.ListBox();
