@@ -8,7 +8,7 @@ namespace ExpertSystem.Forms
         public Variable? SelectedVariable { get; private set; }
         
         private static readonly List<string> _questionsAnswers = new();
-        private bool _isTargetVariableForm = false;
+        private readonly bool _isTargetVariableForm = false;
         public ConsultationForm(List<Variable> variables)
         {
             InitializeComponent();
@@ -18,6 +18,8 @@ namespace ExpertSystem.Forms
             {
                 consultationComboBox.Items.Add(variable);
             }
+
+            consultationComboBox.SelectedIndex = 0;
         }
 
         public ConsultationForm(Variable variable)
@@ -34,6 +36,8 @@ namespace ExpertSystem.Forms
             {
                 consultationComboBox.Items.Add(domainValue);
             }
+            
+            consultationComboBox.SelectedIndex = 0;
         }
 
         public static void ClearConsultationText() => _questionsAnswers.Clear();
