@@ -246,6 +246,7 @@
             this.dgvRules.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvRules_DragDrop);
             this.dgvRules.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvRules_DragEnter);
             this.dgvRules.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvRules_MouseMove);
+            this.dgvRules.AllowUserToResizeRows = false;
             // 
             // rulesPanel
             // 
@@ -397,6 +398,7 @@
             this.dgvVariables.Size = new System.Drawing.Size(654, 503);
             this.dgvVariables.TabIndex = 3;
             this.dgvVariables.SelectionChanged += new System.EventHandler(this.dgvVariables_SelectionChanged);
+            this.dgvVariables.AllowUserToResizeRows = false;
             // 
             // VariableNameColumn
             // 
@@ -564,6 +566,7 @@
             this.dgvDomains.Size = new System.Drawing.Size(654, 503);
             this.dgvDomains.TabIndex = 3;
             this.dgvDomains.SelectionChanged += new System.EventHandler(this.dgvDomains_SelectionChanged);
+            this.dgvDomains.AllowUserToResizeRows = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
