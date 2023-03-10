@@ -183,6 +183,7 @@
             this.dgvValues.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvValues_DragDrop);
             this.dgvValues.DragEnter += new System.Windows.Forms.DragEventHandler(this.dgvValues_DragEnter);
             this.dgvValues.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvValues_MouseMove);
+            this.dgvValues.AllowUserToResizeRows = false;
             // 
             // ValuesColumn
             // 
