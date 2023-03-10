@@ -1,4 +1,4 @@
-﻿namespace ExpertSystem.KnowledgeBaseDomain
+﻿namespace ExpertSystemShellDomain.Entities
 {
     public class KnowledgeBase
     {

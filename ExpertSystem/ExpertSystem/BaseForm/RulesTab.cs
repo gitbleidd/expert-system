@@ -1,4 +1,4 @@
-﻿using ExpertSystem.KnowledgeBaseDomain;
+﻿using ExpertSystemShellDomain.Entities;
 
 namespace ExpertSystem.BaseForm
 {

@@ -1,6 +1,7 @@
-﻿using ExpertSystem.KnowledgeBaseDomain;
+﻿using ExpertSystemShellDomain;
+using ExpertSystemShellDomain.Entities;
 
-namespace ExpertSystem.ExpertSystemShellDomain;
+namespace ExpertSystem;
 
 public class FormsIo : IExpertSystemIo
 {

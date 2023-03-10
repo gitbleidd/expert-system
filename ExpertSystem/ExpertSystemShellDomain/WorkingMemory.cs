@@ -1,6 +1,6 @@
-﻿using ExpertSystem.KnowledgeBaseDomain;
+﻿using ExpertSystemShellDomain.Entities;
 
-namespace ExpertSystem.ExpertSystemShellDomain;
+namespace ExpertSystemShellDomain;
 
 public class WorkingMemory
 {

@@ -1,7 +1,7 @@
-﻿using ExpertSystem.KnowledgeBaseDomain;
+﻿using ExpertSystemShellDomain.Entities;
 using Newtonsoft.Json;
 
-namespace ExpertSystem.ExpertSystemShellDomain;
+namespace ExpertSystemShellDomain;
 
 public class ExpertSystemShell
 {
@@ -10,10 +10,10 @@ public class ExpertSystemShell
     private readonly WorkingMemory _workingMemory;
     private readonly IExpertSystemIo _io;
 
-    public ExpertSystemShell()
+    public ExpertSystemShell(IExpertSystemIo io)
     {
         _workingMemory = new WorkingMemory();
-        _io = new FormsIo();
+        _io = io;
         KnowledgeBase = new KnowledgeBase();
         InferentialMechanism = new InferentialMechanism(KnowledgeBase, _workingMemory, _io);
     }

@@ -99,7 +99,7 @@
             this.Controls.Add(this.consultationListBox);
             this.Controls.Add(this.consultationGroupBox);
             this.Name = "ConsultationForm";
-            this.Text = "ConsultationForm";
+            this.Text = "Консультация";
             this.consultationGroupBox.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

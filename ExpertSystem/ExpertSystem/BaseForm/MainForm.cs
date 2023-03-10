@@ -1,5 +1,5 @@
-using ExpertSystem.ExpertSystemShellDomain;
-using ExpertSystem.KnowledgeBaseDomain;
+using ExpertSystemShellDomain;
+using ExpertSystemShellDomain.Entities;
 
 namespace ExpertSystem.BaseForm
 {
@@ -12,7 +12,7 @@ namespace ExpertSystem.BaseForm
         public MainForm()
         {
             InitializeComponent();
-            _expertSystemShell = new ExpertSystemShell();
+            _expertSystemShell = new ExpertSystemShell(new FormsIo());
         }
 
         //----------------------------------------------------------------

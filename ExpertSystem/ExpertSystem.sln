@@ -5,6 +5,10 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpertSystem", "ExpertSystem\ExpertSystem.csproj", "{693468FE-C271-4459-B353-0E5FA5A3C5B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InferenceEngineTest", "InferenceEngineTest\InferenceEngineTest.csproj", "{C4140A62-658A-4101-9E95-CF6BD29AC3A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpertSystemShellDomain", "ExpertSystemShellDomain\ExpertSystemShellDomain.csproj", "{9944B7B7-77B4-4862-A6B4-9106477BB64D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{693468FE-C271-4459-B353-0E5FA5A3C5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{693468FE-C271-4459-B353-0E5FA5A3C5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{693468FE-C271-4459-B353-0E5FA5A3C5B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4140A62-658A-4101-9E95-CF6BD29AC3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4140A62-658A-4101-9E95-CF6BD29AC3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4140A62-658A-4101-9E95-CF6BD29AC3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4140A62-658A-4101-9E95-CF6BD29AC3A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9944B7B7-77B4-4862-A6B4-9106477BB64D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9944B7B7-77B4-4862-A6B4-9106477BB64D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9944B7B7-77B4-4862-A6B4-9106477BB64D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9944B7B7-77B4-4862-A6B4-9106477BB64D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

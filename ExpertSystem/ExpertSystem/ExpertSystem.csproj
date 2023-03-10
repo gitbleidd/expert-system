@@ -27,4 +27,13 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ExpertSystemShellDomain" />
+    <Folder Include="KnowledgeBaseDomain" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExpertSystemShellDomain\ExpertSystemShellDomain.csproj" />
+  </ItemGroup>
+
 </Project>
