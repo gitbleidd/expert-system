@@ -1,4 +1,5 @@
-﻿using ExpertSystemShellDomain.Entities;
+﻿using System.Text;
+using ExpertSystemShellDomain.Entities;
 using Newtonsoft.Json;
 
 namespace ExpertSystemShellDomain;
@@ -15,20 +16,27 @@ public class ExpertSystemShell
         _workingMemory = new WorkingMemory();
         _io = io;
         KnowledgeBase = new KnowledgeBase();
+        KnowledgeBase = InitKnowledgeBase.KnowledgeBase;
         InferentialMechanism = new InferentialMechanism(KnowledgeBase, _workingMemory, _io);
     }
 
     public bool LoadKnowledgeBase(string path)
     {
-        var knowledgeBaseJson = File.ReadAllText(path);
-        var deserializedKnowledgeBase = JsonConvert.DeserializeObject<KnowledgeBase>(
-            knowledgeBaseJson,
-            new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
-
-        if (deserializedKnowledgeBase is null)
+        string knowledgeBaseJson;
+        try
+        {
+            knowledgeBaseJson = Encoding.Unicode.GetString(Convert.FromBase64String(File.ReadAllText(path)));
+        }
+        catch (Exception e)
         {
             return false;
         }
+        
+        var deserializedKnowledgeBase = JsonConvert.DeserializeObject<KnowledgeBase>(
+            knowledgeBaseJson,
+            new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+        if (deserializedKnowledgeBase is null)
+            return false;
         
         KnowledgeBase = deserializedKnowledgeBase;
         InferentialMechanism = new InferentialMechanism(KnowledgeBase, _workingMemory, _io);
@@ -39,15 +47,13 @@ public class ExpertSystemShell
     {
         try
         {
-            // TODO bin save
             string knowledgeBaseJson = JsonConvert.SerializeObject(KnowledgeBase, Formatting.Indented, 
                 new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
-            File.WriteAllText(path, knowledgeBaseJson);
+            File.WriteAllText(path, Convert.ToBase64String(Encoding.Unicode.GetBytes(knowledgeBaseJson)));
             return true;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
             return false;
         }
     }
