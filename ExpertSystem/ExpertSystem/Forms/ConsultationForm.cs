@@ -29,7 +29,10 @@ namespace ExpertSystem.Forms
             _questionsAnswers.Add($"ЭС: {variable.QuestionText}");
             foreach (var item in _questionsAnswers)
             {
-                consultationListBox.Items.Add(item);
+                //consultationListBox.Items.Add(item);
+                int index = consultationDgv.Rows.Add();
+                var row = consultationDgv.Rows[index];
+                row.Cells[0].Value = item;
             }
 
             foreach (var domainValue in variable.Domain.Values)
