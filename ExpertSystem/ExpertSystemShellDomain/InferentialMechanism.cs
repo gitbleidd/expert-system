@@ -33,7 +33,7 @@ public class InferentialMechanism
             return;
         }
         
-        _io.ShowMessage($"Цель консультации достугнута {targetVariable.Name} = {variableValueFromMemory}!", "Результат консультации");
+        _io.ShowMessage($"Цель консультации достугнута! Результат: {targetVariable.Name} - {variableValueFromMemory}", "Результат консультации");
     }
 
     private void Infer(Variable targetVariable)
