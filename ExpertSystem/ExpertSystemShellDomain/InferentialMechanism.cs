@@ -7,12 +7,14 @@ public class InferentialMechanism
     private readonly KnowledgeBase _knowledgeBase;
     private readonly WorkingMemory _workingMemory;
     private readonly IExpertSystemIo _io;
+    private readonly HashSet<Rule> _processedRules;
 
     public InferentialMechanism(KnowledgeBase knowledgeBase, WorkingMemory workingMemory, IExpertSystemIo io)
     {
         _knowledgeBase = knowledgeBase;
         _workingMemory = workingMemory;
         _io = io;
+        _processedRules = new HashSet<Rule>();
     }
 
     public void StartInference(Variable targetVariable)
@@ -38,7 +40,7 @@ public class InferentialMechanism
 
     private void Infer(Variable targetVariable)
     {
-        // Recursion stop condition - variable is already infered
+        // Recursion stop condition - variable is already inferred
         if (GetVariableValueFromMemory(targetVariable) is not null)
             return;
         
@@ -58,9 +60,9 @@ public class InferentialMechanism
 
         foreach (var targetRule in _knowledgeBase.Rules)
         {
-            if (!targetRule.Conclusions.Any(c => c.Variable == targetVariable))
+            if (targetRule.Conclusions.All(c => c.Variable != targetVariable))
                 continue;
-            
+
             // 3. проверяется посылка выбранного правила; если она верна, то правило включается, и целевая переменная получает значение
             bool isRuleFired = true;
             foreach (var premise in targetRule.Premises)
@@ -71,9 +73,12 @@ public class InferentialMechanism
                 // 5. в процессе поиска значения временной цели другие переменные также могут становиться временными целями
 
                 var variableValue = GetVariableValueFromMemory(premise.Variable); 
-                if (variableValue is null)
+                if (variableValue is null && !_processedRules.Contains(targetRule))
                 {
+                    _processedRules.Add(targetRule);
                     Infer(premise.Variable);
+                    _processedRules.Remove(targetRule);
+                    
                     variableValue = GetVariableValueFromMemory(premise.Variable);
                 }
 
@@ -90,14 +95,15 @@ public class InferentialMechanism
             if (isRuleFired)
             {
                 _workingMemory.FiredRules.Add(targetRule);
+                
                 foreach (var conclusion in targetRule.Conclusions)
                 {
-                    // TODO не должно быть исключений и TryAdd 
+                    // Exceptions shouldn't happen but using TryAdd just in case 
                     _workingMemory.VariableValues.TryAdd(conclusion.Variable, conclusion.DomainValue);
                 }
                 break;
             }
-            
+
             // 7. если посылка правила оказывается неверной (или некоторые из неизвестных переменных не удается найти), то правило не включается, и рассматривается следующее правило, в котором целевая переменная может получить значение
             // 8. процесс продолжается, пока не будет найдено значение целевой переменной (или будет установлено, что найти его невозможно)    
         }
