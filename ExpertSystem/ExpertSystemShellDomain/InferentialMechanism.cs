@@ -8,6 +8,7 @@ public class InferentialMechanism
     private readonly WorkingMemory _workingMemory;
     private readonly IExpertSystemIo _io;
     private readonly HashSet<Rule> _processedRules;
+    private bool _isInferringStopped;
 
     public InferentialMechanism(KnowledgeBase knowledgeBase, WorkingMemory workingMemory, IExpertSystemIo io)
     {
@@ -15,6 +16,7 @@ public class InferentialMechanism
         _workingMemory = workingMemory;
         _io = io;
         _processedRules = new HashSet<Rule>();
+        _isInferringStopped = false;
     }
 
     public void StartInference(Variable targetVariable)
@@ -42,7 +44,7 @@ public class InferentialMechanism
     private void Infer(Variable targetVariable)
     {
         // Recursion stop condition - variable is already inferred
-        if (GetVariableValueFromMemory(targetVariable) is not null)
+        if (_isInferringStopped || GetVariableValueFromMemory(targetVariable) is not null)
             return;
         
         // Get variable value from IO from and set value in work memory
@@ -50,7 +52,10 @@ public class InferentialMechanism
         {
             var requiredValue = _io.CreateVariableRequest(targetVariable);
             if (requiredValue is null)
+            {
+                _isInferringStopped = true;
                 return;
+            }
 
             _workingMemory.VariableValues.Add(targetVariable, requiredValue);
             return;
