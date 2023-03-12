@@ -16,6 +16,7 @@ namespace ExpertSystem.Forms
             _isExpanded = false;
             
             InitializeComponent();
+            this.Text = "Объяснение";
             menuStripLeft.Items.Clear();
             menuStripLeft.Items.Add(new ToolStripLabel("Правила"));
 
