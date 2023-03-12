@@ -49,6 +49,12 @@ namespace ExpertSystem.Forms
                 row.SubItems.Add(variableValue.Value);
                 row.Tag = variable;
             }
+            
+            if (_workingMemory.TargetVariable is null)
+            {
+                MessageBox.Show("Консультация еще не была проведена!");
+                return;
+            }
 
             var firedRules = new HashSet<Rule>(_workingMemory.FiredRules);
             try
