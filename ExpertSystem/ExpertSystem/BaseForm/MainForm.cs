@@ -136,7 +136,8 @@ namespace ExpertSystem.BaseForm
         
         private void explainToolStrip_Click(object sender, EventArgs e)
         {
-            
+            using var explanationForm = new ExplanationForm(_expertSystemShell.WorkingMemory);
+            explanationForm.ShowDialog();
         }
 
         private void DgvSelectionChanged(object sender, Button editButton, Button deleteButton)
