@@ -22,4 +22,10 @@ public class FormsIo : IExpertSystemIo
         consultForm.ShowDialog();
         return consultForm.SelectedValue;
     }
+    
+    public void ShowExplanation(WorkingMemory workingMemory)
+    {
+        using var explanationForm = new ExplanationForm(workingMemory);
+        explanationForm.ShowDialog();
+    }
 }
