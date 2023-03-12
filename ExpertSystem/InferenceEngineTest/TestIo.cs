@@ -31,4 +31,9 @@ public class TestIo : IExpertSystemIo
         _enumerator.MoveNext();
         return variable.Domain.Values[_enumerator.Current];
     }
+
+    public void ShowExplanation(WorkingMemory workingMemory)
+    {
+        
+    }
 }

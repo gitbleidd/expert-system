@@ -21,6 +21,8 @@ namespace ExpertSystem
             {
                 domainComboBox.Items.Add(domain);
             }
+            if (domainComboBox.Items.Count > 0)
+                domainComboBox.SelectedIndex = 0;
             SetRadioButtonOnVariableType(VarType.Requested);
             
             questionTextBox.Text = $"{initVariableName}?";
