@@ -11,9 +11,9 @@ namespace ExpertSystem.Forms
         private readonly bool _isTargetVariableForm = false;
         public ConsultationForm(List<Variable> variables)
         {
-            InitializeComponent();
             _isTargetVariableForm = true;
-            
+            InitializeComponent();
+
             foreach (var variable in variables)
             {
                 consultationComboBox.Items.Add(variable);
@@ -25,6 +25,7 @@ namespace ExpertSystem.Forms
         public ConsultationForm(Variable variable)
         {
             InitializeComponent();
+            this.ControlBox = false;
 
             _questionsAnswers.Add($"ЭС: {variable.QuestionText}");
             foreach (var item in _questionsAnswers)
