@@ -171,9 +171,9 @@ namespace ExpertSystem
                 MessageBox.Show("Правило с таким именем уже сущестувует!");
                 return;
             }
-            if (premiseListBox.Items.Count == 0 || conclusionListBox.Items.Count == 0)
+            if (conclusionListBox.Items.Count == 0)
             {
-                MessageBox.Show("Правило должно содержать хотя бы одну посылку и заключение!");
+                MessageBox.Show("Правило должно содержать хотя бы одно заключение!");
                 return;
             }
             if (string.IsNullOrWhiteSpace(descriptionTextBox.Text))
