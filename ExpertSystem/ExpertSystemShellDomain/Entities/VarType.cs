@@ -11,17 +11,13 @@
     {
         public static string GetName(this VarType varType)
         {
-            switch (varType)
+            return varType switch
             {
-                case VarType.Requested:
-                    return "Запрашиваемая";
-                case VarType.Inferred:
-                    return "Выводимая";
-                case VarType.InferredRequested:
-                    return "Выводимо-запрашиваемая";
-                default:
-                    throw new Exception("Undefiend enum value");
-            }
+                VarType.Requested => "Запрашиваемая",
+                VarType.Inferred => "Выводимая",
+                VarType.InferredRequested => "Выводимо-запрашиваемая",
+                _ => throw new Exception("Undefiend enum value")
+            };
         }
     }
 }
