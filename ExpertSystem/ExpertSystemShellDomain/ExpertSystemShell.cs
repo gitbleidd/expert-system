@@ -7,17 +7,17 @@ namespace ExpertSystemShellDomain;
 public class ExpertSystemShell
 {
     public KnowledgeBase KnowledgeBase { get; private set; }
+    public WorkingMemory WorkingMemory { get; private set; }
     private InferentialMechanism InferentialMechanism { get; set; }
-    private readonly WorkingMemory _workingMemory;
     private readonly IExpertSystemIo _io;
 
     public ExpertSystemShell(IExpertSystemIo io)
     {
-        _workingMemory = new WorkingMemory();
+        WorkingMemory = new WorkingMemory();
         _io = io;
         KnowledgeBase = new KnowledgeBase();
         KnowledgeBase = InitKnowledgeBase.KnowledgeBase;
-        InferentialMechanism = new InferentialMechanism(KnowledgeBase, _workingMemory, _io);
+        InferentialMechanism = new InferentialMechanism(KnowledgeBase, WorkingMemory, _io);
     }
 
     public bool LoadKnowledgeBase(string path)
@@ -39,7 +39,7 @@ public class ExpertSystemShell
             return false;
         
         KnowledgeBase = deserializedKnowledgeBase;
-        InferentialMechanism = new InferentialMechanism(KnowledgeBase, _workingMemory, _io);
+        InferentialMechanism = new InferentialMechanism(KnowledgeBase, WorkingMemory, _io);
         return true;
     }
 
@@ -61,13 +61,13 @@ public class ExpertSystemShell
     public void CreateEmptyKnowledgeBase()
     {
         KnowledgeBase = new KnowledgeBase();
-        InferentialMechanism = new InferentialMechanism(KnowledgeBase, _workingMemory, _io);
+        InferentialMechanism = new InferentialMechanism(KnowledgeBase, WorkingMemory, _io);
     }
 
     public void Infer(Variable targetVariable)
     {
-        _workingMemory.FiredRules.Clear();
-        _workingMemory.VariableValues.Clear();
+        WorkingMemory = new WorkingMemory(targetVariable);
+        InferentialMechanism = new InferentialMechanism(KnowledgeBase, WorkingMemory, _io);
         
         InferentialMechanism.StartInference(targetVariable);
     }
