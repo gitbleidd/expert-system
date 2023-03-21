@@ -46,7 +46,7 @@ namespace ExpertSystem
             KnowledgeBase.Variables.Add(variable);
             
             // Посылка: запрашиваемые и выводимо-запрашиваемые
-            if (IsPremiseForm && (variable.VariableType == VarType.Requested || variable.VariableType == VarType.InferredRequested))
+            if (IsPremiseForm && (variable.VariableType == VarType.Requested || variable.VariableType == VarType.InferredRequested || variable.VariableType == VarType.Requested))
             {
                 variableComboBox.Items.Add(variable);
                 variableComboBox.SelectedItem = variable;
