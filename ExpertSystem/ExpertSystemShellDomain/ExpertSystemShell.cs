@@ -16,7 +16,6 @@ public class ExpertSystemShell
         WorkingMemory = new WorkingMemory();
         _io = io;
         KnowledgeBase = new KnowledgeBase();
-        KnowledgeBase = InitKnowledgeBase.KnowledgeBase;
         InferentialMechanism = new InferentialMechanism(KnowledgeBase, WorkingMemory, _io);
     }
 
