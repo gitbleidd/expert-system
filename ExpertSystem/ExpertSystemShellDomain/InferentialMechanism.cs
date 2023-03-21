@@ -33,8 +33,32 @@ public class InferentialMechanism
         var variableValueFromMemory = GetVariableValueFromMemory(targetVariable);
         if (variableValueFromMemory is null)
         {
-            _io.ShowMessage("Цель консультации не была достигнута. Обратитесь к другой ЭС.", "Результат консультации");
-            return;
+            if (targetVariable.VariableType == VarType.InferredRequested)
+            {
+                var requestedVariableValue = _io.CreateVariableRequest(targetVariable);
+                if (requestedVariableValue != null)
+                {
+                    _workingMemory.VariableValues.Add(targetVariable, requestedVariableValue);
+                    variableValueFromMemory = requestedVariableValue;
+                    foreach (var rule in _knowledgeBase.Rules)
+                    {
+                        foreach (var conclusion in rule.Conclusions)
+                        {
+                            if (conclusion.Variable == targetVariable &&
+                                conclusion.DomainValue == requestedVariableValue)
+                            {
+                                _workingMemory.FiredRules.Add(rule);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                _io.ShowMessage("Цель консультации не была достигнута. Обратитесь к другой ЭС.", "Результат консультации");
+                return;
+            }
         }
         
         _io.ShowMessage($"Цель консультации достугнута! Результат: {targetVariable.Name} - {variableValueFromMemory}", "Результат консультации");
